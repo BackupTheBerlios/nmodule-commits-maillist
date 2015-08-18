@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r33 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test/NModule.Core.Test
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r33%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20test/NModule.Core.Test&In-Reply-To=%3C200506300750.j5U7otZi014153%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000017.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r33 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test/NModule.Core.Test</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r33%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20test/NModule.Core.Test&In-Reply-To=%3C200506300750.j5U7otZi014153%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r33 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test/NModule.Core.Test">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Thu Jun 30 09:50:55 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000017.html">[nmodule-commits] r32 - in trunk: . test/NModule.Core.Test/data test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-ld test/NModule.Core.Test/data/src/nm-ul
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-30 09:50:54 +0200 (Thu, 30 Jun 2005)
+New Revision: 33
+
+Added:
+   trunk/NModule.build
+Removed:
+   trunk/test/NModule.Core.Test/TestResult.xml
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r136 at dreamshadow</A>:  urilith | 2005-06-30 02:49:52 -0500
+ 2005-06-30 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * src/NModule.Core.Loader/ModuleController.cs: Fixed wrong initial ref count in IncRef, fixed DecRefs for the no dependencies case.
+   * src/NModule.Core.Module/ModuleInfo.cs: Corrected the caught exception for dependencies.
+   * NModule.build: Added, this is not finished, and will not work, don't use it.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:133
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:136
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-29 11:59:13 UTC (rev 32)
++++ trunk/ChangeLog	2005-06-30 07:50:54 UTC (rev 33)
+@@ -1,3 +1,9 @@
++2005-06-30 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* src/NModule.Core.Loader/ModuleController.cs:  Fixed wrong initial ref count in IncRef, fixed DecRefs for the no dependencies case.
++	* src/NModule.Core.Module/ModuleInfo.cs: Corrected the caught exception for dependencies.
++	* NModule.build: Added, this is not finished, and will not work, don't use it.
++
+ 2005-06-29 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+ 	* Test cleanups.
+
+Added: trunk/NModule.build
+===================================================================
+--- trunk/NModule.build	2005-06-29 11:59:13 UTC (rev 32)
++++ trunk/NModule.build	2005-06-30 07:50:54 UTC (rev 33)
+@@ -0,0 +1,38 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule build files.&lt;/description&gt;
++
++  &lt;!-- properties --&gt;
++  &lt;property name=&quot;debug&quot; value=&quot;true&quot; overwrite=&quot;false&quot; /&gt;
++  &lt;property name=&quot;release&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
++  &lt;property name=&quot;strong&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
++
++  
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-29 11:59:13 UTC (rev 32)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-30 07:50:54 UTC (rev 33)
+@@ -110,6 +110,9 @@
+ 		}
+ 		
+ 		protected void DecRefs (DepNode _x) {
++			if (_x == null)
++				return;
++
+ 			foreach (DepNode _d in _x.Children) {
+ 				DecRefs (_d);
+ 			}
+@@ -129,6 +132,8 @@
+ 			ModuleInfo _info = (ModuleInfo)_info_map[_name];
+ 			
+ 			AppDomain _domain = (AppDomain)_app_domain_map[_name];
++			Console.WriteLine (&quot;UnloadModule (Domain: {0}, RefCount: {1})&quot;, _name, (int)_ref_counts[_domain]);
++
+ 			if (((int)_ref_counts[_domain]) &gt; 1) {
+ 				throw new DomainStillReferencedException (string.Format (&quot;The domain holding the module {0} cannot be unloaded because it is still being referenced.&quot;, _name));
+ 			}
+@@ -160,7 +165,7 @@
+ #region Domain Reference Counts
+ 		protected void IncRef (AppDomain _domain) {
+ 			if (!_ref_counts.Contains (_domain)) {
+-				_ref_counts.Add (_domain, 1);
++				_ref_counts.Add (_domain, 0);
+ 			}
+ 			
+ 			_ref_counts[_domain] = ((int)_ref_counts[_domain]) + 1;
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-29 11:59:13 UTC (rev 32)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-30 07:50:54 UTC (rev 33)
+@@ -61,7 +61,7 @@
+ 			
+ 			try {
+ 				_depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
+-			} catch (ArgumentOutOfRangeException e) {
++			} catch (IndexOutOfRangeException) {
+ 				_depAttr = null;
+ 			}
+ 			
+@@ -75,7 +75,7 @@
+ 				_parser.expr (_dependencies);
+ 			} else
+ 				_dependencies = null;
+-				
++			
+ 			ModuleRoleAttribute _roleAttr = ((ModuleRoleAttribute)(_asm.GetCustomAttributes (typeof (ModuleRoleAttribute), false)[0]));
+ 			
+ 			if (_roleAttr != null) {
+
+Deleted: trunk/test/NModule.Core.Test/TestResult.xml
+===================================================================
+--- trunk/test/NModule.Core.Test/TestResult.xml	2005-06-29 11:59:13 UTC (rev 32)
++++ trunk/test/NModule.Core.Test/TestResult.xml	2005-06-30 07:50:54 UTC (rev 33)
+@@ -1,194 +0,0 @@
+-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
+-&lt;!--This file represents the results of running a test suite--&gt;
+-&lt;test-results name=&quot;/home/urilith/development/nmodule/test/NModule.Core.Test/NModule.Core.Test.dll&quot; total=&quot;8&quot; failures=&quot;6&quot; not-run=&quot;0&quot; date=&quot;2005-06-29&quot; time=&quot;06:44:34&quot;&gt;
+-  &lt;test-suite name=&quot;/home/urilith/development/nmodule/test/NModule.Core.Test/NModule.Core.Test.dll&quot; success=&quot;False&quot; time=&quot;8.071&quot; asserts=&quot;0&quot;&gt;
+-    &lt;results&gt;
+-      &lt;test-suite name=&quot;NModule&quot; success=&quot;False&quot; time=&quot;8.046&quot; asserts=&quot;0&quot;&gt;
+-        &lt;results&gt;
+-          &lt;test-suite name=&quot;Core&quot; success=&quot;False&quot; time=&quot;8.026&quot; asserts=&quot;0&quot;&gt;
+-            &lt;results&gt;
+-              &lt;test-suite name=&quot;Test&quot; success=&quot;False&quot; time=&quot;8.008&quot; asserts=&quot;0&quot;&gt;
+-                &lt;results&gt;
+-                  &lt;test-suite name=&quot;NModuleTests&quot; success=&quot;False&quot; time=&quot;7.625&quot; asserts=&quot;0&quot;&gt;
+-                    &lt;results&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_01&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.440&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-01, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ld_01 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_02&quot; executed=&quot;True&quot; success=&quot;True&quot; time=&quot;0.011&quot; asserts=&quot;0&quot; /&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_03&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.937&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-03, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_03 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_04&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.977&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-04, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_04 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_05&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.983&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-05, Version=1.0.2005.41105, Culture=neutral]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_05 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_06&quot; executed=&quot;True&quot; success=&quot;True&quot; time=&quot;0.140&quot; asserts=&quot;0&quot; /&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ul_01&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.054&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ul-01, Version=1.0.2005.41123, Culture=neutral]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ul_01 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ul_02&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.977&quot; asserts=&quot;0&quot;&gt;
+-                        &lt;failure&gt;
+-                          &lt;message&gt;&lt;![CDATA[Expected: DomainStillReferencedException but was FileNotFoundException]]&gt;&lt;/message&gt;
+-                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
+-in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
+-in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
+-in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
+-in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
+-in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
+-in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
+-in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
+-in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
+-in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
+-in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
+-in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
+-in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
+-in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
+-in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
+-in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
+-in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ul_02 ()
+-in &lt;0x00000&gt; &lt;unknown method&gt;
+-in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
+-in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
+-]]&gt;&lt;/stack-trace&gt;
+-                        &lt;/failure&gt;
+-                      &lt;/test-case&gt;
+-                    &lt;/results&gt;
+-                  &lt;/test-suite&gt;
+-                &lt;/results&gt;
+-              &lt;/test-suite&gt;
+-            &lt;/results&gt;
+-          &lt;/test-suite&gt;
+-        &lt;/results&gt;
+-      &lt;/test-suite&gt;
+-    &lt;/results&gt;
+-  &lt;/test-suite&gt;
+-&lt;/test-results&gt;
+\ No newline at end of file
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000017.html">[nmodule-commits] r32 - in trunk: . test/NModule.Core.Test/data test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-ld test/NModule.Core.Test/data/src/nm-ul
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

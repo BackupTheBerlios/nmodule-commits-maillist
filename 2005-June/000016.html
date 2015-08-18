@@ -1,0 +1,1257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r31 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser test test/NModule.Core.Test test/NModule.Core.Test/data test/NModule.Core.Test/data/nm-ld test/NModule.Core.Test/data/test test/NModule.Core.Test/data/test/nm-ld test/NModule.Core.Test/data/test/nm-ul
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r31%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Parser%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data%20test/NModule.Core.Test/data/nm-ld%20test/NModule.Core.Test/data/test%20test/NModule.Core.Test/data/test/nm-ld%20test/NModule.Core.Test/data/test/nm-ul&In-Reply-To=%3C200506291158.j5TBwutC010232%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r31 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser test test/NModule.Core.Test test/NModule.Core.Test/data test/NModule.Core.Test/data/nm-ld test/NModule.Core.Test/data/test test/NModule.Core.Test/data/test/nm-ld test/NModule.Core.Test/data/test/nm-ul</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r31%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Parser%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data%20test/NModule.Core.Test/data/nm-ld%20test/NModule.Core.Test/data/test%20test/NModule.Core.Test/data/test/nm-ld%20test/NModule.Core.Test/data/test/nm-ul&In-Reply-To=%3C200506291158.j5TBwutC010232%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r31 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser test test/NModule.Core.Test test/NModule.Core.Test/data test/NModule.Core.Test/data/nm-ld test/NModule.Core.Test/data/test test/NModule.Core.Test/data/test/nm-ld test/NModule.Core.Test/data/test/nm-ul">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Wed Jun 29 13:58:56 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[nmodule-commits] r30 - in trunk: . src/NModule.Core
+</A></li>
+        <LI>Next message: <A HREF="000017.html">[nmodule-commits] r32 - in trunk: . test/NModule.Core.Test/data test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-ld test/NModule.Core.Test/data/src/nm-ul
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-29 13:58:54 +0200 (Wed, 29 Jun 2005)
+New Revision: 31
+
+Added:
+   trunk/test/NModule.Core.Test/
+   trunk/test/NModule.Core.Test/AssemblyInfo.cs
+   trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+   trunk/test/NModule.Core.Test/NModule.Core.Test.mds
+   trunk/test/NModule.Core.Test/TESTS
+   trunk/test/NModule.Core.Test/TestResult.xml
+   trunk/test/NModule.Core.Test/data/
+   trunk/test/NModule.Core.Test/data/nm-ld-2/
+   trunk/test/NModule.Core.Test/data/nm-ld-3/
+   trunk/test/NModule.Core.Test/data/nm-ld/
+   trunk/test/NModule.Core.Test/data/nm-ld/refs
+   trunk/test/NModule.Core.Test/data/nm-ul/
+   trunk/test/NModule.Core.Test/data/refs
+   trunk/test/NModule.Core.Test/data/test/
+   trunk/test/NModule.Core.Test/data/test/nm-ld/
+   trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs
+   trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs
+   trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs
+   trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs
+   trunk/test/NModule.Core.Test/data/test/nm-ul/
+   trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs
+   trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs
+   trunk/test/NModule.Core.Test/nm-ld.cs
+   trunk/test/NModule.Core.Test/refs
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/nmodule.mds
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r132 at dreamshadow</A>:  urilith | 2005-06-29 06:55:47 -0500
+ 2005-06-29 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * Random fixes to all of the below to fix some bugs, also added the first two components of the test suite.
+   * Further work is blocking on a Mono AppDomain bug.
+   * nmodule.mds:
+   * src/NModule.Core.Loader/ModuleLoader.cs:
+   * src/NModule.Core.Module/ModuleInfo.cs:
+   * src/NModule.Dependency.Parser/nmodule-dep.g:
+   * test/Data:
+   * test/NModuleTest.cs:
+   * test/NModule.Core.Test:
+   * test/NModule.Core.Test/AssemblyInfo.cs:
+   * test/NModule.Core.Test/NModule.Core.Test.mdp:
+   * test/NModule.Core.Test/NModule.Core.Test.mds:
+   * test/NModule.Core.Test/TESTS:
+   * test/NModule.Core.Test/TestResult.xml:
+   * test/NModule.Core.Test/data:
+   * test/NModule.Core.Test/data/nm-ld:
+   * test/NModule.Core.Test/data/nm-ld/refs:
+   * test/NModule.Core.Test/data/nm-ld-2:
+   * test/NModule.Core.Test/data/nm-ld-3:
+   * test/NModule.Core.Test/data/nm-ul:
+   * test/NModule.Core.Test/data/refs:
+   * test/NModule.Core.Test/data/test:
+   * test/NModule.Core.Test/data/test/nm-ld:
+   * test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs:
+   * test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs:
+   * test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs:
+   * test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs:
+   * test/NModule.Core.Test/data/test/nm-ul:
+   * test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs:
+   * test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs:
+   * test/NModule.Core.Test/nm-ld.cs:
+   * test/NModule.Core.Test/refs:
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:130
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:132
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/ChangeLog	2005-06-29 11:58:54 UTC (rev 31)
+@@ -1,3 +1,38 @@
++2005-06-29 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* Random fixes to all of the below to fix some bugs, also added the first two components of the test suite.
++	* Further work is blocking on a Mono AppDomain bug.
++	* nmodule.mds: 
++	* src/NModule.Core.Loader/ModuleLoader.cs: 
++	* src/NModule.Core.Module/ModuleInfo.cs: 
++	* src/NModule.Dependency.Parser/nmodule-dep.g: 
++	* test/Data: 
++	* test/NModuleTest.cs: 
++	* test/NModule.Core.Test: 
++	* test/NModule.Core.Test/AssemblyInfo.cs: 
++	* test/NModule.Core.Test/NModule.Core.Test.mdp: 
++	* test/NModule.Core.Test/NModule.Core.Test.mds: 
++	* test/NModule.Core.Test/TESTS: 
++	* test/NModule.Core.Test/TestResult.xml: 
++	* test/NModule.Core.Test/data: 
++	* test/NModule.Core.Test/data/nm-ld: 
++	* test/NModule.Core.Test/data/nm-ld/refs: 
++	* test/NModule.Core.Test/data/nm-ld-2: 
++	* test/NModule.Core.Test/data/nm-ld-3: 
++	* test/NModule.Core.Test/data/nm-ul: 
++	* test/NModule.Core.Test/data/refs: 
++	* test/NModule.Core.Test/data/test: 
++	* test/NModule.Core.Test/data/test/nm-ld: 
++	* test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs: 
++	* test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs: 
++	* test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs: 
++	* test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs: 
++	* test/NModule.Core.Test/data/test/nm-ul: 
++	* test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs: 
++	* test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs: 
++	* test/NModule.Core.Test/nm-ld.cs: 
++	* test/NModule.Core.Test/refs: 
++
+ 2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+ 	* src/NModule.Core/ModuleDependencyAttribute.cs: Make assembly level attribute.
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/nmodule.mds	2005-06-29 11:58:54 UTC (rev 31)
+@@ -7,6 +7,7 @@
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Test&quot; /&gt;
+     &lt;/Configuration&gt;
+     &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+@@ -15,6 +16,7 @@
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Test&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;StartMode startupentry=&quot;NModule.Dependency.Parser&quot; single=&quot;True&quot;&gt;
+@@ -24,6 +26,7 @@
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Core&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Test&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp&quot; /&gt;
+@@ -31,5 +34,6 @@
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Core/NModule.Dependency.Core.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core/NModule.Core.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./test/NModule.Core.Test/NModule.Core.Test.mdp&quot; /&gt;
+   &lt;/Entries&gt;
+ &lt;/Combine&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -31,6 +31,7 @@
+ using System.Collections;
+ using System.IO;
+ using System.Reflection;
++using System.Runtime.InteropServices;
+ using NModule.Dependency.Resolver;
+ using NModule.Core.Module;
+ 
+@@ -64,8 +65,11 @@
+ 			foreach (string s in _search_path) {
+ 				if (Directory.Exists (s)) {
+ 					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
+-						if (f.Substring (0, f.Length - 4) == _name) {
+-							return s + &quot;/&quot; + f;
++						string _f = f.Replace (s, &quot;&quot;).Replace (&quot;/&quot;, &quot;&quot;);
++						Console.WriteLine (&quot;Checking {0} against {1} ({2}) (Result: {3})&quot;, _name, _f, 
++							_f.Substring (0, _f.Length - 4), (_f.Substring (0, _f.Length - 4) == _name));
++						if (_f.Substring (0, _f.Length - 4) == _name) {
++							return s + &quot;/&quot; + _f;
+ 						}
+ 					}
+ 				}
+@@ -73,7 +77,7 @@
+ 			
+ 			return null;
+ 		}
+-		 
++		
+ 		/*
+ 		 * We provide two method signatures for loading for convienence.  The first just takes the name of the module (minus the .dll extension),
+ 		 * and attempts to load it.  The second takes a list of parents and the name.  The first incidentally just calls the second with an empty
+@@ -103,8 +107,14 @@
+ 			// need to create the temporary AppDomain and load it to get the info from it.
+ 			AppDomain _tempDomain = AppDomain.CreateDomain (&quot;_temp_&quot; + _name);
+ 			
+-			byte[] _raw_bytes = LoadRawFile (_filename);
++			// This is dirty.  I hate me.
++			byte[] _raw_bytes = LoadRawFile (_filename);	
+ 			
++			// set up the search path
++			foreach (string s in _search_path) {
++				_tempDomain.AppendPrivatePath (s);
++			}
++			
+ 			// The throw here is mostly used from dep resolver calls, although it should also be caught by the immediate caller
+ 			// (i.e. the application).
+ 			try {
+@@ -151,6 +161,7 @@
+ 			AppDomain _domain = AppDomain.CreateDomain (_name);
+ 			
+ 			// let's load this assembly into the real app domain.
++			Console.WriteLine (&quot;_domain.Load&quot;);
+ 			_domain.Load (_raw_bytes);
+ 			
+ 			// We can't do any more with this.
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -57,8 +57,14 @@
+ 			_name = _asm.GetName().Name;
+ 			_version = DepVersion.VersionParse (_asm.GetName().Version.ToString ());
+ 			
+-			ModuleDependencyAttribute _depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
++			ModuleDependencyAttribute _depAttr;
+ 			
++			try {
++				_depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
++			} catch (ArgumentOutOfRangeException e) {
++				_depAttr = null;
++			}
++			
+ 			if (_depAttr != null) {	
+ 				DepLexer _lexer = new DepLexer (new StringReader (_depAttr.DepString));
+ 				DepParser _parser = new DepParser (_lexer);
+
+Modified: trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-06-29 11:58:54 UTC (rev 31)
+@@ -176,6 +176,7 @@
+ AND: &quot;&amp;&amp;&quot; ;
+ OR: &quot;||&quot; ;
+ XOR: &quot;^^&quot; ;
++OPT: &quot;??&quot; ;
+ 
+ // Dependency Operators
+ EQ: &quot;==&quot; ;
+@@ -184,7 +185,6 @@
+ LS: &quot;&lt;&lt;&quot; ;
+ GTE: &quot;&gt;=&quot; ;
+ GT: &quot;&gt;&gt;&quot; ;
+-OPT: &quot;??&quot; ;
+ LD: &quot;##&quot; ;
+ 
+ // Version
+
+Added: trunk/test/NModule.Core.Test/AssemblyInfo.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/AssemblyInfo.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/AssemblyInfo.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,32 @@
++using System.Reflection;
++using System.Runtime.CompilerServices;
++
++// Information about this assembly is defined by the following
++// attributes.
++//
++// change them to the information which is associated with the assembly
++// you compile.
++
++[assembly: AssemblyTitle(&quot;&quot;)]
++[assembly: AssemblyDescription(&quot;&quot;)]
++[assembly: AssemblyConfiguration(&quot;&quot;)]
++[assembly: AssemblyCompany(&quot;&quot;)]
++[assembly: AssemblyProduct(&quot;&quot;)]
++[assembly: AssemblyCopyright(&quot;&quot;)]
++[assembly: AssemblyTrademark(&quot;&quot;)]
++[assembly: AssemblyCulture(&quot;&quot;)]
++
++// The assembly version has following format :
++//
++// Major.Minor.Build.Revision
++//
++// You can specify all values by your own or you can build default build and revision
++// numbers with the '*' character (the default):
++
++[assembly: AssemblyVersion(&quot;1.0.*&quot;)]
++
++// The following attributes specify the key for the sign of your assembly. See the
++// .NET Framework documentation for more information about signing.
++// This is not required, if you don't want signing let these attributes like they're.
++[assembly: AssemblyDelaySign(false)]
++[assembly: AssemblyKeyFile(&quot;&quot;)]
+
+Added: trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+===================================================================
+--- trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,32 @@
++&lt;Project name=&quot;NModule.Core.Test&quot; fileversion=&quot;2.0&quot; language=&quot;C#&quot; ctype=&quot;DotNetProject&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Debug&quot; assembly=&quot;NModule.Core.Test&quot; /&gt;
++      &lt;Build debugmode=&quot;True&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Release&quot; assembly=&quot;NModule.Core.Test&quot; /&gt;
++      &lt;Build debugmode=&quot;False&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Parser&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Loader&quot; /&gt;
++    &lt;ProjectReference type=&quot;Gac&quot; localcopy=&quot;True&quot; refto=&quot;nunit.framework, Version=2.2.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77&quot; /&gt;
++  &lt;/References&gt;
++  &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
++    &lt;excludeFiles /&gt;
++  &lt;/DeploymentInformation&gt;
++  &lt;Contents&gt;
++    &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./TESTS&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./nm-ld.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++  &lt;/Contents&gt;
++&lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/NModule.Core.Test.mds
+===================================================================
+--- trunk/test/NModule.Core.Test/NModule.Core.Test.mds	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/NModule.Core.Test.mds	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,16 @@
++&lt;Combine name=&quot;NModule.Core.Test&quot; fileversion=&quot;2.0&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Test&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Test&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;StartMode startupentry=&quot;NModule.Core.Test&quot; single=&quot;True&quot;&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Test&quot; /&gt;
++  &lt;/StartMode&gt;
++  &lt;Entries&gt;
++    &lt;Entry filename=&quot;./NModule.Core.Test.mdp&quot; /&gt;
++  &lt;/Entries&gt;
++&lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/TESTS
+===================================================================
+--- trunk/test/NModule.Core.Test/TESTS	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/TESTS	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,59 @@
++This describes our test suites:
++
++Loading:
++
++nm-ld-01 - Loading with no dependencies, single dir search path.
++nm-ld-02 - Loading with no dependencies, single dir search path, not found.
++nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
++nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
++nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
++nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
++ 
++Unloading:
++
++nm-ul-01 - Unloading with no dependencies
++nm-ul-02 - Unloading with ref count &gt; 1
++
++Dependency Resolution:
++
++nm-dr-01 - single entities test
++nm-dr-02 - combination entities test, unnested
++nm-dr-03 - combination entities test, nested
++
++Unresolved Dependencies:
++
++nm-ur-01 - single entities test
++nm-ur-02 - combination entities test, unnested
++nm-ur-03 - combination entities test, nested
++
++Circular Dependencies:
++
++nm-cr-01 - Circular Dependency Test, Direct Parent
++nm-cr-02 - Circular Dependency Test, Nested Parent
++
++RefCount Unloading:
++
++nm-rc-01 - RefCount 1
++nm-rc-02 - RefCount 2
++nm-rc-03 - RefCount 3, unload depending references
++nm-rc-04 - RefCount 1, load a depending reference
++
++Role registration:
++
++nm-rr-01 - Role registration from app
++nm-rr-02 - Role registration from module
++
++Role instantiation:
++
++nm-ri-01 - Instantiate role from app
++nm-ri-02 - Instantiate role from other module
++
++Entry Handlers:
++
++nm-eh-01 - Module entry handler register role, next module instantiate the role
++
++Exit Handlers:
++
++nm-xh-01 - Module entry handler register roles, exit handler unregisters role, next module attempts instantiation
++
++Total this iteration: 26 tests
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/TestResult.xml
+===================================================================
+--- trunk/test/NModule.Core.Test/TestResult.xml	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/TestResult.xml	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,194 @@
++&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
++&lt;!--This file represents the results of running a test suite--&gt;
++&lt;test-results name=&quot;/home/urilith/development/nmodule/test/NModule.Core.Test/NModule.Core.Test.dll&quot; total=&quot;8&quot; failures=&quot;6&quot; not-run=&quot;0&quot; date=&quot;2005-06-29&quot; time=&quot;06:44:34&quot;&gt;
++  &lt;test-suite name=&quot;/home/urilith/development/nmodule/test/NModule.Core.Test/NModule.Core.Test.dll&quot; success=&quot;False&quot; time=&quot;8.071&quot; asserts=&quot;0&quot;&gt;
++    &lt;results&gt;
++      &lt;test-suite name=&quot;NModule&quot; success=&quot;False&quot; time=&quot;8.046&quot; asserts=&quot;0&quot;&gt;
++        &lt;results&gt;
++          &lt;test-suite name=&quot;Core&quot; success=&quot;False&quot; time=&quot;8.026&quot; asserts=&quot;0&quot;&gt;
++            &lt;results&gt;
++              &lt;test-suite name=&quot;Test&quot; success=&quot;False&quot; time=&quot;8.008&quot; asserts=&quot;0&quot;&gt;
++                &lt;results&gt;
++                  &lt;test-suite name=&quot;NModuleTests&quot; success=&quot;False&quot; time=&quot;7.625&quot; asserts=&quot;0&quot;&gt;
++                    &lt;results&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_01&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.440&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-01, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ld_01 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_02&quot; executed=&quot;True&quot; success=&quot;True&quot; time=&quot;0.011&quot; asserts=&quot;0&quot; /&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_03&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.937&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-03, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_03 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_04&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.977&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-04, Version=1.0.2005.41104, Culture=neutral]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_04 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_05&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;0.983&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ld-05, Version=1.0.2005.41105, Culture=neutral]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x0008d&gt; NModule.Core.Test.NModuleTests:nm_ld_05 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ld_06&quot; executed=&quot;True&quot; success=&quot;True&quot; time=&quot;0.140&quot; asserts=&quot;0&quot; /&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ul_01&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.054&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[System.IO.FileNotFoundException : nm-ul-01, Version=1.0.2005.41123, Culture=neutral]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ul_01 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                      &lt;test-case name=&quot;NModule.Core.Test.NModuleTests.nm_ul_02&quot; executed=&quot;True&quot; success=&quot;False&quot; time=&quot;1.977&quot; asserts=&quot;0&quot;&gt;
++                        &lt;failure&gt;
++                          &lt;message&gt;&lt;![CDATA[Expected: DomainStillReferencedException but was FileNotFoundException]]&gt;&lt;/message&gt;
++                          &lt;stack-trace&gt;&lt;![CDATA[in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.AppDomain:LoadAssembly (string,System.Security.Policy.Evidence,bool)
++in &lt;0x00019&gt; System.AppDomain:Load (System.String assemblyString)
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (string)
++in &lt;0x0001b&gt; System.Reflection.Assembly:Load (System.String assemblyString)
++in &lt;0x00086&gt; System.UnitySerializationHolder:GetRealObject (StreamingContext context)
++in &lt;0x003c6&gt; System.Runtime.Serialization.ObjectRecord:LoadData (System.Runtime.Serialization.ObjectManager manager, ISurrogateSelector selector, StreamingContext context)
++in &lt;0x00100&gt; System.Runtime.Serialization.ObjectManager:DoFixups ()
++in &lt;0x0003f&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadNextObject (System.IO.BinaryReader reader)
++in &lt;0x000ac&gt; System.Runtime.Serialization.Formatters.Binary.ObjectReader:ReadObjectGraph (System.IO.BinaryReader reader, Boolean readHeaders, System.Object result, System.Runtime.Remoting.Messaging.Header[] headers)
++in &lt;0x0011c&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler)
++in &lt;0x00012&gt; System.Runtime.Serialization.Formatters.Binary.BinaryFormatter:Deserialize (System.IO.Stream serializationStream)
++in &lt;0x00051&gt; System.Runtime.Remoting.RemotingServices:DeserializeCallData (System.Byte[] array)
++in (wrapper xdomain-invoke) System.AppDomain:Load (byte[])
++in (wrapper remoting-invoke-with-check) System.AppDomain:Load (byte[])
++in &lt;0x00202&gt; NModule.Core.Loader.ModuleLoader:LoadModule (System.Collections.ArrayList _parents, System.String _name, NModule.Core.Module.ModuleInfo _info, Boolean checking)
++in &lt;0x000d0&gt; NModule.Core.Loader.ModuleController:LoadModule (System.Collections.ArrayList _parents, System.String _name)
++in &lt;0x0000f&gt; NModule.Core.Loader.ModuleController:LoadModule (System.String _name)
++in &lt;0x00053&gt; NModule.Core.Test.NModuleTests:nm_ul_02 ()
++in &lt;0x00000&gt; &lt;unknown method&gt;
++in (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[])
++in &lt;0x0006f&gt; System.Reflection.MonoMethod:Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture)
++]]&gt;&lt;/stack-trace&gt;
++                        &lt;/failure&gt;
++                      &lt;/test-case&gt;
++                    &lt;/results&gt;
++                  &lt;/test-suite&gt;
++                &lt;/results&gt;
++              &lt;/test-suite&gt;
++            &lt;/results&gt;
++          &lt;/test-suite&gt;
++        &lt;/results&gt;
++      &lt;/test-suite&gt;
++    &lt;/results&gt;
++  &lt;/test-suite&gt;
++&lt;/test-results&gt;
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/data/nm-ld/refs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/nm-ld/refs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/nm-ld/refs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1 @@
++-r:../../../../nmodule-build/src/NModule.Dependency.Parser.dll -r:../../../../nmodule-build/src/antlr-runtime.dll -r:../../../../nmodule-build/src/NModule.Core.dll -r:../../../../nmodule-build/src/NModule.Core.Loader.dll -r:../../../../nmodule-build/src/NModule.Core.Module.dll -r:../../../../nmodule-build/src/NModule.Dependency.Core.dll -r:../../../../nmodule-build/src/NModule.Dependency.Parser.dll 
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/data/refs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/refs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/refs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1 @@
++-r:../../../../nmodule-build/src/NModule.Dependency.Parser.dll -r:../../../../nmodule-build/src/antlr-runtime.dll -r:../../../../nmodule-build/src/NModule.Core.dll -r:../../../../nmodule-build/src/NModule.Core.Loader.dll -r:../../../../nmodule-build/src/NModule.Core.Module.dll -r:../../../../nmodule-build/src/NModule.Dependency.Core.dll -r:../../../../nmodule-build/src/NModule.Dependency.Parser.dll 
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ld {
++	public class nm_ld_01_module {
++		public nm_ld_01_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-01.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-03.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ld {	
++	public class nm_ld_03_module {
++		public nm_ld_03_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-03.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-04.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ld {	
++	public class nm_ld_04_module {
++		public nm_ld_04_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-04.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-05.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ld {
++	public class nm_ld_05_module {
++		public nm_ld_05_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ld/nm-ld-05.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ul {
++	public class nm_ul_01_module {
++		public nm_ul_01_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-01.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_ul {
++	public class nm_ul_02_module {
++		public nm_ul_02_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/test/nm-ul/nm-ul-02.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/nm-ld.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/nm-ld.cs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/nm-ld.cs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1,163 @@
++//
++// nm-ld.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++namespace NModule.Core.Test {
++
++	using System;
++	using System.Reflection;
++	using System.Collections;
++	
++	using NModule.Core.Loader;
++	using NModule.Core;
++	using NModule.Core.Module;
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	using NModule.Dependency.Resolver;
++	
++	using NUnit.Framework;
++	
++	[TestFixture]
++	public class NModuleTests {
++	
++		public NModuleTests () {
++		}
++		
++		// nm-ld-01 - Loading with no dependencies, single dir search path.
++		[Test]
++		public void nm_ld_01 () {
++			Console.WriteLine (&quot;nm_ld_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld/&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-01&quot;);
++		}
++		
++		// nm-ld-02 - Loading with no dependencies, single dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_02 () {
++			Console.WriteLine (&quot;nm_ld_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-02&quot;);
++		}
++		
++		// nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
++		[Test]
++		public void nm_ld_03 () {
++			Console.WriteLine (&quot;nm_ld_03&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-03&quot;);
++		}
++		
++		// nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
++		[Test]
++		public void nm_ld_04 () {
++			Console.WriteLine (&quot;nm_ld_04&quot;);
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-04&quot;);
++		}
++		
++		// nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
++		[Test]
++		public void nm_ld_05 () {
++			Console.WriteLine (&quot;nm_ld_05&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-05&quot;);
++		}
++		
++		// nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_06 () {
++			Console.WriteLine (&quot;nm_ld_06&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-06&quot;);
++		}
++		
++		// nm-ul-01 - Unloading with no dependencies
++		[Test]
++		public void nm_ul_01 () {
++			Console.WriteLine (&quot;nm_ul_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-01&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-01&quot;);
++		}
++		
++		// nm-ul-02 - Unloading with ref count &gt; 1
++		[Test]
++		[ExpectedException (typeof (DomainStillReferencedException))]
++		public void nm_ul_02 () {
++			Console.WriteLine (&quot;nm_ul_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-02&quot;);
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/nm-ld.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/refs
+===================================================================
+--- trunk/test/NModule.Core.Test/refs	2005-06-27 20:37:28 UTC (rev 30)
++++ trunk/test/NModule.Core.Test/refs	2005-06-29 11:58:54 UTC (rev 31)
+@@ -0,0 +1 @@
++-r:../../../nmodule-build/src/NModule.Dependency.Parser.dll -r:../../../nmodule-build/src/antlr-runtime.dll -r:../../../nmodule-build/src/NModule.Core.dll -r:../../../nmodule-build/src/NModule.Core.Loader.dll -r:../../../nmodule-build/src/NModule.Core.Module.dll -r:../../../nmodule-build/src/NModule.Dependency.Core.dll -r:../../../nmodule-build/src/NModule.Dependency.Parser.dll 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[nmodule-commits] r30 - in trunk: . src/NModule.Core
+</A></li>
+	<LI>Next message: <A HREF="000017.html">[nmodule-commits] r32 - in trunk: . test/NModule.Core.Test/data test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-ld test/NModule.Core.Test/data/src/nm-ul
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

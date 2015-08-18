@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r23 - in trunk: . src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Resolver
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r23%20-%20in%20trunk%3A%20.%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Resolver&In-Reply-To=%3C200506231234.j5NCYZUb030559%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   <LINK REL="Next"  HREF="000009.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r23 - in trunk: . src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Resolver</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r23%20-%20in%20trunk%3A%20.%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Resolver&In-Reply-To=%3C200506231234.j5NCYZUb030559%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r23 - in trunk: . src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Resolver">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Thu Jun 23 14:34:35 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[nmodule-commits] r22 - trunk
+</A></li>
+        <LI>Next message: <A HREF="000009.html">[nmodule-commits] r24 - in trunk: . lib/antlr-2.7.5/antlr lib/antlr-2.7.5/scripts src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-23 14:34:33 +0200 (Thu, 23 Jun 2005)
+New Revision: 23
+
+Modified:
+   trunk/
+   trunk/nmodule.mds
+   trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleImageException.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+   trunk/src/NModule.Core/ModuleRoleAttribute.cs
+   trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs
+   trunk/src/NModule.Dependency.Resolver/DepResolver.cs
+   trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp
+   trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r118 at dreamshadow</A>:  urilith | 2005-06-23 05:55:54 -0500
+ Implemented exceptions and attributes.
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:116
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:118
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/nmodule.mds	2005-06-23 12:34:33 UTC (rev 23)
+@@ -32,7 +32,7 @@
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+-    &lt;Entry filename=&quot;./Documentation/Documentation.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./doc/Documentation.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Module/NModule.Core.Module.mdp&quot; /&gt;
+
+Modified: trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,41 @@
+-// created on 6/23/2005 at 3:29 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core {
++	using System;
++	
++	public class ModuleDependencyAttribute : Attribute {
++		protected string _dep_string;
++		
++		public ModuleDependencyAttribute (string dep_string) {
++			_dep_string = dep_string;
++		}
++		
++		public string DepString {
++			get {
++				return _dep_string;
++			}
++		}
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core/ModuleRoleAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,41 @@
+-// created on 6/23/2005 at 3:29 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core {
++	using System;
++	
++	public class ModuleRoleAttribute : Attribute {
++		protected string _roles;
++		
++		public ModuleDependencyAttribute (string role) {
++			_roles = role;
++		}
++		
++		public string Roles {
++			get {
++				return _roles;
++			}
++		}
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,35 @@
+-// created on 6/23/2005 at 2:31 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core.Loader {
++	using System;
++	
++	public class InvalidModuleException : Exception {
++		public InvalidModuleException ( ) : base ( ) { }
++		
++		public InvalidModuleException (string _msg) : base (_msg) { }
++		
++		public InvalidModuleException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -166,9 +166,7 @@
+ 
+ #region Role Handlers
+ 		protected void CallRoleHandlers (ModuleInfo _info) {
+-			foreach (ModuleRoleAttribute _attr in _info.ModuleRoleAttributes) {
+-				string _myRole = _attr.Role;
+-				
++			foreach (string _myRole in _info.Roles.Split(',')) {
+ 				foreach (ModuleRole _role in _roles) {
+ 					if (_role.Name == _myRole) {
+ 						Assembly _asm = _info.Owner;
+@@ -201,9 +199,7 @@
+ 		}
+ 		
+ 		protected void CallRoleUnregisterHandlers (ModuleInfo _info) {
+-			foreach (ModuleRoleAttribute _attr in _info.ModuleRoleAttributes) {
+-				string _myRole = _attr.Role;
+-				
++			foreach (string _myRole in _info.Roles.Split(',')) {
+ 				foreach (ModuleRole _role in _roles) {
+ 					if (_role.Name == _myRole) {
+ 						Assembly _asm = _info.Owner;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleImageException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,35 @@
+-// created on 6/23/2005 at 2:31 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core.Loader {
++	using System;
++	
++	public class ModuleImageException : Exception {
++		public ModuleImageException ( ) : base ( ) { }
++		
++		public ModuleImageException (string _msg) : base (_msg) { }
++		
++		public ModuleImageException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -99,7 +99,7 @@
+ 				
+ 			// Okay, well, now we know the module exists at least in the file (we hope its a proper dll, but we'll see :).  Now we
+ 			// need to create the temporary AppDomain and load it to get the info from it.
+-			AppDomain _tempDomain = AppDomain.Create (&quot;_temp_&quot; + _name);
++			AppDomain _tempDomain = AppDomain.CreateDomain (&quot;_temp_&quot; + _name);
+ 			
+ 			byte[] _raw_bytes = LoadRawFile (_filename);
+ 			
+@@ -146,7 +146,7 @@
+ 			
+ 			// alright, we've got them all loaded, they exist in the assembly map.
+ 			// now we create the *real* app domain.
+-			AppDomain _domain = AppDomain.Create (_name);
++			AppDomain _domain = AppDomain.CreateDomain (_name);
+ 			
+ 			// let's load this assembly into the real app domain.
+ 			_domain.Load (_raw_bytes);
+
+Modified: trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,35 @@
+-// created on 6/23/2005 at 2:30 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core.Loader {
++	using System;
++	
++	public class ModuleNotFoundException : Exception {
++		public ModuleNotFoundException ( ) : base ( ) { }
++		
++		public ModuleNotFoundException (string _msg) : base (_msg) { }
++		
++		public ModuleNotFoundException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+===================================================================
+--- trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 12:34:33 UTC (rev 23)
+@@ -17,6 +17,7 @@
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Resolver&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+@@ -24,9 +25,9 @@
+   &lt;Contents&gt;
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleLoader.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+-    &lt;File name=&quot;./ModuleController.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./InvalidModuleException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleImageException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleNotFoundException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleController.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -30,6 +30,7 @@
+ 	
+ 	using NModule.Dependency.Core;
+ 	using NModule.Dependency.Parser;
++	using NModule.Core;
+ 	
+ 	public class ModuleInfo {
+ 		// name
+@@ -41,14 +42,16 @@
+ 		// dependency stuff
+ 		protected DepNode _dependencies;
+ 		
++		// roles
++		protected string _roles;
++		
+ 		public ModuleInfo (Assembly _asm) {
+ 			_name = _asm.GetName().Name;
+ 			_version = DepVersion.VersionParse (_asm.GetName().Version);
+ 			
+ 			ModuleDependencyAttribute _depAttr = ((ModuleDependencyAttribute)_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute)));
+ 			
+-			if (_depAttr != null)
+-			{	
++			if (_depAttr != null) {	
+ 				DepLexer _lexer = new DepLexer (new StringReader (_depAttr.DepString));
+ 				DepParser _parser = new DepParser (_lexer);
+ 				
+@@ -56,9 +59,15 @@
+ 				_dependencies = new DepNode ();
+ 				
+ 				_parser.expr (_dependencies);
+-			}
+-			else
++			} else
+ 				_depenencies = null;
++				
++			ModuleRoleAttribute _roleAttr = ((ModuleRoleAttribute)_asm.GetCustomAttributes (typeof (ModuleRoleAttribute));
++			
++			if (_roleAttr != null) {
++				_roles = _roleAttr.Roles;
++			} else
++				_roles = null;
+ 		}
+ 		
+ 		public string Name {
+@@ -78,5 +87,11 @@
+ 				return _dependencies;
+ 			}
+ 		}
++		
++		public string Roles {
++			get {
++				return _roles;
++			}
++		}
+ 	}		
+ }
+
+Modified: trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,37 @@
+-// created on 6/23/2005 at 3:27 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Dependency.Resolver {
++	using System;
++	
++	public class CircularDependencyException : Exception {
++		public CircularDependencyException ( ) : base ( ) { }
++		
++		public CircularDependencyException (string _msg) : base (_msg) { }
++		
++		public CircularDependencyException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
++		
++		
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Dependency.Resolver/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/DepResolver.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Dependency.Resolver/DepResolver.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -35,7 +35,7 @@
+ 	public class DepResolver {
+ #region Members
+ 		// ModuleController used for loading modules to sastify dependencies.
+-		protected ModuleController	_controller;
++		protected ModuleController _controller;
+ 		
+ 		// Search Path for modules
+ 		protected ArrayList _search_path;
+
+Modified: trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp	2005-06-23 12:34:33 UTC (rev 23)
+@@ -14,9 +14,9 @@
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;References&gt;
+-    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+
+Modified: trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs	2005-06-23 08:50:59 UTC (rev 22)
++++ trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs	2005-06-23 12:34:33 UTC (rev 23)
+@@ -1 +1,35 @@
+-// created on 6/23/2005 at 3:28 AM
+\ No newline at end of file
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Dependency.Resolver {
++	using System;
++	
++	public class UnresolvedDependencyException : Exception {
++		public UnresolvedDependencyException ( ) : base ( ) { }
++		
++		public UnresolvedDependencyException (string _msg) : base (_msg) { }
++		
++		public UnresolvedDependencyException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[nmodule-commits] r22 - trunk
+</A></li>
+	<LI>Next message: <A HREF="000009.html">[nmodule-commits] r24 - in trunk: . lib/antlr-2.7.5/antlr lib/antlr-2.7.5/scripts src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

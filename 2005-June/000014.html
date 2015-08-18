@@ -1,0 +1,1732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r29 - in trunk: . api-docs api-docs/en api-docs/en/NModule.Core api-docs/en/NModule.Core.Module api-docs/en/NModule.Dependency.Core api-docs/en/NModule.Dependency.Resolver
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r29%20-%20in%20trunk%3A%20.%20api-docs%20api-docs/en%20api-docs/en/NModule.Core%20api-docs/en/NModule.Core.Module%20api-docs/en/NModule.Dependency.Core%20api-docs/en/NModule.Dependency.Resolver&In-Reply-To=%3C200506271100.j5RB0CXn002789%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r29 - in trunk: . api-docs api-docs/en api-docs/en/NModule.Core api-docs/en/NModule.Core.Module api-docs/en/NModule.Dependency.Core api-docs/en/NModule.Dependency.Resolver</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r29%20-%20in%20trunk%3A%20.%20api-docs%20api-docs/en%20api-docs/en/NModule.Core%20api-docs/en/NModule.Core.Module%20api-docs/en/NModule.Dependency.Core%20api-docs/en/NModule.Dependency.Resolver&In-Reply-To=%3C200506271100.j5RB0CXn002789%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r29 - in trunk: . api-docs api-docs/en api-docs/en/NModule.Core api-docs/en/NModule.Core.Module api-docs/en/NModule.Dependency.Core api-docs/en/NModule.Dependency.Resolver">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Mon Jun 27 13:00:12 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000013.html">[nmodule-commits] r28 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+        <LI>Next message: <A HREF="000015.html">[nmodule-commits] r30 - in trunk: . src/NModule.Core
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-27 13:00:02 +0200 (Mon, 27 Jun 2005)
+New Revision: 29
+
+Added:
+   trunk/api-docs/
+   trunk/api-docs/en/
+   trunk/api-docs/en/NModule.Core.Module.xml
+   trunk/api-docs/en/NModule.Core.Module/
+   trunk/api-docs/en/NModule.Core.Module/DomainStillReferencedException.xml
+   trunk/api-docs/en/NModule.Core.Module/ModuleInfo.xml
+   trunk/api-docs/en/NModule.Core.Module/ModuleInfoException.xml
+   trunk/api-docs/en/NModule.Core.Module/ModuleRole.xml
+   trunk/api-docs/en/NModule.Core.Module/RoleRegisterHandler.xml
+   trunk/api-docs/en/NModule.Core.Module/RoleUnregisterHandler.xml
+   trunk/api-docs/en/NModule.Core.xml
+   trunk/api-docs/en/NModule.Core/
+   trunk/api-docs/en/NModule.Core/IModule.xml
+   trunk/api-docs/en/NModule.Core/ModuleDependencyAttribute.xml
+   trunk/api-docs/en/NModule.Core/ModuleRoleAttribute.xml
+   trunk/api-docs/en/NModule.Dependency.Core.xml
+   trunk/api-docs/en/NModule.Dependency.Core/
+   trunk/api-docs/en/NModule.Dependency.Core/DepConstraint.xml
+   trunk/api-docs/en/NModule.Dependency.Core/DepNode.xml
+   trunk/api-docs/en/NModule.Dependency.Core/DepOps.xml
+   trunk/api-docs/en/NModule.Dependency.Core/DepVersion.xml
+   trunk/api-docs/en/NModule.Dependency.Resolver.xml
+   trunk/api-docs/en/NModule.Dependency.Resolver/
+   trunk/api-docs/en/NModule.Dependency.Resolver/CircularDependencyException.xml
+   trunk/api-docs/en/NModule.Dependency.Resolver/DepResolver.xml
+   trunk/api-docs/en/NModule.Dependency.Resolver/UnresolvedDependencyException.xml
+   trunk/api-docs/en/index.xml
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/nmodule.mds
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r128 at dreamshadow</A>:  urilith | 2005-06-27 05:59:32 -0500
+ 2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * api-docs: New directory with monodoc generated docs.
+   * api-docs/en: English API docs. Generated.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:126
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:128
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/ChangeLog	2005-06-27 11:00:02 UTC (rev 29)
+@@ -1,5 +1,10 @@
+ 2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
++	* api-docs: New directory with monodoc generated docs.
++	* api-docs/en: English API docs.  Generated.
++
++2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
+ 	* Buildfile: Copyright.
+ 	* Buildfile.config: Copyright.
+ 	* misc/bash-copy.hdr: Copyright.
+
+Added: trunk/api-docs/en/NModule.Core/IModule.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core/IModule.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core/IModule.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,44 @@
++&lt;Type Name=&quot;IModule&quot; FullName=&quot;NModule.Core.IModule&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public interface IModule&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;1.0.2004.7700&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;ModuleEntry&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public void ModuleEntry (object controller);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;controller&quot; Type=&quot;System.Object&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;controller&quot;&gt;An object of type ModuleController the module can use to register new roles.&lt;/param&gt;
++        &lt;summary&gt;The ModuleEntry method is called upon loading the module, so the module can perform initialization tasks, such as registering new roles.&lt;/summary&gt;
++        &lt;remarks&gt;This method also marks the main entry point of the module.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;ModuleExit&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public void ModuleExit (object controller);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;controller&quot; Type=&quot;System.Object&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;controller&quot;&gt;An object of type ModuleController the module can use to unregister any roles it has registered..&lt;/param&gt;
++        &lt;summary&gt;The ModuleExit method is called before a module is unloaded.  This can be used to do any finalization, such as unregistering roles previously registered using the ModuleEntry method..&lt;/summary&gt;
++        &lt;remarks&gt;This method is also part of the main entry point class of the module..&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;The IModule interface is used to mark the main class of a module, and contains methods for entry/exit handlers.&lt;/summary&gt;
++    &lt;remarks&gt;A Module should only contain one type that implements the IModule interface.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core/ModuleDependencyAttribute.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core/ModuleDependencyAttribute.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core/ModuleDependencyAttribute.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;ModuleDependencyAttribute&quot; FullName=&quot;NModule.Core.ModuleDependencyAttribute&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class ModuleDependencyAttribute : System.Attribute&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;1.0.2004.7700&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Attribute&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleDependencyAttribute (string dep_string);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;dep_string&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;dep_string&quot;&gt;The string representation of the dependency to be fed to the parser.&lt;/param&gt;
++        &lt;summary&gt;Constructs a new ModuleDependencyAttribute object..&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_dep_string&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string _dep_string;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Protected version of the dep string..&lt;/summary&gt;
++        &lt;remarks&gt;No remarks..&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;DepString&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string DepString { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Accessing property for the dep string..&lt;/summary&gt;
++        &lt;value&gt;String describing the modules dependencies.&lt;/value&gt;
++        &lt;remarks&gt;No remarks..&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;The ModuleDependencyAttribute is used at the assembly level to specify the module's dependencies..&lt;/summary&gt;
++    &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core/ModuleRoleAttribute.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core/ModuleRoleAttribute.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core/ModuleRoleAttribute.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;ModuleRoleAttribute&quot; FullName=&quot;NModule.Core.ModuleRoleAttribute&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class ModuleRoleAttribute : System.Attribute&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;1.0.2004.7700&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Attribute&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleRoleAttribute (string role);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;role&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;role&quot;&gt;A comma-seperated list of roles.&lt;/param&gt;
++        &lt;summary&gt;Creates a new ModuleRoleAttribute object.&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_roles&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string _roles;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Internal representation of the role string passed ot the constructor.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Roles&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string Roles { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Public accessor to get the role string.&lt;/summary&gt;
++        &lt;value&gt;A comma-seperated list of roles.&lt;/value&gt;
++        &lt;remarks&gt;No remarks..&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;Attribute used to tell the controller what roles this module fulfills.&lt;/summary&gt;
++    &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/DomainStillReferencedException.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/DomainStillReferencedException.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/DomainStillReferencedException.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;DomainStillReferencedException&quot; FullName=&quot;NModule.Core.Module.DomainStillReferencedException&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class DomainStillReferencedException : System.Exception&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Loader&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7742&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Exception&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DomainStillReferencedException ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DomainStillReferencedException (string _msg);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DomainStillReferencedException (string _msg, Exception _exc);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++        &lt;Parameter Name=&quot;_exc&quot; Type=&quot;System.Exception&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_exc&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/ModuleInfo.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/ModuleInfo.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/ModuleInfo.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,144 @@
++&lt;Type Name=&quot;ModuleInfo&quot; FullName=&quot;NModule.Core.Module.ModuleInfo&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class ModuleInfo&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Module&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7734&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleInfo (System.Reflection.Assembly _asm);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_asm&quot; Type=&quot;System.Reflection.Assembly&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_asm&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_name&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string _name;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_version&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected NModule.Dependency.Core.DepVersion _version;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepVersion&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_dependencies&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected NModule.Dependency.Core.DepNode _dependencies;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepNode&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_roles&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string _roles;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_owner&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected System.Reflection.Assembly _owner;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Reflection.Assembly&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Name&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string Name { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Version&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepVersion Version { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepVersion&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Dependencies&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepNode Dependencies { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepNode&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Roles&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string Roles { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Owner&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public System.Reflection.Assembly Owner { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Reflection.Assembly&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/ModuleInfoException.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/ModuleInfoException.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/ModuleInfoException.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;ModuleInfoException&quot; FullName=&quot;NModule.Core.Module.ModuleInfoException&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class ModuleInfoException : System.Exception&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Module&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7734&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Exception&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleInfoException ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleInfoException (string _msg);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleInfoException (string _msg, Exception _exc);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++        &lt;Parameter Name=&quot;_exc&quot; Type=&quot;System.Exception&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_exc&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/ModuleRole.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/ModuleRole.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/ModuleRole.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,83 @@
++&lt;Type Name=&quot;ModuleRole&quot; FullName=&quot;NModule.Core.Module.ModuleRole&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class ModuleRole&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Module&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7734&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public ModuleRole (string name, Type basetype, NModule.Core.Module.RoleRegisterHandler regHandler, NModule.Core.Module.RoleUnregisterHandler unregHandler);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;name&quot; Type=&quot;System.String&quot; /&gt;
++        &lt;Parameter Name=&quot;basetype&quot; Type=&quot;System.Type&quot; /&gt;
++        &lt;Parameter Name=&quot;regHandler&quot; Type=&quot;NModule.Core.Module.RoleRegisterHandler&quot; /&gt;
++        &lt;Parameter Name=&quot;unregHandler&quot; Type=&quot;NModule.Core.Module.RoleUnregisterHandler&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;name&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;basetype&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;regHandler&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;unregHandler&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;BaseType&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public Type BaseType { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Type&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;RoleName&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string RoleName { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;RegistrationHandler&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Core.Module.RoleRegisterHandler RegistrationHandler { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Core.Module.RoleRegisterHandler&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;UnregistrationHandler&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Core.Module.RoleUnregisterHandler UnregistrationHandler { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Core.Module.RoleUnregisterHandler&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/RoleRegisterHandler.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/RoleRegisterHandler.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/RoleRegisterHandler.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,23 @@
++&lt;Type Name=&quot;RoleRegisterHandler&quot; FullName=&quot;NModule.Core.Module.RoleRegisterHandler&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public delegate void RoleRegisterHandler(System.Reflection.Assembly asm, Type basetype);&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Module&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7734&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Delegate&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Parameters&gt;
++    &lt;Parameter Name=&quot;asm&quot; Type=&quot;System.Reflection.Assembly&quot; /&gt;
++    &lt;Parameter Name=&quot;basetype&quot; Type=&quot;System.Type&quot; /&gt;
++  &lt;/Parameters&gt;
++  &lt;ReturnValue&gt;
++    &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++  &lt;/ReturnValue&gt;
++  &lt;Docs&gt;
++    &lt;param name=&quot;asm&quot;&gt;To be added.&lt;/param&gt;
++    &lt;param name=&quot;basetype&quot;&gt;To be added.&lt;/param&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module/RoleUnregisterHandler.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module/RoleUnregisterHandler.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module/RoleUnregisterHandler.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,21 @@
++&lt;Type Name=&quot;RoleUnregisterHandler&quot; FullName=&quot;NModule.Core.Module.RoleUnregisterHandler&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public delegate void RoleUnregisterHandler(System.Reflection.Assembly asm);&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Module&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7734&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Delegate&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Parameters&gt;
++    &lt;Parameter Name=&quot;asm&quot; Type=&quot;System.Reflection.Assembly&quot; /&gt;
++  &lt;/Parameters&gt;
++  &lt;ReturnValue&gt;
++    &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++  &lt;/ReturnValue&gt;
++  &lt;Docs&gt;
++    &lt;param name=&quot;asm&quot;&gt;To be added.&lt;/param&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Core.Module.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.Module.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.Module.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,6 @@
++&lt;Namespace Name=&quot;NModule.Core.Module&quot;&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Namespace&gt;
+
+Added: trunk/api-docs/en/NModule.Core.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Core.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Core.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,6 @@
++&lt;Namespace Name=&quot;NModule.Core&quot;&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Namespace&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Core/DepConstraint.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Core/DepConstraint.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Core/DepConstraint.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,62 @@
++&lt;Type Name=&quot;DepConstraint&quot; FullName=&quot;NModule.Dependency.Core.DepConstraint&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class DepConstraint&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Dependency.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7706&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepConstraint ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Version&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepVersion Version { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepVersion&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Name&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string Name { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;VersionTmp&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public string VersionTmp { set; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Core/DepNode.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Core/DepNode.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Core/DepNode.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,99 @@
++&lt;Type Name=&quot;DepNode&quot; FullName=&quot;NModule.Dependency.Core.DepNode&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class DepNode&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Dependency.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7706&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepNode ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepNode (NModule.Dependency.Core.DepNode parent);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;parent&quot; Type=&quot;NModule.Dependency.Core.DepNode&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;parent&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;CreateNewChild&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepNode CreateNewChild ();&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepNode&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Parent&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepNode Parent { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepNode&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Children&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public System.Collections.ArrayList Children { get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Collections.ArrayList&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;DepOp&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepOps DepOp { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Constraint&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public NModule.Dependency.Core.DepConstraint Constraint { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepConstraint&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Core/DepOps.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Core/DepOps.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Core/DepOps.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,136 @@
++&lt;Type Name=&quot;DepOps&quot; FullName=&quot;NModule.Dependency.Core.DepOps&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public enum DepOps&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Dependency.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7706&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Enum&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;Not&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Not&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;And&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;And&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Or&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Or&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Xor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Xor&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Opt&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Opt&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Equal&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Equal&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;NotEqual&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;NotEqual&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;LessThanEqual&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;LessThanEqual&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;LessThan&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;LessThan&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;GreaterThanEqual&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;GreaterThanEqual&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;GreaterThan&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;GreaterThan&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Loaded&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;Loaded&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepOps&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Core/DepVersion.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Core/DepVersion.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Core/DepVersion.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,138 @@
++&lt;Type Name=&quot;DepVersion&quot; FullName=&quot;NModule.Dependency.Core.DepVersion&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class DepVersion&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Dependency.Core&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7706&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepVersion (int major, int minor, int build, int revision);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;major&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;minor&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;build&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;revision&quot; Type=&quot;System.Int32&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;major&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;minor&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;build&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;revision&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepVersion (int major, int minor, int build);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;major&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;minor&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;build&quot; Type=&quot;System.Int32&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;major&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;minor&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;build&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepVersion (int major, int minor);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;major&quot; Type=&quot;System.Int32&quot; /&gt;
++        &lt;Parameter Name=&quot;minor&quot; Type=&quot;System.Int32&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;major&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;minor&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepVersion ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;VersionParse&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public static NModule.Dependency.Core.DepVersion VersionParse (string v);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Dependency.Core.DepVersion&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;v&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;v&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Major&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public int Major { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Int32&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Minor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public int Minor { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Int32&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Build&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public int Build { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Int32&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Revision&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public int Revision { set; get; };&quot; /&gt;
++      &lt;MemberType&gt;Property&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Int32&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;value&gt;To be added.&lt;/value&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Core.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Core.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Core.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,6 @@
++&lt;Namespace Name=&quot;NModule.Dependency.Core&quot;&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;Dependency classes not directly related to the parser.&lt;/summary&gt;
++    &lt;remarks&gt;This assembly contains classes describing a dependency node, version, and constraint.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Namespace&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Resolver/CircularDependencyException.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Resolver/CircularDependencyException.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Resolver/CircularDependencyException.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;CircularDependencyException&quot; FullName=&quot;NModule.Dependency.Resolver.CircularDependencyException&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class CircularDependencyException : System.Exception&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Loader&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7742&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Exception&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public CircularDependencyException ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Creates a new CircularDependencyException object.&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public CircularDependencyException (string _msg);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public CircularDependencyException (string _msg, Exception _exc);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++        &lt;Parameter Name=&quot;_exc&quot; Type=&quot;System.Exception&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_exc&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Resolver/DepResolver.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Resolver/DepResolver.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Resolver/DepResolver.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,195 @@
++&lt;Type Name=&quot;DepResolver&quot; FullName=&quot;NModule.Dependency.Resolver.DepResolver&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class DepResolver&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Loader&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7742&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Object&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public DepResolver (NModule.Core.Loader.ModuleController controller, System.Collections.ArrayList search_path);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;controller&quot; Type=&quot;NModule.Core.Loader.ModuleController&quot; /&gt;
++        &lt;Parameter Name=&quot;search_path&quot; Type=&quot;System.Collections.ArrayList&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;controller&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;search_path&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_controller&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected NModule.Core.Loader.ModuleController _controller;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;NModule.Core.Loader.ModuleController&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;_search_path&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected System.Collections.ArrayList _search_path;&quot; /&gt;
++      &lt;MemberType&gt;Field&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Collections.ArrayList&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;SearchForModule&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string SearchForModule (string _name);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_name&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_name&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;OpResolve&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected void OpResolve (NModule.Dependency.Core.DepNode _node, System.Collections.ArrayList _parents, NModule.Core.Module.ModuleInfo _info, bool checking);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_node&quot; Type=&quot;NModule.Dependency.Core.DepNode&quot; /&gt;
++        &lt;Parameter Name=&quot;_parents&quot; Type=&quot;System.Collections.ArrayList&quot; /&gt;
++        &lt;Parameter Name=&quot;_info&quot; Type=&quot;NModule.Core.Module.ModuleInfo&quot; /&gt;
++        &lt;Parameter Name=&quot;checking&quot; Type=&quot;System.Boolean&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_node&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_parents&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_info&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;checking&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;OpToString&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected string OpToString (NModule.Dependency.Core.DepOps _op);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.String&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_op&quot; Type=&quot;NModule.Dependency.Core.DepOps&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_op&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;IsEmptyVersion&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected bool IsEmptyVersion (NModule.Dependency.Core.DepVersion _ver);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Boolean&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_ver&quot; Type=&quot;NModule.Dependency.Core.DepVersion&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_ver&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;VersionMatch&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected bool VersionMatch (NModule.Dependency.Core.DepVersion _dver, NModule.Dependency.Core.DepVersion _ver, NModule.Dependency.Core.DepOps _op);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Boolean&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_dver&quot; Type=&quot;NModule.Dependency.Core.DepVersion&quot; /&gt;
++        &lt;Parameter Name=&quot;_ver&quot; Type=&quot;NModule.Dependency.Core.DepVersion&quot; /&gt;
++        &lt;Parameter Name=&quot;_op&quot; Type=&quot;NModule.Dependency.Core.DepOps&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_dver&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_ver&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_op&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;returns&gt;To be added.&lt;/returns&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;InternalResolve&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;protected void InternalResolve (System.Collections.ArrayList _parents, NModule.Core.Module.ModuleInfo _info, bool checking);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_parents&quot; Type=&quot;System.Collections.ArrayList&quot; /&gt;
++        &lt;Parameter Name=&quot;_info&quot; Type=&quot;NModule.Core.Module.ModuleInfo&quot; /&gt;
++        &lt;Parameter Name=&quot;checking&quot; Type=&quot;System.Boolean&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_parents&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_info&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;checking&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;ResolveCheck&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public void ResolveCheck (System.Collections.ArrayList _parents, NModule.Core.Module.ModuleInfo _info);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_parents&quot; Type=&quot;System.Collections.ArrayList&quot; /&gt;
++        &lt;Parameter Name=&quot;_info&quot; Type=&quot;NModule.Core.Module.ModuleInfo&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_parents&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_info&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;Resolve&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public void Resolve (System.Collections.ArrayList _parents, NModule.Core.Module.ModuleInfo _info);&quot; /&gt;
++      &lt;MemberType&gt;Method&lt;/MemberType&gt;
++      &lt;ReturnValue&gt;
++        &lt;ReturnType&gt;System.Void&lt;/ReturnType&gt;
++      &lt;/ReturnValue&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_parents&quot; Type=&quot;System.Collections.ArrayList&quot; /&gt;
++        &lt;Parameter Name=&quot;_info&quot; Type=&quot;NModule.Core.Module.ModuleInfo&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_parents&quot;&gt;To be added.&lt;/param&gt;
++        &lt;param name=&quot;_info&quot;&gt;To be added.&lt;/param&gt;
++        &lt;summary&gt;To be added.&lt;/summary&gt;
++        &lt;remarks&gt;To be added.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Resolver/UnresolvedDependencyException.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Resolver/UnresolvedDependencyException.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Resolver/UnresolvedDependencyException.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,52 @@
++&lt;Type Name=&quot;UnresolvedDependencyException&quot; FullName=&quot;NModule.Dependency.Resolver.UnresolvedDependencyException&quot;&gt;
++  &lt;TypeSignature Language=&quot;C#&quot; Value=&quot;public class UnresolvedDependencyException : System.Exception&quot; /&gt;
++  &lt;AssemblyInfo&gt;
++    &lt;AssemblyName&gt;NModule.Core.Loader&lt;/AssemblyName&gt;
++    &lt;AssemblyVersion&gt;0.1.2004.7742&lt;/AssemblyVersion&gt;
++  &lt;/AssemblyInfo&gt;
++  &lt;Base&gt;
++    &lt;BaseTypeName&gt;System.Exception&lt;/BaseTypeName&gt;
++  &lt;/Base&gt;
++  &lt;Interfaces /&gt;
++  &lt;Members&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public UnresolvedDependencyException ();&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters /&gt;
++      &lt;Docs&gt;
++        &lt;summary&gt;Creates a new UnresolvedDependencyException.&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public UnresolvedDependencyException (string _msg);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;The exception message.&lt;/param&gt;
++        &lt;summary&gt;Creates a new UnresolvedDependencyException with the given message.&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++    &lt;Member MemberName=&quot;.ctor&quot;&gt;
++      &lt;MemberSignature Language=&quot;C#&quot; Value=&quot;public UnresolvedDependencyException (string _msg, Exception _exc);&quot; /&gt;
++      &lt;MemberType&gt;Constructor&lt;/MemberType&gt;
++      &lt;Parameters&gt;
++        &lt;Parameter Name=&quot;_msg&quot; Type=&quot;System.String&quot; /&gt;
++        &lt;Parameter Name=&quot;_exc&quot; Type=&quot;System.Exception&quot; /&gt;
++      &lt;/Parameters&gt;
++      &lt;Docs&gt;
++        &lt;param name=&quot;_msg&quot;&gt;The exception message.&lt;/param&gt;
++        &lt;param name=&quot;_exc&quot;&gt;Parent exception object.&lt;/param&gt;
++        &lt;summary&gt;Creates a new UnresolvedDependencyException with the given message and parent exception.&lt;/summary&gt;
++        &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++      &lt;/Docs&gt;
++    &lt;/Member&gt;
++  &lt;/Members&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;This exception is thrown when a dependency cannot be resolved by the dependency resolver.&lt;/summary&gt;
++    &lt;remarks&gt;No remarks.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Type&gt;
+
+Added: trunk/api-docs/en/NModule.Dependency.Resolver.xml
+===================================================================
+--- trunk/api-docs/en/NModule.Dependency.Resolver.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/NModule.Dependency.Resolver.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,6 @@
++&lt;Namespace Name=&quot;NModule.Dependency.Resolver&quot;&gt;
++  &lt;Docs&gt;
++    &lt;summary&gt;To be added.&lt;/summary&gt;
++    &lt;remarks&gt;To be added.&lt;/remarks&gt;
++  &lt;/Docs&gt;
++&lt;/Namespace&gt;
+
+Added: trunk/api-docs/en/index.xml
+===================================================================
+--- trunk/api-docs/en/index.xml	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/api-docs/en/index.xml	2005-06-27 11:00:02 UTC (rev 29)
+@@ -0,0 +1,152 @@
++&lt;Overview&gt;
++  &lt;Assemblies&gt;
++    &lt;Assembly Name=&quot;NModule.Core&quot; Version=&quot;1.0.2004.7700&quot;&gt;
++      &lt;Attributes&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCulture(Culture=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTrademark(Trademark=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCopyright(Copyright=&quot;Copyright (C) 2005 Michael Tindal and Individuals listed on the ChangeLog entries.&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyProduct(Product=&quot;NModule&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCompany(Company=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyConfiguration(Configuration=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyDescription(Description=&quot;Basic Core Facilities for NModule.&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTitle(Title=&quot;NModule.Core&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++      &lt;/Attributes&gt;
++    &lt;/Assembly&gt;
++    &lt;Assembly Name=&quot;NModule.Core.Loader&quot; Version=&quot;0.1.2004.7742&quot;&gt;
++      &lt;Attributes&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCulture(Culture=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTrademark(Trademark=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCopyright(Copyright=&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyProduct(Product=&quot;NModule&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCompany(Company=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyConfiguration(Configuration=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyDescription(Description=&quot;NModule Loader Facilities (not including Dependency Resolution)&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTitle(Title=&quot;NModule.Core.Loader&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++      &lt;/Attributes&gt;
++    &lt;/Assembly&gt;
++    &lt;Assembly Name=&quot;NModule.Core.Module&quot; Version=&quot;0.1.2004.7734&quot;&gt;
++      &lt;Attributes&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCulture(Culture=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTrademark(Trademark=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCopyright(Copyright=&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyProduct(Product=&quot;NModule&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCompany(Company=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyConfiguration(Configuration=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyDescription(Description=&quot;NModule Module Representation Library&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTitle(Title=&quot;NModule.Core.Module&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++      &lt;/Attributes&gt;
++    &lt;/Assembly&gt;
++    &lt;Assembly Name=&quot;NModule.Dependency.Core&quot; Version=&quot;0.1.2004.7706&quot;&gt;
++      &lt;Attributes&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCulture(Culture=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTrademark(Trademark=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCopyright(Copyright=&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyProduct(Product=&quot;NModule&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyCompany(Company=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyConfiguration(Configuration=&quot;&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyDescription(Description=&quot;NModule Dependency Core&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++        &lt;Attribute&gt;
++          &lt;AttributeName&gt;System.Reflection.AssemblyTitle(Title=&quot;NModule.Dependency.Core&quot;)&lt;/AttributeName&gt;
++        &lt;/Attribute&gt;
++      &lt;/Attributes&gt;
++    &lt;/Assembly&gt;
++  &lt;/Assemblies&gt;
++  &lt;Remarks&gt;To be added.&lt;/Remarks&gt;
++  &lt;Copyright&gt;To be added.&lt;/Copyright&gt;
++  &lt;Types&gt;
++    &lt;Namespace Name=&quot;NModule.Core&quot;&gt;
++      &lt;Type Name=&quot;IModule&quot; /&gt;
++      &lt;Type Name=&quot;ModuleDependencyAttribute&quot; /&gt;
++      &lt;Type Name=&quot;ModuleRoleAttribute&quot; /&gt;
++    &lt;/Namespace&gt;
++    &lt;Namespace Name=&quot;NModule.Dependency.Resolver&quot;&gt;
++      &lt;Type Name=&quot;CircularDependencyException&quot; /&gt;
++      &lt;Type Name=&quot;UnresolvedDependencyException&quot; /&gt;
++      &lt;Type Name=&quot;DepResolver&quot; /&gt;
++    &lt;/Namespace&gt;
++    &lt;Namespace Name=&quot;NModule.Core.Loader&quot;&gt;
++      &lt;Type Name=&quot;ModuleController&quot; /&gt;
++      &lt;Type Name=&quot;ModuleImageException&quot; /&gt;
++      &lt;Type Name=&quot;ModuleLoader&quot; /&gt;
++      &lt;Type Name=&quot;ModuleNotFoundException&quot; /&gt;
++      &lt;Type Name=&quot;InvalidModuleException&quot; /&gt;
++    &lt;/Namespace&gt;
++    &lt;Namespace Name=&quot;NModule.Core.Module&quot;&gt;
++      &lt;Type Name=&quot;DomainStillReferencedException&quot; /&gt;
++      &lt;Type Name=&quot;ModuleRole&quot; /&gt;
++      &lt;Type Name=&quot;ModuleInfo&quot; /&gt;
++      &lt;Type Name=&quot;ModuleInfoException&quot; /&gt;
++      &lt;Type Name=&quot;RoleRegisterHandler&quot; /&gt;
++      &lt;Type Name=&quot;RoleUnregisterHandler&quot; /&gt;
++    &lt;/Namespace&gt;
++    &lt;Namespace Name=&quot;NModule.Dependency.Core&quot;&gt;
++      &lt;Type Name=&quot;DepConstraint&quot; /&gt;
++      &lt;Type Name=&quot;DepNode&quot; /&gt;
++      &lt;Type Name=&quot;DepVersion&quot; /&gt;
++      &lt;Type Name=&quot;DepOps&quot; /&gt;
++    &lt;/Namespace&gt;
++  &lt;/Types&gt;
++  &lt;Title&gt;NModule Plug-in Framework&lt;/Title&gt;
++&lt;/Overview&gt;
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-27 09:23:34 UTC (rev 28)
++++ trunk/nmodule.mds	2005-06-27 11:00:02 UTC (rev 29)
+@@ -3,33 +3,33 @@
+     &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;/Configuration&gt;
+     &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;StartMode startupentry=&quot;NModule.Dependency.Parser&quot; single=&quot;True&quot;&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+-    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Core&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp&quot; /&gt;
+-    &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Module/NModule.Core.Module.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Core/NModule.Dependency.Core.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core/NModule.Core.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
+   &lt;/Entries&gt;
+ &lt;/Combine&gt;
+\ No newline at end of file
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000013.html">[nmodule-commits] r28 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+	<LI>Next message: <A HREF="000015.html">[nmodule-commits] r30 - in trunk: . src/NModule.Core
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,1891 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r24 - in trunk: . lib/antlr-2.7.5/antlr lib/antlr-2.7.5/scripts src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r24%20-%20in%20trunk%3A%20.%20lib/antlr-2.7.5/antlr%20lib/antlr-2.7.5/scripts%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506231234.j5NCYv6S030817%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000008.html">
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r24 - in trunk: . lib/antlr-2.7.5/antlr lib/antlr-2.7.5/scripts src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r24%20-%20in%20trunk%3A%20.%20lib/antlr-2.7.5/antlr%20lib/antlr-2.7.5/scripts%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506231234.j5NCYv6S030817%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r24 - in trunk: . lib/antlr-2.7.5/antlr lib/antlr-2.7.5/scripts src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Thu Jun 23 14:34:57 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000008.html">[nmodule-commits] r23 - in trunk: . src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Resolver
+</A></li>
+        <LI>Next message: <A HREF="000010.html">[nmodule-commits] r25 - tags
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-23 14:34:54 +0200 (Thu, 23 Jun 2005)
+New Revision: 24
+
+Added:
+   trunk/src/NModule.Core.Loader/CircularDependencyException.cs
+   trunk/src/NModule.Core.Loader/DepResolver.cs
+   trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs
+   trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs
+   trunk/src/NModule.Core.Module/ModuleInfoException.cs
+Removed:
+   trunk/src/NModule.Dependency.Resolver/
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/lib/antlr-2.7.5/antlr/Version.java
+   trunk/lib/antlr-2.7.5/scripts/antlr.sh
+   trunk/lib/antlr-2.7.5/scripts/c.sh
+   trunk/lib/antlr-2.7.5/scripts/config.deps
+   trunk/lib/antlr-2.7.5/scripts/config.vars
+   trunk/lib/antlr-2.7.5/scripts/cpp.sh
+   trunk/lib/antlr-2.7.5/scripts/csc.sh
+   trunk/lib/antlr-2.7.5/scripts/cxx.sh
+   trunk/lib/antlr-2.7.5/scripts/jar.sh
+   trunk/lib/antlr-2.7.5/scripts/java.sh
+   trunk/lib/antlr-2.7.5/scripts/javac.sh
+   trunk/lib/antlr-2.7.5/scripts/lib.sh
+   trunk/lib/antlr-2.7.5/scripts/link.sh
+   trunk/lib/antlr-2.7.5/scripts/pyantlr.sh
+   trunk/lib/antlr-2.7.5/scripts/python.sh
+   trunk/nmodule.mds
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Core.Module/ModuleRole.cs
+   trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+   trunk/src/NModule.Core/IModule.cs
+   trunk/src/NModule.Core/ModuleRoleAttribute.cs
+   trunk/src/NModule.Dependency.Core/DepVersion.cs
+   trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r119 at dreamshadow</A>:  urilith | 2005-06-23 07:32:48 -0500
+ 2005-06-23 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   *******************
+   ***** RELEASE *****
+   *******************
+   *
+   ***
+   * Tag 0.1 release.
+   ***
+   *
+   * lib/antlr-2.7.5/antlr/ANTLRLexer.java: Removed for a clean install.
+   * lib/antlr-2.7.5/antlr/ANTLRParser.java: Ditto.
+   * lib/antlr-2.7.5/antlr/ANTLRTokdefLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/ANTLRTokdefParser.java: Ditto.
+   * lib/antlr-2.7.5/antlr/ANTLRTokdefParserTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/ANTLRTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/Version.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/cpp/ActionLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/cpp/ActionLexerTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/csharp/ActionLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/csharp/ActionLexerTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/java/ActionLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/java/ActionLexerTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/python/ActionLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/python/ActionLexerTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/python/CodeLexer.java: Ditto.
+   * lib/antlr-2.7.5/antlr/actions/python/CodeLexerTokenTypes.java: Ditto.
+   * lib/antlr-2.7.5/antlr/antlr: Stuff.
+   * lib/antlr-2.7.5/config.log: Removed.
+   * lib/antlr-2.7.5/lib/antlr.astframe.dll: Removed.
+   * lib/antlr-2.7.5/lib/antlr.runtime.dll: Removed.
+   * lib/antlr-2.7.5/lib/csharp/ASTFrame/antlr.astframe.dll: Removed.
+   * lib/antlr-2.7.5/scripts/antlr.sh: Cleaned.
+   * lib/antlr-2.7.5/scripts/c.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/config.deps: Ditto.
+   * lib/antlr-2.7.5/scripts/config.vars: Ditto.
+   * lib/antlr-2.7.5/scripts/cpp.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/csc.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/cxx.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/jar.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/java.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/javac.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/lib.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/link.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/pyantlr.sh: Ditto.
+   * lib/antlr-2.7.5/scripts/python.sh: Ditto.
+   * nmodule.mds: Removed doc project.
+   * src/NModule.Core/IModule.cs: Added.
+   * src/NModule.Core/ModuleRoleAttribute.cs: Added Owner.
+   * src/NModule.Core.Loader/ModuleController.cs: Added missing methods.
+   * src/NModule.Core.Loader/ModuleLoader.cs: Fixed compilation errors.
+   * src/NModule.Core.Loader/NModule.Core.Loader.mdp: Updated.
+   * src/NModule.Core.Loader/CircularDependencyException.cs: New exceptions.
+   * src/NModule.Core.Loader/DepResolver.cs: Moved here to avoid circular dependencies.
+   * src/NModule.Core.Loader/DomainStillReferencedException.cs: New exceptions.
+   * src/NModule.Core.Loader/UnresolvedDependencyException.cs: New exceptions.
+   * src/NModule.Core.Module/ModuleInfo.cs: Fixed.
+   * src/NModule.Core.Module/ModuleRole.cs: Fixed.
+   * src/NModule.Core.Module/NModule.Core.Module.mdp: Added exception.
+   * src/NModule.Core.Module/ModuleInfoException.cs: New exceptions.
+   * src/NModule.Dependency.Core/DepVersion.cs: Fixed.
+   * src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp: Updated.
+   * src/NModule.Dependency.Resolver: Removed.
+   * src/NModule.Dependency.Resolver/AssemblyInfo.cs: Ditto.
+   * src/NModule.Dependency.Resolver/CircularDependencyException.cs: Ditto.
+   * src/NModule.Dependency.Resolver/DepResolver.cs: Ditto.
+   * src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp: Ditto.
+   * src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds: Ditto.
+   * src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs: Ditto.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:118
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:119
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/ChangeLog	2005-06-23 12:34:54 UTC (rev 24)
+@@ -1,5 +1,75 @@
+ 2005-06-23 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
++	*******************
++        ***** RELEASE *****
++        *******************
++	*
++        ***
++        * Tag 0.1 release.
++        ***
++	*
++	* lib/antlr-2.7.5/antlr/ANTLRLexer.java: Removed for a clean install.
++	* lib/antlr-2.7.5/antlr/ANTLRParser.java: Ditto.
++	* lib/antlr-2.7.5/antlr/ANTLRTokdefLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/ANTLRTokdefParser.java: Ditto.
++	* lib/antlr-2.7.5/antlr/ANTLRTokdefParserTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/ANTLRTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/Version.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/cpp/ActionLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/cpp/ActionLexerTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/csharp/ActionLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/csharp/ActionLexerTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/java/ActionLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/java/ActionLexerTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/python/ActionLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/python/ActionLexerTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/python/CodeLexer.java: Ditto.
++	* lib/antlr-2.7.5/antlr/actions/python/CodeLexerTokenTypes.java: Ditto.
++	* lib/antlr-2.7.5/antlr/antlr: Stuff.
++	* lib/antlr-2.7.5/config.log: Removed.
++	* lib/antlr-2.7.5/lib/antlr.astframe.dll: Removed.
++	* lib/antlr-2.7.5/lib/antlr.runtime.dll: Removed.
++	* lib/antlr-2.7.5/lib/csharp/ASTFrame/antlr.astframe.dll: Removed.
++	* lib/antlr-2.7.5/scripts/antlr.sh: Cleaned.
++	* lib/antlr-2.7.5/scripts/c.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/config.deps: Ditto. 
++	* lib/antlr-2.7.5/scripts/config.vars: Ditto.
++	* lib/antlr-2.7.5/scripts/cpp.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/csc.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/cxx.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/jar.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/java.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/javac.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/lib.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/link.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/pyantlr.sh: Ditto.
++	* lib/antlr-2.7.5/scripts/python.sh: Ditto.
++	* nmodule.mds: Removed doc project.
++	* src/NModule.Core/IModule.cs: Added.
++	* src/NModule.Core/ModuleRoleAttribute.cs: Added Owner.
++	* src/NModule.Core.Loader/ModuleController.cs: Added missing methods.
++	* src/NModule.Core.Loader/ModuleLoader.cs: Fixed compilation errors.
++	* src/NModule.Core.Loader/NModule.Core.Loader.mdp: Updated.
++	* src/NModule.Core.Loader/CircularDependencyException.cs: New exceptions.
++	* src/NModule.Core.Loader/DepResolver.cs: Moved here to avoid circular dependencies.
++	* src/NModule.Core.Loader/DomainStillReferencedException.cs: New exceptions.
++	* src/NModule.Core.Loader/UnresolvedDependencyException.cs: New exceptions.
++	* src/NModule.Core.Module/ModuleInfo.cs: Fixed.
++	* src/NModule.Core.Module/ModuleRole.cs: Fixed.
++	* src/NModule.Core.Module/NModule.Core.Module.mdp: Added exception.
++	* src/NModule.Core.Module/ModuleInfoException.cs: New exceptions.
++	* src/NModule.Dependency.Core/DepVersion.cs: Fixed.
++	* src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp: Updated.
++	* src/NModule.Dependency.Resolver: Removed.
++	* src/NModule.Dependency.Resolver/AssemblyInfo.cs: Ditto.
++	* src/NModule.Dependency.Resolver/CircularDependencyException.cs: Ditto.
++	* src/NModule.Dependency.Resolver/DepResolver.cs: Ditto.
++	* src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp: Ditto.
++	* src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds: Ditto.
++	* src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs: Ditto.
++
++2005-06-23 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
+ 	* nmodule.mds: New projects.
+ 	* src/NModule.Core.Loader/ModuleController.cs: Finished implementing everything.  Woot.
+ 	* src/NModule.Core.Loader/ModuleLoader.cs: Dont remember.
+
+Modified: trunk/lib/antlr-2.7.5/antlr/Version.java
+===================================================================
+--- trunk/lib/antlr-2.7.5/antlr/Version.java	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/antlr/Version.java	2005-06-23 12:34:54 UTC (rev 24)
+@@ -4,6 +4,6 @@
+ 	public static final String version    = &quot;2&quot;;
+ 	public static final String subversion = &quot;7&quot;;
+ 	public static final String patchlevel = &quot;5&quot;;
+-	public static final String datestamp  = &quot;20050517&quot;;
+-	public static final String project_version = &quot;2.7.5 (20050517)&quot;;
++	public static final String datestamp  = &quot;20050623&quot;;
++	public static final String project_version = &quot;2.7.5 (20050623)&quot;;
+ }
+
+Modified: trunk/lib/antlr-2.7.5/scripts/antlr.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/antlr.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/antlr.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -14,7 +14,7 @@
+ test -z &quot;$1&quot; &amp;&amp; exit 0
+ 
+ ## This is the top build directory.
+-abs_top_build_dir=&quot;/home/rodrigob/java/antlr-2.7.5&quot;
++abs_top_build_dir=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5&quot;
+ 
+ ## If $ANTLR_JAR is given as environment variable we are going
+ ## to use it, otherwise we are using configured value. The value
+@@ -33,7 +33,7 @@
+ 
+ 
+ test -z &quot;${antlr_jar}&quot; &amp;&amp; {
+-  for x in &quot;/home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar&quot; ${abs_top_build_dir}/antlr.jar ${abs_top_build_dir}/lib/antlr.jar 
++  for x in &quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar&quot; ${abs_top_build_dir}/antlr.jar ${abs_top_build_dir}/lib/antlr.jar 
+    do
+    test -f &quot;${x}&quot; -o -d &quot;${x}&quot; &amp;&amp; {
+      antlr_jar=&quot;$x&quot;
+@@ -62,7 +62,7 @@
+ 
+ cmd=&quot;&quot;
+ if test -f &quot;${antlr_jar}&quot; ; then
+-  cmd=&quot;/usr/bin/java  -classpath ${classpath} antlr.Tool ${ANTLRFLAGS}&quot;
++  cmd=&quot;/opt/blackdown-jdk-1.4.2.01/bin/java  -classpath ${classpath} antlr.Tool ${ANTLRFLAGS}&quot;
+ else
+   ### Ok, so there's no $cmd yet
+   if test -n &quot;&quot; ; then
+@@ -78,7 +78,7 @@
+ Unable to compile ANTLR grammar file(s)
+  $*
+ Reason(s): 
+- (a) there's no /home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar
++ (a) there's no /home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar
+  (b) there's no ${abs_top_build_dir}/antlr.jar
+  (c) there's no ${abs_top_build_dir}/lib/antlr.jar
+  (d) options --with-antlr-jar --with-antlr-cmd not applied
+
+Modified: trunk/lib/antlr-2.7.5/scripts/c.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/c.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/c.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -18,7 +18,7 @@
+ fi
+ 
+ ARCHFLAGS=
+-INCLUDE=&quot;-I /home/rodrigob/java/antlr-2.7.5/scripts/../lib/cpp&quot;
++INCLUDE=&quot;-I /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../lib/cpp&quot;
+ DEBUG=
+ EXTRA_CFLAGS=
+ 
+
+Modified: trunk/lib/antlr-2.7.5/scripts/config.deps
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/config.deps	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/config.deps	2005-06-23 12:34:54 UTC (rev 24)
+@@ -11,35 +11,35 @@
+ ## used anyway (and should not be used).
+ .SUFFIXES:
+ 
+-Makefile :: /home/rodrigob/java/antlr-2.7.5/scripts/../$(subdir)/Makefile.in  \
+-            /home/rodrigob/java/antlr-2.7.5/scripts/config.deps \
+-					  /home/rodrigob/java/antlr-2.7.5/scripts/config.make \
+-					  /home/rodrigob/java/antlr-2.7.5/scripts/config.vars \
+-            /home/rodrigob/java/antlr-2.7.5/config.status
++Makefile :: /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../$(subdir)/Makefile.in  \
++            /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.deps \
++					  /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.make \
++					  /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.vars \
++            /home/urilith/development/nmodule/lib/antlr-2.7.5/config.status
+ 	@echo &quot;*** update $(subdir)/Makefile&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=&quot;$(subdir)/Makefile&quot; /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=&quot;$(subdir)/Makefile&quot; /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/config.deps : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/config.deps.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.deps : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/config.deps.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.deps /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.deps /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/config.make : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/config.make.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.make : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/config.make.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.make /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.make /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/config.vars : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/config.vars.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/config.vars : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/config.vars.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.vars /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/config.vars /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/config.status : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../configure
++/home/urilith/development/nmodule/lib/antlr-2.7.5/config.status : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../configure
+ 	@echo &quot;*** reconfigure $@ - stay tuned ..&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; /bin/sh ./config.status -q --recheck
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; /bin/sh ./config.status -q --recheck
+ 	@echo &quot;*** update all configured files ..&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; /bin/sh ./config.status -q
+ 
+ ### In a pure devel mode there should be also a dependency listed on how
+ ### to make configure out of  configure.in.  This  requires that usr has 
+@@ -49,60 +49,60 @@
+ ###   @rule_configure_configure_in@
+ ###
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/antlr.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/antlr.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/antlr.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/antlr.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/antlr.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/antlr.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/cpp.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/cpp.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/cpp.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/cpp.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/cpp.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/cpp.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/csc.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/csc.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/csc.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/csc.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/csc.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/csc.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/cxx.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/cxx.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/cxx.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/cxx.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/cxx.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/cxx.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/jar.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/jar.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/jar.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/jar.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/jar.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/jar.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/javac.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/javac.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/javac.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/javac.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/javac.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/javac.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/java.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/java.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/java.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/java.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/java.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/java.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/lib.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/lib.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/lib.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/lib.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/lib.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/lib.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/link.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/link.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/link.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/link.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/link.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/link.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/pyinst.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/pyinst.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/pyinst.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/pyinst.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/pyinst.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/pyinst.sh /bin/sh ./config.status -q
+ 
+-/home/rodrigob/java/antlr-2.7.5/scripts/python.sh : \
+-	/home/rodrigob/java/antlr-2.7.5/scripts/../scripts/python.sh.in
++/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/python.sh : \
++	/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../scripts/python.sh.in
+ 	@echo &quot;*** update $@&quot;
+-	@cd /home/rodrigob/java/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/python.sh /bin/sh ./config.status -q
++	@cd /home/urilith/development/nmodule/lib/antlr-2.7.5 &amp;&amp; CONFIG_FILES=scripts/python.sh /bin/sh ./config.status -q
+ 
+ 
+ ## This rule shall ensure that ANTLR_NET is up-to-date. The rule is a 
+@@ -113,22 +113,22 @@
+ ## already in. It is very important that  each Makefile[.in] sets the
+ ## variable $(subdir) proper.
+ 
+-/home/rodrigob/java/antlr-2.7.5/lib/antlr.runtime.dll :: 
++/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/antlr.runtime.dll :: 
+ 	@ subdir=&quot;lib/csharp/src&quot; ; \
+     case $(subdir) in \
+ 	  $$subdir ) ;; \
+-	  * ) d=&quot;/home/rodrigob/java/antlr-2.7.5/$$subdir&quot; ; \
++	  * ) d=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/$$subdir&quot; ; \
+         test -f &quot;$$d/Makefile&quot; &amp;&amp; {  \
+          $(MAKE) -C &quot;$$d&quot; $@ ; \
+         } 	\
+         ;; \
+     esac
+ 
+-/home/rodrigob/java/antlr-2.7.5/lib/antlr.astframe.dll :: 
++/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/antlr.astframe.dll :: 
+ 	@ subdir=&quot;lib/csharp/ASTFrame&quot; ; \
+     case $(subdir) in \
+ 	  $$subdir ) ;; \
+-	  * ) d=&quot;/home/rodrigob/java/antlr-2.7.5/$$subdir&quot; ; \
++	  * ) d=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/$$subdir&quot; ; \
+         test -f &quot;$$d/Makefile&quot; &amp;&amp; {  \
+          $(MAKE) -C &quot;$$d&quot; $@ ; \
+         } 	\
+@@ -136,11 +136,11 @@
+     esac
+ 
+ 
+-/home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar ::
++/home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar ::
+ 	@ subdir=&quot;antlr&quot; ; \
+     case $(subdir) in \
+ 	  $$subdir ) ;; \
+-	  * ) d=&quot;/home/rodrigob/java/antlr-2.7.5/$$subdir&quot; ; \
++	  * ) d=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/$$subdir&quot; ; \
+         test -f &quot;$$d/Makefile&quot; &amp;&amp; {  \
+          $(MAKE) -C &quot;$$d&quot; $@ ; \
+         } 	\
+@@ -148,11 +148,11 @@
+     esac
+ 
+ 
+-/home/rodrigob/java/antlr-2.7.5/lib/cpp/src/libantlr.a ::
++/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/cpp/src/libantlr.a ::
+ 	@ subdir=&quot;lib/cpp/src&quot; ; \
+     case $(subdir) in \
+ 	  $$subdir ) ;; \
+-	  * ) d=&quot;/home/rodrigob/java/antlr-2.7.5/$$subdir&quot; ; \
++	  * ) d=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/$$subdir&quot; ; \
+         test -f &quot;$$d/Makefile&quot; &amp;&amp; {  \
+          $(MAKE) -C &quot;$$d&quot; $@ ; \
+         } 	\
+
+Modified: trunk/lib/antlr-2.7.5/scripts/config.vars
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/config.vars	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/config.vars	2005-06-23 12:34:54 UTC (rev 24)
+@@ -3,15 +3,15 @@
+ 
+ ## helper utilities ..
+ INSTALL         = /usr/bin/install -c
+-MKDIR           = /bin/mkdir
+-RM              = /bin/rm
++MKDIR           = /usr/bin/mkdir
++RM              = /usr/bin/rm
+ TAR             = /bin/tar
+ TOUCH           = /bin/touch
+-CHMOD           = /bin/chmod
+-SED             = /bin/sed
++CHMOD           = /usr/bin/chmod
++SED             = /usr/bin/sed
+ GREP            = /bin/grep
+-CAT             = /bin/cat
+-CHMOD           = /bin/chmod
++CAT             = /usr/bin/cat
++CHMOD           = /usr/bin/chmod
+ 
+ # usual dribble
+ exec_prefix     = ${prefix}
+@@ -51,21 +51,21 @@
+ versioneddir    = antlr-2.7.5
+ 
+ # navigation 
+-builddir        = /home/rodrigob/java/antlr-2.7.5
+-buildtree       = /home/rodrigob/java/antlr-2.7.5
+-sourcetree      = /home/rodrigob/java/antlr-2.7.5/scripts/..
++builddir        = /home/urilith/development/nmodule/lib/antlr-2.7.5
++buildtree       = /home/urilith/development/nmodule/lib/antlr-2.7.5
++sourcetree      = /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/..
+ 
+ ## Two abbrevs to shorten things. $(thisdir) shall be the current
+ ## working  directory  as  absolute  name  and $(_srcdir) is it's 
+ ## source dir companion. That means that  $(thisdir)/Makefile has
+ ## been generated by $(_srcdir)/Makefile.in.
+-_srcdir         = /home/rodrigob/java/antlr-2.7.5/scripts/../$(subdir)
+-thisdir         = /home/rodrigob/java/antlr-2.7.5/$(subdir)
++_srcdir         = /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../$(subdir)
++thisdir         = /home/urilith/development/nmodule/lib/antlr-2.7.5/$(subdir)
+ 
+ # variable 'srcdir' is deprecated - use sourcetree
+-srcdir          = /home/rodrigob/java/antlr-2.7.5/scripts/..
++srcdir          = /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/..
+ # variable 'objdir' is deprecated - use buildtree
+-objdir          = /home/rodrigob/java/antlr-2.7.5
++objdir          = /home/urilith/development/nmodule/lib/antlr-2.7.5
+ 
+ # other
+ verbose         = 0
+@@ -73,13 +73,13 @@
+ ## SUBDIRS you want to exclude (separate them by using &quot;|&quot;).
+ SUBDIRS_NOT    := .
+ 
+-CLR            = /usr/local/mono/bin/mono
++CLR            = /usr/bin/ilrun
+ 
+-ANTLR_JAR      = /home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar
+-ANTLR_LIB      = /home/rodrigob/java/antlr-2.7.5/lib/cpp/src/libantlr.a
+-ANTLR_NET      = /home/rodrigob/java/antlr-2.7.5/lib/antlr.runtime.dll
+-ANTLR_PY       = /home/rodrigob/java/antlr-2.7.5/lib/python/antlr/python.py
+-ASTFRAME_NET   = /home/rodrigob/java/antlr-2.7.5/lib/antlr.astframe.dll
++ANTLR_JAR      = /home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar
++ANTLR_LIB      = /home/urilith/development/nmodule/lib/antlr-2.7.5/lib/cpp/src/libantlr.a
++ANTLR_NET      = /home/urilith/development/nmodule/lib/antlr-2.7.5/lib/antlr.runtime.dll
++ANTLR_PY       = /home/urilith/development/nmodule/lib/antlr-2.7.5/lib/python/antlr/python.py
++ASTFRAME_NET   = /home/urilith/development/nmodule/lib/antlr-2.7.5/lib/antlr.astframe.dll
+ 
+ antlr_jar      = antlr.jar
+ antlr_lib      = libantlr.a
+
+Modified: trunk/lib/antlr-2.7.5/scripts/cpp.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/cpp.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/cpp.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -23,7 +23,7 @@
+ ## use whitespace  to separate dirs, don't use compiler specific
+ ## options like '-I' etc.  That will be added at runtime when we
+ ## know what compiler is in use.
+-CXXINCLUDE=&quot;. /home/rodrigob/java/antlr-2.7.5/scripts/../lib/cpp&quot;
++CXXINCLUDE=&quot;. /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../lib/cpp&quot;
+ 
+ test -z &quot;${DEBUG}&quot; &amp;&amp; {
+   DEBUG=&quot;0&quot;
+
+Modified: trunk/lib/antlr-2.7.5/scripts/csc.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/csc.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/csc.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -17,16 +17,16 @@
+ ## source files:
+ 
+ ## srcdir shall contain absolute path to package directory.
+-srcdir=&quot;/home/rodrigob/java/antlr-2.7.5/scripts/..&quot;
++srcdir=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/..&quot;
+ 
+ ## objdir shall contain absolute path to this build directory.
+-objdir=&quot;/home/rodrigob/java/antlr-2.7.5&quot;
++objdir=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5&quot;
+ 
+ ## variable javac contains the canonical java compiler name.
+ ## At point of writing known names are csc.
+ csc=&quot;@csc@&quot;
+ 
+-antlr_net=&quot;/home/rodrigob/java/antlr-2.7.5/lib/antlr.runtime.dll&quot;
++antlr_net=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/antlr.runtime.dll&quot;
+ 
+ ## When on cygwin we translage paths into DOS notation as 
+ ## csc appears not to understand mixed notation.
+@@ -84,7 +84,7 @@
+ 
+ ## Command CHARPC is precomputed but user may override.
+ test -z &quot;${CSHARPC}&quot; &amp;&amp; {
+-  CSHARPC=&quot;/usr/local/mono/bin/mcs&quot;
++  CSHARPC=&quot;/usr/bin/cscc&quot;
+ }
+ 
+ ## Compute the flags for well known compilers. Note that a user
+
+Modified: trunk/lib/antlr-2.7.5/scripts/cxx.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/cxx.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/cxx.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -23,7 +23,7 @@
+ ## use whitespace  to separate dirs, don't use compiler specific
+ ## options like '-I' etc.  That will be added at runtime when we
+ ## know what compiler is in use.
+-CXXINCLUDE=&quot;. /home/rodrigob/java/antlr-2.7.5/scripts/../lib/cpp&quot;
++CXXINCLUDE=&quot;. /home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../lib/cpp&quot;
+ 
+ test -z &quot;${DEBUG}&quot; &amp;&amp; {
+   DEBUG=&quot;0&quot;
+
+Modified: trunk/lib/antlr-2.7.5/scripts/jar.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/jar.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/jar.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -29,7 +29,7 @@
+ 
+ ## Command JAR is precomputed but user may override.
+ if test -z &quot;${JAR}&quot; ; then
+-  JAR=&quot;/usr/bin/jar&quot;
++  JAR=&quot;/opt/blackdown-jdk-1.4.2.01/bin/jar&quot;
+   jar=&quot;jar&quot;
+ else
+   jar=&quot;`basename $JAR`&quot;
+
+Modified: trunk/lib/antlr-2.7.5/scripts/java.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/java.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/java.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -3,9 +3,9 @@
+   verbose=0
+ }
+ 
+-abs_top_build_dir=/home/rodrigob/java/antlr-2.7.5/scripts/../.
+-java_cmd=&quot;/usr/bin/java&quot;
+-antlr_jar=&quot;/home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar&quot;
++abs_top_build_dir=/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../.
++java_cmd=&quot;/opt/blackdown-jdk-1.4.2.01/bin/java&quot;
++antlr_jar=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar&quot;
+ ARGV=&quot;$*&quot;
+ 
+ case linux-gnu in
+
+Modified: trunk/lib/antlr-2.7.5/scripts/javac.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/javac.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/javac.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -17,17 +17,17 @@
+ ## Java source files.
+ 
+ ## srcdir shall contain absolute path to package directory.
+-srcdir=&quot;/home/rodrigob/java/antlr-2.7.5/scripts/..&quot;
++srcdir=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/..&quot;
+ 
+ ## objdir shall contain absolute path to this build directory.
+-objdir=&quot;/home/rodrigob/java/antlr-2.7.5&quot;
++objdir=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5&quot;
+ 
+ ## bootclasspath shall contain jar or zip file required to
+ ## boot Javac. An example where this variable is used is 
+ ## jikes. Note, this variable can be plain empty.
+ bootclasspath=&quot;&quot;
+ 
+-classpath=&quot;/home/rodrigob/java/antlr-2.7.5/antlr/antlr.jar&quot;
++classpath=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/antlr/antlr.jar&quot;
+ 
+ case linux-gnu in
+   cygwin)
+@@ -68,7 +68,7 @@
+ 
+ ## Command JAVAC is precomputed but user may override.
+ if test -z &quot;${JAVAC}&quot; ; then
+-  JAVAC=&quot;/usr/bin/javac&quot;
++  JAVAC=&quot;/opt/blackdown-jdk-1.4.2.01/bin/javac&quot;
+   javac=&quot;javac&quot;
+ else
+   javac=`basename $JAVAC`
+
+Modified: trunk/lib/antlr-2.7.5/scripts/lib.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/lib.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/lib.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -23,7 +23,7 @@
+ }
+ 
+ RANLIB=&quot;ranlib&quot;
+-LIBNAME=&quot;/home/rodrigob/java/antlr-2.7.5/lib/cpp/src/libantlr.a&quot;
++LIBNAME=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/cpp/src/libantlr.a&quot;
+ 
+ ##xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx##
+ ##             Prepate input arguments                    ##
+
+Modified: trunk/lib/antlr-2.7.5/scripts/link.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/link.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/link.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -12,7 +12,7 @@
+ CXX=&quot;g++&quot;
+ CXXFLAGS=&quot;&quot;
+ 
+-LIBNAME=&quot;/home/rodrigob/java/antlr-2.7.5/lib/cpp/src/libantlr.a&quot;
++LIBNAME=&quot;/home/urilith/development/nmodule/lib/antlr-2.7.5/lib/cpp/src/libantlr.a&quot;
+ TARGET=&quot;$1&quot; ; shift
+ 
+ ##xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx##
+
+Modified: trunk/lib/antlr-2.7.5/scripts/pyantlr.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/pyantlr.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/pyantlr.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -7,7 +7,7 @@
+ dstdir = '/usr/local/share/antlr-2.7.5'
+ 
+ ## This is where module 'antlr' resides in the source distribution'
+-srcdir = '/home/rodrigob/java/antlr-2.7.5/scripts/../lib/python/antlr'
++srcdir = '/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../lib/python/antlr'
+ moddir = None
+ 
+ for d in [ dstdir, srcdir ] :
+
+Modified: trunk/lib/antlr-2.7.5/scripts/python.sh
+===================================================================
+--- trunk/lib/antlr-2.7.5/scripts/python.sh	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/lib/antlr-2.7.5/scripts/python.sh	2005-06-23 12:34:54 UTC (rev 24)
+@@ -11,7 +11,7 @@
+ }
+ 
+ cmd=/usr/bin/python
+-PYTHONPATH=/home/rodrigob/java/antlr-2.7.5/scripts/../lib/python
++PYTHONPATH=/home/urilith/development/nmodule/lib/antlr-2.7.5/scripts/../lib/python
+ export PYTHONPATH
+ ARGV=&quot;$*&quot;
+ 
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/nmodule.mds	2005-06-23 12:34:54 UTC (rev 24)
+@@ -1,43 +1,35 @@
+ &lt;Combine name=&quot;nmodule&quot; fileversion=&quot;2.0&quot;&gt;
+   &lt;Configurations&gt;
+     &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+     &lt;/Configuration&gt;
+     &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
+-      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+-  &lt;StartMode startupentry=&quot;Documentation&quot; single=&quot;True&quot;&gt;
+-    &lt;Execute type=&quot;None&quot; entry=&quot;Documentation&quot; /&gt;
++  &lt;StartMode startupentry=&quot;NModule.Dependency.Parser&quot; single=&quot;True&quot;&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Core&quot; /&gt;
+-    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Resolver&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+-    &lt;Entry filename=&quot;./doc/Documentation.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Module/NModule.Core.Module.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Core/NModule.Dependency.Core.mdp&quot; /&gt;
+-    &lt;Entry filename=&quot;./src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core/NModule.Core.mdp&quot; /&gt;
+   &lt;/Entries&gt;
+ &lt;/Combine&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core/IModule.cs
+===================================================================
+--- trunk/src/NModule.Core/IModule.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core/IModule.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -1,7 +1,33 @@
+-// project created on 6/23/2005 at 3:28 AM
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
+ using System;
+ 
+-public class MyClass
+-{
+-
++namespace NModule.Core {
++	public interface IModule {
++		void ModuleEntry (object controller);
++		
++		void ModuleExit (object controller);
++	}
+ }
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core/ModuleRoleAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -28,7 +28,7 @@
+ 	public class ModuleRoleAttribute : Attribute {
+ 		protected string _roles;
+ 		
+-		public ModuleDependencyAttribute (string role) {
++		public ModuleRoleAttribute (string role) {
+ 			_roles = role;
+ 		}
+ 		
+
+Added: trunk/src/NModule.Core.Loader/CircularDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/CircularDependencyException.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/CircularDependencyException.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -0,0 +1,37 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Dependency.Resolver {
++	using System;
++	
++	public class CircularDependencyException : Exception {
++		public CircularDependencyException ( ) : base ( ) { }
++		
++		public CircularDependencyException (string _msg) : base (_msg) { }
++		
++		public CircularDependencyException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
++		
++		
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Loader/CircularDependencyException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Core.Loader/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DepResolver.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/DepResolver.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -0,0 +1,396 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++
++namespace NModule.Dependency.Resolver {
++	using System;
++	using System.Collections;
++	using System.IO;
++	using System.Reflection;
++	using System.Text;
++	
++	using NModule.Dependency.Core;
++	using NModule.Core.Loader;
++	using NModule.Core.Module;
++	
++	public class DepResolver {
++#region Members
++		// ModuleController used for loading modules to sastify dependencies.
++		protected ModuleController _controller;
++		
++		// Search Path for modules
++		protected ArrayList _search_path;
++#endregion
++
++#region Constructor
++		public DepResolver (ModuleController controller, ArrayList search_path) {
++			_controller = controller;
++			_search_path = search_path;
++		}
++#endregion
++
++#region Internal Helper Functions
++		protected string SearchForModule (string _name) {
++			foreach (string s in _search_path) {
++				if (Directory.Exists (s)) {
++					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
++						if (f.Substring (0, f.Length - 4) == _name) {
++							return s + &quot;/&quot; + f;
++						}
++					}
++				}
++			}
++			
++			return null;
++		}
++		
++		protected void OpResolve (DepNode _node, ArrayList _parents, ModuleInfo _info, bool checking) {
++			bool _ret;
++			DepOps _op = _node.DepOp;
++			DepConstraint _constraint = _node.Constraint;
++			if ((_op == DepOps.And) || (_op == DepOps.Not) || (_op == DepOps.Opt) || (_op == DepOps.Or) || (_op == DepOps.Xor)) {
++				// combo-operators
++				ArrayList _results = new ArrayList ();
++				ArrayList _c = new ArrayList ();
++				foreach (DepNode _child in _node.Children) {
++					try {
++						OpResolve (_child, _parents, _info, checking);
++						_results.Add (true);
++						_c.Add (_child.Constraint);
++					} catch (Exception e) {
++						_results.Add (false);
++						_c.Add (_child.Constraint);
++					}
++				}
++				
++				switch (_op) {
++					case DepOps.And:
++						int r = 0;
++						foreach (bool _result in _results) {
++							if (!_result) {
++								throw new UnresolvedDependencyException (
++									string.Format(&quot;The following dependency for the module {0} could not be resolved: (AND operator)\n\t{1} ({2})&quot;,
++										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++								);
++							}
++							r++;
++						}
++						break;
++					case DepOps.Not:
++						foreach (bool _result in _results) {
++							if (_result)
++								throw new UnresolvedDependencyException (
++									string.Format(&quot;The following dependency for the module {0} could not be resolved: (NOT operator)\n\t{1} ({2})&quot;,
++										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++								);
++						}
++						break;
++					case DepOps.Opt: // This is optional so stuff is true regardless
++						break;
++					case DepOps.Or:
++						_ret = false;
++						ArrayList _urexc = new ArrayList ();
++						r = 0;
++						foreach (bool _result in _results) {
++							if (_result)
++								_ret = true;
++							else {
++								_urexc.Add (string.Format(&quot;{1} ({2})&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++							r++;
++						}
++						
++						if (!_ret) {
++							StringBuilder _sb = new StringBuilder (
++								string.Format(&quot;The following dependency for the module {0} could not be resolved: (OR operator)\n&quot;)
++							);
++							foreach (string _exc in _urexc) {
++								_sb.Append(string.Format(&quot;\t{0}\n&quot;, _exc));
++							}
++							throw new UnresolvedDependencyException (_sb.ToString ());
++						}
++						break;
++					case DepOps.Xor:
++						bool _xt = true;
++						bool _xf = true;
++						ArrayList _xexc = new ArrayList ();
++				
++						r = 0;
++						_ret = true;
++						
++						foreach (bool _result in _results) {
++							if (_result) {
++								_xf = false;
++								_xexc.Add (string.Format(&quot;{1} ({2}) (True)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++							if (!_result) {
++								_xt = false;
++								_xexc.Add (string.Format(&quot;{1} ({2}) (False)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++							r++;
++						}
++						
++						if (_xt || _xf)
++							_ret = false;
++							
++						if (!_ret) {
++							StringBuilder _sb = new StringBuilder (
++								string.Format (&quot;The following dependency for the module {0} could not be resolved: (XOR operator)\n&quot;)
++							);
++							foreach (string _exc in _xexc) {
++								_sb.Append (string.Format(&quot;\t{0}\n&quot;, _exc));
++							}
++							throw new UnresolvedDependencyException (_sb.ToString ());
++						}
++						break;
++				}
++			} else {
++				// single operators
++				if (SearchForModule (_constraint.Name) == null)
++					_ret = false;
++		
++				ModuleInfo _ninfo;
++						
++				ModuleLoader _loader = new ModuleLoader (_search_path, this);
++						
++				_loader.LoadModule (_parents, _constraint.Name, out _ninfo, true);
++				
++				if ((_op == DepOps.Equal) || (_op == DepOps.GreaterThan) || (_op == DepOps.GreaterThanEqual) || (_op == DepOps.LessThan)
++					|| (_op == DepOps.LessThanEqual) || (_op == DepOps.NotEqual)) {
++					if (!IsEmptyVersion (_constraint.Version)) {
++						if (!VersionMatch (_constraint.Version, _ninfo.Version, _op)) {
++							throw new UnresolvedDependencyException (
++								string.Format(&quot;The following dependency for the module {0} could not be resolved: ({3} operator)\n\t{1} ({2})&quot;,
++									_info.Name, _constraint.Name, _constraint.Version, OpToString (_op))
++							);
++						}
++					}
++					if (!checking) {
++						_controller.LoadModule (_constraint.Name);
++					}		
++				}
++				// we got this far, so obviously it loaded okay
++			}		
++		}
++		
++		protected string OpToString (DepOps _op) {
++			switch (_op)
++			{
++				case DepOps.And:
++					return &quot;&amp;&amp;&quot;;
++				case DepOps.Equal:
++					return &quot;==&quot;;
++				case DepOps.GreaterThan:
++					return &quot;&gt;&gt;&quot;;
++				case DepOps.GreaterThanEqual:
++					return &quot;&gt;=&quot;;
++				case DepOps.LessThan:
++					return &quot;&lt;&lt;&quot;;
++				case DepOps.LessThanEqual:
++					return &quot;&lt;=&quot;;
++				case DepOps.Loaded:
++					return &quot;##&quot;;
++				case DepOps.Not:
++					return &quot;!!&quot;;
++				case DepOps.NotEqual:
++					return &quot;!=&quot;;
++				case DepOps.Opt:
++					return &quot;??&quot;;
++				case DepOps.Or:
++					return &quot;||&quot;;
++				case DepOps.Xor:
++					return &quot;^^&quot;;
++			}
++			
++			return &quot;&quot;;
++		}
++		
++		protected bool IsEmptyVersion (DepVersion _ver) {
++			return ((_ver.Major == -1) &amp;&amp; (_ver.Minor == -1) &amp;&amp; (_ver.Build == -1) &amp;&amp; (_ver.Revision == -1));
++		}
++		
++		protected bool VersionMatch (DepVersion _dver, DepVersion _ver, DepOps _op) {
++			bool mjgt = false, mngt = false, bgt = false, rgt = false;
++			bool mjeq = false, mneq = false, beq = false, req = false;
++			bool mjlt = false, mnlt = false, blt = false, rlt = false;
++			bool mji = false, mni = false, bi = false, ri = false;
++			
++			if (_dver.Major == -1) {
++				mji = true;
++			} else if (_dver.Major &gt; _ver.Major) {
++				mjgt = true;
++			} else if (_dver.Major == _ver.Major) {
++				mjeq = true;
++			} else {
++				mjlt = true;
++			}
++			
++			if (_dver.Minor == -1) {
++				mni = true;
++			} else if (_dver.Minor &gt; _ver.Minor) {
++				mngt = true;
++			} else if (_dver.Minor == _ver.Minor) {
++				mneq = true;
++			} else {
++				mnlt = true;
++			}
++			
++			if (_dver.Build == -1) {
++				bi = true;
++			} else if (_dver.Build &gt; _ver.Build) {
++				bgt = true;
++			} else if (_dver.Build == _ver.Build) {
++				beq = true;
++			} else {
++				blt = true;
++			}
++			
++			if (_dver.Revision == -1) {
++				ri = true;
++			} else if (_dver.Revision &gt; _ver.Revision) {
++				rgt = true;
++			} else if (_dver.Revision == _ver.Revision) {
++				req = true;
++			} else {
++				rlt = true;
++			}
++
++			if (mji)
++				return true;
++									
++			if ((_op == DepOps.Equal) || (_op == DepOps.GreaterThanEqual) || (_op == DepOps.LessThanEqual)) {					
++					if (mjeq &amp;&amp; mni)
++						return true;
++						
++					if (mjeq &amp;&amp; mneq &amp;&amp; bi)
++						return true;
++						
++					if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; ri)
++						return true;
++					
++					if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; req)
++						return true;
++			}
++			
++			if (_op == DepOps.NotEqual) {
++				if (!mjeq &amp;&amp; mni)
++					return true;
++					
++				if (!mjeq &amp;&amp; !mneq &amp;&amp; bi)
++					return true;
++					
++				if (!mjeq &amp;&amp; !mneq &amp;&amp; !beq &amp;&amp; ri)
++					return true;
++					
++				if (!mjeq &amp;&amp; !mneq &amp;&amp; !beq &amp;&amp; !req)
++					return true;
++			}
++			
++			if (_op == DepOps.GreaterThan) {
++				if (mjlt)
++					return false;
++					
++				if (mjgt)
++					return true;
++				
++				if (mjeq &amp;&amp; mnlt)
++					return false;
++					
++				if (mngt)
++					return true;
++					
++				if (mjeq &amp;&amp; mneq &amp;&amp; blt)
++					return false;
++					
++				if (bgt)
++					return true;
++					
++				if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; rlt)
++					return false;
++					
++				if (rgt)
++					return true;
++			}
++			
++			if (_op == DepOps.LessThan) {
++				if (mjgt)
++					return false;
++					
++				if (mjlt)
++					return true;
++				
++				if (mjeq &amp;&amp; mngt)
++					return false;
++					
++				if (mnlt)
++					return true;
++					
++				if (mjeq &amp;&amp; mneq &amp;&amp; bgt)
++					return false;
++					
++				if (blt)
++					return true;
++					
++				if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; rgt)
++					return false;
++					
++				if (rlt)
++					return true;
++			}
++			
++			if (_op == DepOps.Loaded)
++				return true;
++				
++			
++			return false;
++		}
++				
++		protected void InternalResolve (ArrayList _parents, ModuleInfo _info, bool checking) {
++			if (_info.Dependencies == null)
++				return;
++			
++			DepNode _node = _info.Dependencies;
++			
++			foreach (string _parent in _parents) {
++				if (_node.Constraint.Name == _parent) {
++					throw new CircularDependencyException (
++						string.Format(&quot;The module {0} is depending on {1} which is depending on {0}, causing a circular dependency.&quot;,
++							_parent, _info.Name, _parent)
++					);
++				}
++			}
++			OpResolve (_node, _parents, _info, checking);			
++		}
++#endregion
++
++#region Resolvers
++		public void ResolveCheck (ArrayList _parents, ModuleInfo _info) {
++			InternalResolve (_parents, _info, true);
++		}
++		
++		public void Resolve (ArrayList _parents, ModuleInfo _info) {
++			InternalResolve (_parents, _info, false);
++		}
++#endregion
++	}
++}
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -0,0 +1,35 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core.Module {
++	using System;
++	
++	public class DomainStillReferencedException : Exception {
++		public DomainStillReferencedException ( ) : base ( ) { }
++		
++		public DomainStillReferencedException (string _msg) : base (_msg) { }
++		
++		public DomainStillReferencedException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -26,6 +26,7 @@
+ using System.Collections;
+ using System.IO;
+ using System.Reflection;
++using NModule.Dependency.Core;
+ using NModule.Dependency.Resolver;
+ using NModule.Core.Module;
+ 
+@@ -73,9 +74,15 @@
+ 		}
+ 		
+ 		public void LoadModule (ArrayList _parents, string _name) {
++			if (_app_domain_map.ContainsKey (_name))
++			{
++				IncRef ((AppDomain)_app_domain_map[_name]);
++				return; // Already loaded, no need to load it again.
++			}
++			
+ 			ModuleInfo _info;
+ 			
+-			AppDomain _domain = _loader.LoadModule (_parents, _name, out _info);
++			AppDomain _domain = _loader.LoadModule (_parents, _name, out _info, false);
+ 			
+ 			// set up the map
+ 			_app_domain_map.Add (_name, _domain);
+@@ -86,7 +93,6 @@
+ 			// increment the reference count for all the dependencies recursively (i.e.
+ 			// if module A depends on B which depends on C, B gets inc ref'd once, while C
+ 			// gets inc ref'd twice, for both A and B).
+-			_resolver.IncRefs (_info);
+ 			
+ 			// Set up roles.
+ 			CallRoleHandlers (_info);
+@@ -98,6 +104,13 @@
+ 			CallEntryHandler (_domain.GetAssemblies()[0]);
+ 		}
+ 		
++		protected void DecRefs (DepNode _x) {
++			foreach (DepNode _d in _x.Children) {
++				DecRefs (_d);
++			}
++			DecRef ((AppDomain)_app_domain_map[_x.Constraint.Name]);
++		}
++		
+ 		public void UnloadModule (string _name) {
+ 			// This is fun stuff.  We can't unload a module any of the following conditions fail:
+ 			//  1) The module must be a top-level node in the dep map, i.e no other modules can
+@@ -105,12 +118,12 @@
+ 			//  2) The reference count on the appdomain must be 1, which means the only thing
+ 			//  using this appdomain is the module inside of it.
+ 			
+-			if (!_domain_map.Contains (_name))
++			if (!_app_domain_map.ContainsKey (_name))
+ 				return; // suckers not loaded, why are we unloading it?
+ 			
+ 			ModuleInfo _info = (ModuleInfo)_info_map[_name];
+ 			
+-			AppDomain _domain = (AppDomain)_domain_map[_name];
++			AppDomain _domain = (AppDomain)_app_domain_map[_name];
+ 			if (((int)_ref_counts[_domain]) &gt; 1) {
+ 				throw new DomainStillReferencedException (string.Format (&quot;The domain holding the module {0} cannot be unloaded because it is still being referenced.&quot;, _name));
+ 			}
+@@ -118,8 +131,12 @@
+ 			// okay, everything's good.  This will remove the domain from the reference list since its reference count is now 0.
+ 			DecRef (_domain);
+ 			
++			DepNode _root = _info.Dependencies;
++						
++			DecRefs (_root);
++			
+ 			// okay, lets remove the domain map association
+-			_domain_map.Remove (_name);
++			_app_domain_map.Remove (_name);
+ 			
+ 			// the info map needs to go too
+ 			_info_map.Remove (_name);
+@@ -131,7 +148,7 @@
+ 			CallExitHandler (_domain.GetAssemblies()[0]);
+ 			
+ 			// And finally, unload the domain.
+-			_domain.Unload ();
++			AppDomain.Unload (_domain);
+ 		}
+ #endregion
+ 
+@@ -145,7 +162,7 @@
+ 		}
+ 		
+ 		protected void DecRef (AppDomain _domain) {
+-			if (!_ref_counts.Contains (_domain)) {
++			if (!_ref_counts.Contains (_domain))
+ 				return;
+ 				
+ 			_ref_counts[_domain] = ((int)_ref_counts[_domain]) - 1;
+@@ -168,7 +185,7 @@
+ 		protected void CallRoleHandlers (ModuleInfo _info) {
+ 			foreach (string _myRole in _info.Roles.Split(',')) {
+ 				foreach (ModuleRole _role in _roles) {
+-					if (_role.Name == _myRole) {
++					if (_role.RoleName == _myRole) {
+ 						Assembly _asm = _info.Owner;
+ 						
+ 						Type _type = null;
+@@ -201,7 +218,7 @@
+ 		protected void CallRoleUnregisterHandlers (ModuleInfo _info) {
+ 			foreach (string _myRole in _info.Roles.Split(',')) {
+ 				foreach (ModuleRole _role in _roles) {
+-					if (_role.Name == _myRole) {
++					if (_role.RoleName == _myRole) {
+ 						Assembly _asm = _info.Owner;
+ 						
+ 						Type _type = null;
+@@ -224,7 +241,7 @@
+ 							continue; // don't have a type for this role.
+ 						}
+ 						
+-						_role.UnregistrationHandler (_asm, _type);
++						_role.UnregistrationHandler (_asm);
+ 					}
+ 				}
+ 			}
+@@ -234,22 +251,22 @@
+ #region Entry/Exit Handlers
+ 		protected void CallEntryHandler (Assembly _asm) {
+ 			foreach (Type _type in _asm.GetTypes ()) {
+-				if (_type.GetInterface (typeof (NModule.Core.Module.IModule)) != null) {
++				if (_type.GetInterface (typeof (NModule.Core.IModule).ToString()) != null) {
+ 					MethodInfo _method = _type.GetMethod (&quot;ModuleEntry&quot;);
+ 		
+ 					if (_method != null)			
+-						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, (new object[] { this }), null);
++						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, null, (new object[] { this }), null);
+ 				}
+ 			}
+ 		}
+ 		
+-		protected void CallEntryHandler (Assembly _asm) {
++		protected void CallExitHandler (Assembly _asm) {
+ 			foreach (Type _type in _asm.GetTypes ()) {
+-				if (_type.GetInterface (typeof (NModule.Core.Module.IModule)) != null) {
++				if (_type.GetInterface (typeof (NModule.Core.IModule).ToString()) != null) {
+ 					MethodInfo _method = _type.GetMethod (&quot;ModuleExit&quot;);
+ 					
+ 					if (_method != null)
+-						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, (new object[] { this }), null);
++						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, null, (new object[] { this }), null);
+ 				}
+ 			}
+ 		}
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -24,6 +24,7 @@
+  
+ using System;
+ using System.Collections;
++using System.IO;
+ using System.Reflection;
+ using NModule.Dependency.Resolver;
+ using NModule.Core.Module;
+@@ -39,7 +40,7 @@
+ 		
+ 		protected DepResolver _resolver;
+ 		
+-		public ModuleLoader (string search_path, DepResolver resolver) {
++		public ModuleLoader (ArrayList search_path, DepResolver resolver) {
+ 			_search_path = search_path;
+ 			_resolver = resolver;
+ 		}
+@@ -48,8 +49,8 @@
+ 		protected byte[] LoadRawFile (string _filename) {
+ 			FileStream _fs = new FileStream (_filename, FileMode.Open);
+ 			byte[] _buffer = new byte [(int) _fs.Length];
+-			fs.Read (_buffer, 0, _buffer.Length);
+-			fs.Close ();
++			_fs.Read (_buffer, 0, _buffer.Length);
++			_fs.Close ();
+    
+ 			return _buffer;
+ 		}
+@@ -58,7 +59,7 @@
+ 			foreach (string s in _search_path) {
+ 				if (Directory.Exists (s)) {
+ 					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
+-						if (f.SubString (0, f.Length - 4) == _name) {
++						if (f.Substring (0, f.Length - 4) == _name) {
+ 							return s + &quot;/&quot; + f;
+ 						}
+ 					}
+@@ -74,17 +75,13 @@
+ 		 * parents list.  The parents list is used for detecting circular dependencies.
+ 		 */
+ 		public AppDomain LoadModule (string _name, out ModuleInfo _info) {
+-			return LoadModule (null, _name, out _info);
++			return LoadModule (null, _name, out _info, false);
+ 		}
+ 		
+-		public AppDomain LoadModule (ArrayList _parents, string _name, out ModuleInfo _info, bool checking=false) {
++		public AppDomain LoadModule (ArrayList _parents, string _name, out ModuleInfo _info, bool checking) {
+ 			// Okay, this is tricky.  First, we have to load the module into a temp domain
+ 			// to retrieve its module info.  Then, we have to attempt to resolve the dependencies.
+ 			// This is going to be fun.  Heh.
+-			
+-			if (_app_domain_map.HasKey (_name))
+-				return; // Already loaded, no need to load it again.
+-				
+ 			if (_parents == null)
+ 				_parents = new ArrayList ();
+ 				
+@@ -108,7 +105,7 @@
+ 			try {
+ 				_tempDomain.Load (_raw_bytes);
+ 			} catch (BadImageFormatException e) {
+-				throw ModuleImageException (e.Message);
++				throw new ModuleImageException (e.Message);
+ 			}
+ 			
+ 			// Okay, now lets grab the module info from the assembly attributes.
+@@ -117,12 +114,12 @@
+ 			try {
+ 				_info = new ModuleInfo (_asm);
+ 			} catch (ModuleInfoException e) {
+-				throw InvalidModuleException (e.Message);
++				throw new InvalidModuleException (e.Message);
+ 			}
+ 			
+ 			// unload the temp domain since its unneeded now.
+ 			
+-			_tempDomain.Unload ();
++			AppDomain.Unload (_tempDomain);
+ 			
+ 			// okay, now we've got the info, let's do some magic with the dependencies.
+ 			// this will recursively load all of the appropriate assemblies as per the parsed
+
+Modified: trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+===================================================================
+--- trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 12:34:54 UTC (rev 24)
+@@ -16,7 +16,6 @@
+   &lt;References&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
+-    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Resolver&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+@@ -29,5 +28,9 @@
+     &lt;File name=&quot;./ModuleImageException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleNotFoundException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleController.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./CircularDependencyException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./DepResolver.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./UnresolvedDependencyException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./DomainStillReferencedException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -0,0 +1,35 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Dependency.Resolver {
++	using System;
++	
++	public class UnresolvedDependencyException : Exception {
++		public UnresolvedDependencyException ( ) : base ( ) { }
++		
++		public UnresolvedDependencyException (string _msg) : base (_msg) { }
++		
++		public UnresolvedDependencyException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -45,11 +45,14 @@
+ 		// roles
+ 		protected string _roles;
+ 		
++		// owner
++		protected Assembly _owner;
++		
+ 		public ModuleInfo (Assembly _asm) {
+ 			_name = _asm.GetName().Name;
+-			_version = DepVersion.VersionParse (_asm.GetName().Version);
++			_version = DepVersion.VersionParse (_asm.GetName().Version.ToString ());
+ 			
+-			ModuleDependencyAttribute _depAttr = ((ModuleDependencyAttribute)_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute)));
++			ModuleDependencyAttribute _depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
+ 			
+ 			if (_depAttr != null) {	
+ 				DepLexer _lexer = new DepLexer (new StringReader (_depAttr.DepString));
+@@ -60,14 +63,16 @@
+ 				
+ 				_parser.expr (_dependencies);
+ 			} else
+-				_depenencies = null;
++				_dependencies = null;
+ 				
+-			ModuleRoleAttribute _roleAttr = ((ModuleRoleAttribute)_asm.GetCustomAttributes (typeof (ModuleRoleAttribute));
++			ModuleRoleAttribute _roleAttr = ((ModuleRoleAttribute)(_asm.GetCustomAttributes (typeof (ModuleRoleAttribute), false)[0]));
+ 			
+ 			if (_roleAttr != null) {
+ 				_roles = _roleAttr.Roles;
+ 			} else
+-				_roles = null;
++				throw new ModuleInfoException (string.Format (&quot;The module {0} has no defined roles, and is not a valid NModule module.&quot;, _asm.GetName ().Name));
++				
++			_owner = _asm;
+ 		}
+ 		
+ 		public string Name {
+@@ -93,5 +98,11 @@
+ 				return _roles;
+ 			}
+ 		}
++		
++		public Assembly Owner {
++			get {
++				return _owner;
++			}
++		}
+ 	}		
+ }
+
+Added: trunk/src/NModule.Core.Module/ModuleInfoException.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfoException.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Module/ModuleInfoException.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -0,0 +1,35 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++namespace NModule.Core.Module {
++	using System;
++	
++	public class ModuleInfoException : Exception {
++		public ModuleInfoException ( ) : base ( ) { }
++		
++		public ModuleInfoException (string _msg) : base (_msg) { }
++		
++		public ModuleInfoException (string _msg, Exception _exc) : base (_msg) { }
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Module/ModuleRole.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -27,9 +27,9 @@
+ using System.Reflection;
+ 
+ namespace NModule.Core.Module {
+-	public delegate RoleRegisterHandler (Assembly asm, Type basetype);
++	public delegate void RoleRegisterHandler (Assembly asm, Type basetype);
+ 	
+-	public delegate RoleUnregisterHandler (Assembly asm);
++	public delegate void RoleUnregisterHandler (Assembly asm);
+ 	
+ 	/*
+ 	 * This class handles the roles used by the module loader.
+@@ -43,7 +43,7 @@
+ 		private Type _baseType;
+ 		private string _roleName;
+ 		private RoleRegisterHandler _regHandler;
+-		private RoleUnregisterHandle _unregHandler;
++		private RoleUnregisterHandler _unregHandler;
+ 		
+ 		// Lets get this baby setup :)
+ 		public ModuleRole (string name, Type basetype, RoleRegisterHandler regHandler, RoleUnregisterHandler unregHandler) {
+
+Modified: trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+===================================================================
+--- trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-23 12:34:54 UTC (rev 24)
+@@ -16,6 +16,7 @@
+   &lt;References&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Parser&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+@@ -24,5 +25,6 @@
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleRole.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleInfoException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Dependency.Core/DepVersion.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-23 12:34:54 UTC (rev 24)
+@@ -23,6 +23,8 @@
+  **************************************************************************/
+ 
+ namespace NModule.Dependency.Core {
++	using System;
++	
+ 	public class DepVersion {
+ 		private int _major;
+ 		private int _minor;
+
+Modified: trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp	2005-06-23 12:34:33 UTC (rev 23)
++++ trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp	2005-06-23 12:34:54 UTC (rev 24)
+@@ -14,8 +14,8 @@
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;References&gt;
+-    &lt;ProjectReference type=&quot;Assembly&quot; localcopy=&quot;True&quot; refto=&quot;../../../../usr/lib/antlr.runtime.dll&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
++    &lt;ProjectReference type=&quot;Assembly&quot; localcopy=&quot;True&quot; refto=&quot;../../lib/antlr.runtime.dll&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000008.html">[nmodule-commits] r23 - in trunk: . src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Resolver
+</A></li>
+	<LI>Next message: <A HREF="000010.html">[nmodule-commits] r25 - tags
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,3932 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r38 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test test/NModule.Core.Test test/NModule.Core.Test/data/src/nm-dr
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r38%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data/src/nm-dr&In-Reply-To=%3C200507042208.j64M8e4v018128%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r38 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test test/NModule.Core.Test test/NModule.Core.Test/data/src/nm-dr</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r38%20-%20in%20trunk%3A%20.%20src/NModule.Core.Loader%20src/NModule.Core.Module%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data/src/nm-dr&In-Reply-To=%3C200507042208.j64M8e4v018128%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r38 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module test test/NModule.Core.Test test/NModule.Core.Test/data/src/nm-dr">urilith at berlios.de
+       </A><BR>
+    <I>Tue Jul  5 00:08:40 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[nmodule-commits] r37 - tags
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-07-05 00:08:34 +0200 (Tue, 05 Jul 2005)
+New Revision: 38
+
+Added:
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs
+   trunk/test/NModule.Core.Test/nm-dr.cs
+   trunk/test/NModule.Core.Test/nm-ld.cs
+   trunk/test/NModule.Core.Test/nm-ul.cs
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/src/NModule.Core.Loader/DepResolver.cs
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+   trunk/test/NModule.Core.Test/NModuleTests.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs
+   trunk/test/NModule.Test.build
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r142 at dreamshadow</A>:  urilith | 2005-07-04 17:07:03 -0500
+ 2005-07-04 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * More bug fixes, rest of the dependency resolution test suite.
+   * src/NModule.Core.Loader/DepResolver.cs:
+   * src/NModule.Core.Loader/ModuleController.cs:
+   * src/NModule.Core.Loader/ModuleLoader.cs:
+   * src/NModule.Core.Module/ModuleInfo.cs:
+   * test/NModule.Core.Test/NModule.Core.Test.mdp:
+   * test/NModule.Core.Test/NModuleTests.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs:
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs:
+   * test/NModule.Core.Test/nm-dr.cs:
+   * test/NModule.Core.Test/nm-ld.cs:
+   * test/NModule.Core.Test/nm-ul.cs:
+   * test/NModule.Test.build:
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:139
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:142
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/ChangeLog	2005-07-04 22:08:34 UTC (rev 38)
+@@ -1,5 +1,53 @@
+ 2005-07-04 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
++	* More bug fixes, rest of the dependency resolution test suite.
++	* src/NModule.Core.Loader/DepResolver.cs: 
++	* src/NModule.Core.Loader/ModuleController.cs: 
++	* src/NModule.Core.Loader/ModuleLoader.cs: 
++	* src/NModule.Core.Module/ModuleInfo.cs: 
++	* test/NModule.Core.Test/NModule.Core.Test.mdp: 
++	* test/NModule.Core.Test/NModuleTests.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs: 
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs: 
++	* test/NModule.Core.Test/nm-dr.cs: 
++	* test/NModule.Core.Test/nm-ld.cs: 
++	* test/NModule.Core.Test/nm-ul.cs: 
++	* test/NModule.Test.build: 
++
++2005-07-04 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
+         *******************
+         ***** RELEASE *****
+         *******************
+
+Modified: trunk/src/NModule.Core.Loader/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DepResolver.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/src/NModule.Core.Loader/DepResolver.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -59,7 +59,7 @@
+ 			foreach (string s in _search_path) {
+ 				if (Directory.Exists (s)) {
+ 					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
+-						if (f.Substring (0, f.Length - 4).IndexOf (_name) != -1) {
++						if (f.Substring (0, f.Length - 4) == _name) {
+ 							return s + &quot;/&quot; + f;
+ 						}
+ 					}
+@@ -84,14 +84,14 @@
+ 				ArrayList _results = new ArrayList ();
+ 				ArrayList _c = new ArrayList ();
+ 				foreach (DepNode _child in _node.Children) {
+-					//try {
++					try {
+ 						OpResolve (_child, _parents, _info, checking, _op);
+ 						_results.Add (true);
+ 						_c.Add (_child.Constraint);
+-					//} catch (Exception e) {
+-					//	_results.Add (false);
+-					//	_c.Add (_child.Constraint);
+-					//}
++					} catch (Exception e) {
++						_results.Add (false);
++						_c.Add (_child.Constraint);
++					}
+ 				}
+ 				
+ 				switch (_op) {
+@@ -106,7 +106,7 @@
+ 								if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
+ 									throw new UnresolvedDependencyException (
+ 										string.Format(&quot;The following dependency for the module {0} could not be resolved: (AND operator)\n\t{1} ({2})&quot;,
+-											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version.ToString())
+ 									);
+ 								}
+ 							}
+@@ -114,12 +114,14 @@
+ 						}
+ 						break;
+ 					case DepOps.Not:
++						if (_results == null)
++							Console.WriteLine (&quot;_results is NULL! (NOT)&quot;);
+ 						foreach (bool _result in _results) {
+ 							if (_result) {
+ 								if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
+ 									throw new UnresolvedDependencyException (
+ 										string.Format(&quot;The following dependency for the module {0} could not be resolved: (NOT operator)\n\t{1} ({2})&quot;,
+-											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version.ToString())
+ 									);
+ 								}
+ 							}
+@@ -135,7 +137,7 @@
+ 							if (_result)
+ 								_ret = true;
+ 							else {
+-								_urexc.Add (string.Format(&quot;{1} ({2})&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++								_urexc.Add (string.Format(&quot;{1} ({2})&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version.ToString()));
+ 							}
+ 							r++;
+ 						}
+@@ -162,11 +164,11 @@
+ 						foreach (bool _result in _results) {
+ 							if (_result) {
+ 								_xf = false;
+-								_xexc.Add (string.Format(&quot;{1} ({2}) (True)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++								_xexc.Add (string.Format(&quot;{1} ({2}) (True)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version.ToString()));
+ 							}
+ 							if (!_result) {
+ 								_xt = false;
+-								_xexc.Add (string.Format(&quot;{1} ({2}) (False)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++								_xexc.Add (string.Format(&quot;{1} ({2}) (False)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version.ToString()));
+ 							}
+ 							r++;
+ 						}
+@@ -207,32 +209,45 @@
+ 				
+ 				Console.WriteLine (&quot;Checking {0}'s version:  Empty {1}&quot;, _constraint.Name, IsEmptyVersion (_constraint.Version));
+ 				Console.WriteLine (&quot;Checking ({0} {1} {2}) Result: {3}&quot;, OpToString (_op), _ninfo.Version.ToString(), _constraint.Version.ToString(), VersionMatch (_ninfo.Version, _constraint.Version, _op));
++				
++				Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; IsEmptyVersion [BEGIN]&quot;);
++				if (!IsEmptyVersion (_constraint.Version)) {
++					bool vmatch = VersionMatch (_ninfo.Version, _constraint.Version, _op);
+ 					
+-				if (!IsEmptyVersion (_constraint.Version)) {
+-					if (!VersionMatch (_ninfo.Version, _constraint.Version, _op)) {
++					if ((_parentop == DepOps.Not) &amp;&amp; vmatch) {
+ 						result = false;
+ 					}
++					
++					if ((_parentop != DepOps.Not) &amp;&amp; !vmatch) {
++						result = false;
++					}
+ 				}
+-
++				Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; IsEmptyVersion [ END ]&quot;);
++				
++				Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; !result [BEGIN]&quot;);
+ 				if (!result) {
+ 					if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
+ 						throw new UnresolvedDependencyException (
+ 								string.Format(&quot;The following dependency for the module {0} could not be resolved: ({3} operator)\n\t{1} ({2})&quot;,
+-									_info.Name, _constraint.Name, _constraint.Version, OpToString (_op))
++									_info.Name, _constraint.Name, _constraint.Version.ToString(), OpToString (_op))
+ 							);
+ 					}
+ 					else
+ 						return;			
+ 				}
++				Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; !result [ END ]&quot;);
+ 					
+ 				if (_controller == null)
+ 					Console.WriteLine (&quot;_controller is NULL!&quot;);
+ 					
++				if (_info == null)
++					Console.WriteLine (&quot;_info -s NULL!&quot;);
++					
+ 				if (!checking) {
+ 					_controller.LoadModule (_constraint.Name);
+ 				}
+ 					
+-				Console.WriteLine (&quot;Checking {0} for {1} (Result: {2})&quot;, OpToString (_op), _info.Name, result);
++				Console.WriteLine (&quot;Checking {0} for {1} (Result: {2})&quot;, OpToString (_op), _constraint.Name, result);
+ 				// we got this far, so obviously it loaded okay
+ 			}		
+ 		}
+@@ -307,6 +322,8 @@
+ 					return vres &lt; 0 || vres == 0;
+ 				case DepOps.NotEqual:
+ 					return vres != 0;
++				case DepOps.Loaded:
++					return true;
+ 			}
+ 			
+ 			return false;				
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -75,6 +75,11 @@
+ 		}
+ 		
+ 		public void LoadModule (ArrayList _parents, string _name) {
++			if (_name == null)
++			{
++				Console.WriteLine (&quot;_name is NULL&quot;);
++			}
++			
+ 			if (_app_domain_map.ContainsKey (_name))
+ 			{
+ 				IncRef ((AppDomain)_app_domain_map[_name]);
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -70,7 +70,7 @@
+ 						string _f = f.Replace (s, &quot;&quot;).Replace (&quot;/&quot;, &quot;&quot;);
+ 						Console.WriteLine (&quot;Checking {0} against {1} ({2}) (Result: {3})&quot;, _name, _f, 
+ 							_f.Substring (0, _f.Length - 4), (_f.Substring (0, _f.Length - 4) == _name));
+-						if (_f.Substring (0, _f.Length - 4).IndexOf (_name) != -1) {
++						if (_f.Substring (0, _f.Length - 4) == _name) {
+ 							return s + &quot;/&quot; + _f;
+ 						}
+ 					}
+@@ -95,6 +95,7 @@
+ 		
+ 		public Assembly GetAssembly (AppDomain _domain, string _name) {
+ 			foreach (Assembly _asm in _domain.GetAssemblies ()) {
++				Console.WriteLine (&quot;_asm.GetName().Name {0} / _name {1}&quot;, _asm.GetName().Name, _name);
+ 				if (_asm.GetName ().Name == _name)
+ 					return _asm;
+ 			}
+@@ -111,6 +112,7 @@
+ 				_parents = new ArrayList ();
+ 			
+ 			// Try to find the module on the search path.
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; SearchForModule [BEGIN]&quot;);
+ 			string _filename = SearchForModule (_name);
+ 			
+ 			if (_filename == null)
+@@ -118,18 +120,20 @@
+ 				
+ 			// Okay, well, now we know the module exists at least in the file (we hope its a proper dll, but we'll see :).  Now we
+ 			// need to create the temporary AppDomain and load it to get the info from it.
+-			AppDomain _tempDomain = AppDomain.CreateDomain (_name);
++			AppDomain _tempDomain = AppDomain.CreateDomain (string.Format(&quot;{0}{1}{2}&quot;, _name, &quot;adlfjdsadgkljsg&quot;, &quot;adlgjdfslghkeryt&quot;));
+ 			
+-			// This is dirty.  I hate me.
+-			byte[] _raw_bytes = LoadRawFile (_filename);	
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; LoadRawFile [BEGIN]&quot;);
++			byte[] _raw_bytes = LoadRawFile (_filename);
+ 			
+ 			// set up the search path
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; SearchPath [BEGIN]&quot;);
+ 			foreach (string s in _search_path) {
+ 				_tempDomain.AppendPrivatePath (s);
+ 			}
+ 			
+ 			// The throw here is mostly used from dep resolver calls, although it should also be caught by the immediate caller
+ 			// (i.e. the application).
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; Load [BEGIN]&quot;);
+ 			try {
+ 				_tempDomain.Load (_raw_bytes);
+ 			} catch (BadImageFormatException e) {
+@@ -138,8 +142,10 @@
+ 			}
+ 			
+ 			// Okay, now lets grab the module info from the assembly attributes.
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; GetAssembly [BEGIN]&quot;);
+ 			Assembly _asm = GetAssembly (_tempDomain, _name);
+ 			
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; ModuleInfo [BEGIN]&quot;);
+ 			try {
+ 				_info = new ModuleInfo (_asm);
+ 			} catch (ModuleInfoException e) {
+@@ -159,6 +165,7 @@
+ 			// on Y, because if Z suceeds but Y fails, we don't want X, Y, or Z to fail.  This way,
+ 			// we can ensure the entire tree can be loaded first (this does take into account already
+ 			// loaded assemblies).
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; DepCheck [BEGIN]&quot;);
+ 			if (depcheck)
+ 			{
+ 				DepResolver _resolver = new DepResolver (_controller, _search_path);
+@@ -170,7 +177,8 @@
+ 					throw e;
+ 				}
+ 			}
+-		
++
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; Checking [BEGIN]&quot;);		
+ 			if (checking)
+ 			{
+ 				AppDomain.Unload (_tempDomain);
+@@ -182,6 +190,7 @@
+ 			// now we create the *real* app domain.
+ 						
+ 			// We can't do any more with this.
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; Return [BEGIN]&quot;);
+ 			return _tempDomain;
+ 		}
+ 	}
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -107,7 +107,7 @@
+ 		}
+ 		
+ 		public ModuleInfo (Assembly _asm) {
+-			_name = _asm.GetName().Name;
++			_name = _asm.GetName ().Name;
+ 			_version = DepVersion.VersionParse (_asm.GetName().Version.ToString ());
+ 			
+ 			ModuleDependencyAttribute _depAttr;
+@@ -115,6 +115,9 @@
+ 			
+ 			try {
+ 				_depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
++				foreach (ModuleDependencyAttribute _attr in _asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)) {
++					Console.WriteLine (_attr.DepString);
++				}
+ 			} catch (IndexOutOfRangeException) {
+ 				_depAttr = null;
+ 			}
+
+Modified: trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+===================================================================
+--- trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-07-04 22:08:34 UTC (rev 38)
+@@ -28,5 +28,8 @@
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./TESTS&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./NModuleTests.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./nm-ld.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./nm-ul.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./nm-dr.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Modified: trunk/test/NModule.Core.Test/NModuleTests.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/NModuleTests.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/NModuleTests.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -1,280 +0,0 @@
+-//
+-// NModuleTests.cs
+-//
+-// Author:
+-//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+-//
+-// Copyright (C) 2005 Michael Tindal and the individuals listed on
+-// the ChangeLog entries.
+-//
+-// Permission is hereby granted, free of charge, to any person obtaining
+-// a copy of this software and associated documentation files (the
+-// &quot;Software&quot;), to deal in the Software without restriction, including
+-// without limitation the rights to use, copy, modify, merge, publish,
+-// distribute, sublicense, and/or sell copies of the Software, and to
+-// permit persons to whom the Software is furnished to do so, subject to
+-// the following conditions:
+-// 
+-// The above copyright notice and this permission notice shall be
+-// included in all copies or substantial portions of the Software.
+-// 
+-// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-//
+-
+-namespace NModule.Core.Test {
+-
+-	using System;
+-	using System.Reflection;
+-	using System.Collections;
+-	
+-	using NModule.Core.Loader;
+-	using NModule.Core;
+-	using NModule.Core.Module;
+-	using NModule.Dependency.Core;
+-	using NModule.Dependency.Parser;
+-	using NModule.Dependency.Resolver;
+-	
+-	using NUnit.Framework;
+-	
+-	[TestFixture]
+-	public class NModuleTests {
+-	
+-		public NModuleTests () {
+-		}
+-		
+-		// nm-ld-01 - Loading with no dependencies, single dir search path.
+-		[Test]
+-		public void nm_ld_01 () {
+-			Console.WriteLine (&quot;nm_ld_01&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld/&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-01&quot;);
+-		}
+-		
+-		// nm-ld-02 - Loading with no dependencies, single dir search path, not found.
+-		[Test]
+-		[ExpectedException (typeof (ModuleNotFoundException))]
+-		public void nm_ld_02 () {
+-			Console.WriteLine (&quot;nm_ld_02&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-02&quot;);
+-		}
+-		
+-		// nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
+-		[Test]
+-		public void nm_ld_03 () {
+-			Console.WriteLine (&quot;nm_ld_03&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-03&quot;);
+-		}
+-		
+-		// nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
+-		[Test]
+-		public void nm_ld_04 () {
+-			Console.WriteLine (&quot;nm_ld_04&quot;);
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-04&quot;);
+-		}
+-		
+-		// nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
+-		[Test]
+-		public void nm_ld_05 () {
+-			Console.WriteLine (&quot;nm_ld_05&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-05&quot;);
+-		}
+-		
+-		// nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
+-		[Test]
+-		[ExpectedException (typeof (ModuleNotFoundException))]
+-		public void nm_ld_06 () {
+-			Console.WriteLine (&quot;nm_ld_06&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-06&quot;);
+-		}
+-		
+-		// nm-ul-01 - Unloading with no dependencies
+-		[Test]
+-		public void nm_ul_01 () {
+-			Console.WriteLine (&quot;nm_ul_01&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-01&quot;);
+-			
+-			_mc.UnloadModule (&quot;nm-ul-01&quot;);
+-		}
+-		
+-		// nm-ul-02 - Unloading with ref count &gt; 1
+-		[Test]
+-		[ExpectedException (typeof (DomainStillReferencedException))]
+-		public void nm_ul_02 () {
+-			Console.WriteLine (&quot;nm_ul_02&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-02&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-02&quot;);
+-			
+-			_mc.UnloadModule (&quot;nm-ul-02&quot;);
+-		}
+-		
+-		// This is a huge section.
+-		
+-		/**
+-		 * Combinations to be tested:
+-		 *   Valid-combination operators: &amp;&amp; || ^^ !! ??
+-		 *   Valid-singleton operators: == != &lt;&lt; &lt;= &gt;&gt; &gt;= ##
+-		 *   (==)
+-		 *   (!=)
+-		 *   (&lt;&lt;)
+-		 *   (&gt;&gt;)
+-		 *   (&lt;=)
+-		 *   (&gt;=)
+-		 *   (##)
+-		 *   (&amp;&amp; (==) (&gt;=))
+-		 *   (|| (&gt;&gt;) (&lt;&lt;))
+-		 *   (^^ (&gt;&gt;) (!=))
+-		 *   (!! (==))
+-		 *   (?? (&gt;=))
+-		 *   (&amp;&amp; (|| (==) (!=)) (?? (##)))
+-		 *   (|| (&amp;&amp; (##) (##)) (!! (!=)))
+-		 **/
+-		[Test]
+-		public void nm_dr_01 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-01a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01b&quot;));
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01d&quot;));
+-			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-01c&quot;));
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01e&quot;));
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01f&quot;));
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01g&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_02 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-02a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-02b&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_03 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-03a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-03b&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_04 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-04a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-04b&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_05 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-05a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-05b&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_06 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-06a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-06b&quot;));
+-		}
+-		
+-		//[Test]
+-		public void nm_dr_07 () {
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
+-			
+-			// This will look for a specific version of nm-dr-01b
+-			_mc.LoadModule (&quot;nm-dr-07a&quot;);
+-			
+-			// If it worked, we should have a domain for nm-dr-01b
+-			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-07b&quot;));
+-		}
+-	}
+-}
+
+Modified: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -39,7 +39,7 @@
+ using NModule.Dependency.Resolver;
+ 
+ [assembly: AssemblyVersion (&quot;1.0.*&quot;)]
+-[assembly: ModuleDependency (&quot;(&amp;&amp; (&amp;&amp; (== nm-dr-01b 1.0) (&gt;&gt; nm-dr-01d 1.2)) (?? (&lt;&lt; nm-dr-01c 1.0)))&quot;)]
++[assembly: ModuleDependency (&quot;(== nm-dr-01b 1.0)&quot;)]
+ [assembly: ModuleRole (&quot;&quot;)]
+ 
+ namespace NModule.Core.Test.nm_dr {
+
+Modified: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -39,7 +39,6 @@
+ using NModule.Dependency.Resolver;
+ 
+ [assembly: AssemblyVersion (&quot;1.0.*&quot;)]
+-[assembly: ModuleDependency (&quot;(## nm-dr-01e)&quot;)]
+ [assembly: ModuleRole (&quot;&quot;)]
+ 
+ namespace NModule.Core.Test.nm_dr {
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(!= nm-dr-02b 1.0)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_02a_module {
++		public nm_dr_02a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.1.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_02b_module {
++		public nm_dr_02b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-02b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&lt;&lt; nm-dr-03b 1.0)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_03a_module {
++		public nm_dr_03a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;0.9.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_03b_module {
++		public nm_dr_03b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-03b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&gt;&gt; nm-dr-04b 1.0)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_04a_module {
++		public nm_dr_04a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.1.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_04b_module {
++		public nm_dr_04b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-04b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&lt;= nm-dr-05b 1.0)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_05a_module {
++		public nm_dr_05a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;0.9.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_05b_module {
++		public nm_dr_05b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-05b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&gt;= nm-dr-06b 1.0)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_06a_module {
++		public nm_dr_06a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_06b_module {
++		public nm_dr_06b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-06b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(## nm-dr-07b)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_07a_module {
++		public nm_dr_07a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_07b_module {
++		public nm_dr_07b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-07b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&amp;&amp; (== nm-dr-08b 1.0) (&gt;= nm-dr-08c 2.0))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_08a_module {
++		public nm_dr_08a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_08b_module {
++		public nm_dr_08b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;2.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_08c_module {
++		public nm_dr_08c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-08c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(|| (&gt;&gt; nm-dr-09b 1.0) (&lt;&lt; nm-dr-09c 1.0))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_09a_module {
++		public nm_dr_09a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;0.9.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_09b_module {
++		public nm_dr_09b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;0.9.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_09c_module {
++		public nm_dr_09c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-09c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(^^ (&gt;&gt; nm-dr-10b 1.0) (!= nm-dr-10c 1.1))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_10a_module {
++		public nm_dr_10a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.1.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_10b_module {
++		public nm_dr_10b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.1.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_10c_module {
++		public nm_dr_10c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-10c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(!! (== nm-dr-11b 1.1))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_11a_module {
++		public nm_dr_11a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_11b_module {
++		public nm_dr_11b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-11b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(?? (&gt;= nm-dr-12b 4.0))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_12a_module {
++		public nm_dr_12a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;4.3.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_12b_module {
++		public nm_dr_12b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-12b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&amp;&amp; (|| (== nm-dr-13b 1.0) (!= nm-dr-13c 2.0)) (?? (## nm-dr-13d)))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_13a_module {
++		public nm_dr_13a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_13b_module {
++		public nm_dr_13b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;2.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_13c_module {
++		public nm_dr_13c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-13c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(|| (&amp;&amp; (## nm-dr-14b) (## nm-dr-14c)) (!! (!= nm-dr-14d 1.0)))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_14a_module {
++		public nm_dr_14a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_14b_module {
++		public nm_dr_14b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_14c_module {
++		public nm_dr_14c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.1.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_14d_module {
++		public nm_dr_14d_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-14d.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/nm-dr.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/nm-dr.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/nm-dr.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,262 @@
++//
++// nm-dr.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++namespace NModule.Core.Test {
++
++	using System;
++	using System.Reflection;
++	using System.Collections;
++	
++	using NModule.Core.Loader;
++	using NModule.Core;
++	using NModule.Core.Module;
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	using NModule.Dependency.Resolver;
++	
++	using NUnit.Framework;
++	
++	[TestFixture]
++	public class nm_dr {
++	
++		public nm_dr () {
++		}
++		
++		// This is a huge section.
++		
++		// ==
++		[Test]
++		public void nm_dr_01 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-01a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01b&quot;));
++		}
++		
++		// !=
++		[Test]
++		public void nm_dr_02 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-02a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-02a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-02b&quot;));
++		}
++		
++		// &lt;&lt;
++		[Test]
++		public void nm_dr_03 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-03a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-03a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-03b&quot;));
++		}
++		
++		// &gt;&gt;
++		[Test]
++		public void nm_dr_04 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-04a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-04a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-04b&quot;));
++		}
++		
++		// &lt;=
++		[Test]
++		public void nm_dr_05 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-05a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-05a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-05b&quot;));
++		}
++		
++		// &gt;=
++		[Test]
++		public void nm_dr_06 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-06a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-06a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-06b&quot;));
++		}
++		
++		// ##
++		[Test]
++		public void nm_dr_07 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-07a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-07a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-07b&quot;));
++		}
++		
++		// (&amp;&amp; (==) (&gt;=))
++		[Test]
++		public void nm_dr_08 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-08a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-08a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-08b&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-08c&quot;));
++		}
++		
++		// (|| (&gt;&gt;) (&lt;&lt;))
++		[Test]
++		public void nm_dr_09 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-09a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-09a&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-09b&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-09c&quot;));
++		}
++		
++		// (^^ (&gt;&gt;) (!=))
++		[Test]
++		public void nm_dr_10 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-10a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-10a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-10b&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-10c&quot;));
++		}
++		
++		// (!! (==))
++		[Test]
++		public void nm_dr_11() {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-11a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-11a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-11b&quot;));
++		}
++		
++		// (?? (&gt;=))
++		[Test]
++		public void nm_dr_12() {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-12a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-12a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-12b&quot;));
++		}
++		
++		// (&amp;&amp; (|| (==) (!=)) (?? (##)))
++		[Test]
++		public void nm_dr_13() {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-13a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-13a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-13b&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-13c&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-13d&quot;));
++		}
++		
++		// (|| (&amp;&amp; (##) (##)) (!! (!=)))
++		[Test]
++		public void nm_dr_14() {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			_mc.LoadModule (&quot;nm-dr-14a&quot;);
++			
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-14a&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-14b&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-14c&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-14d&quot;));
++		}
++
++		public static void Main (string[] args) {
++			nm_dr _t = new nm_dr();
++
++			_t.nm_dr_14 ();
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/nm-dr.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/nm-ld.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/nm-ld.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/nm-ld.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,132 @@
++//
++// nm-ld.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++namespace NModule.Core.Test {
++
++	using System;
++	using System.Reflection;
++	using System.Collections;
++	
++	using NModule.Core.Loader;
++	using NModule.Core;
++	using NModule.Core.Module;
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	using NModule.Dependency.Resolver;
++	
++	using NUnit.Framework;
++	
++	[TestFixture]
++	public class nm_ld {
++	
++		public nm_ld () {
++		}
++		
++		// nm-ld-01 - Loading with no dependencies, single dir search path.
++		[Test]
++		public void nm_ld_01 () {
++			Console.WriteLine (&quot;nm_ld_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld/&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-01&quot;);
++		}
++		
++		// nm-ld-02 - Loading with no dependencies, single dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_02 () {
++			Console.WriteLine (&quot;nm_ld_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-02&quot;);
++		}
++		
++		// nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
++		[Test]
++		public void nm_ld_03 () {
++			Console.WriteLine (&quot;nm_ld_03&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-03&quot;);
++		}
++		
++		// nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
++		[Test]
++		public void nm_ld_04 () {
++			Console.WriteLine (&quot;nm_ld_04&quot;);
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-04&quot;);
++		}
++		
++		// nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
++		[Test]
++		public void nm_ld_05 () {
++			Console.WriteLine (&quot;nm_ld_05&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-05&quot;);
++		}
++		
++		// nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_06 () {
++			Console.WriteLine (&quot;nm_ld_06&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-06&quot;);
++		}
++	}
++}
+\ No newline at end of file
+
+
+Property changes on: trunk/test/NModule.Core.Test/nm-ld.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/nm-ul.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/nm-ul.cs	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Core.Test/nm-ul.cs	2005-07-04 22:08:34 UTC (rev 38)
+@@ -0,0 +1,82 @@
++//
++// nm-ul.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++namespace NModule.Core.Test {
++
++	using System;
++	using System.Reflection;
++	using System.Collections;
++	
++	using NModule.Core.Loader;
++	using NModule.Core;
++	using NModule.Core.Module;
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	using NModule.Dependency.Resolver;
++	
++	using NUnit.Framework;
++	
++	[TestFixture]
++	public class nm_ul {
++	
++		public nm_ul () {
++		}
++		
++		// nm-ul-01 - Unloading with no dependencies
++		[Test]
++		public void nm_ul_01 () {
++			Console.WriteLine (&quot;nm_ul_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-01&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-01&quot;);
++		}
++		
++		// nm-ul-02 - Unloading with ref count &gt; 1
++		[Test]
++		[ExpectedException (typeof (DomainStillReferencedException))]
++		public void nm_ul_02 () {
++			Console.WriteLine (&quot;nm_ul_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-02&quot;);
++		}
++	}
++}
+\ No newline at end of file
+
+
+Property changes on: trunk/test/NModule.Core.Test/nm-ul.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Modified: trunk/test/NModule.Test.build
+===================================================================
+--- trunk/test/NModule.Test.build	2005-07-04 17:48:00 UTC (rev 37)
++++ trunk/test/NModule.Test.build	2005-07-04 22:08:34 UTC (rev 38)
+@@ -183,7 +183,7 @@
+     &lt;/csc&gt;
+   &lt;/target&gt;
+ 
+-  &lt;target name=&quot;nm-dr&quot; depends=&quot;nm-dr-01a,nm-dr-01b,nm-dr-01c,nm-dr-01d,nm-dr-01e,nm-dr-01f,nm-dr-01g&quot; /&gt;
++  &lt;target name=&quot;nm-dr&quot; depends=&quot;nm-dr-01a,nm-dr-01b,nm-dr-02a,nm-dr-02b,nm-dr-03a,nm-dr-03b,nm-dr-04a,nm-dr-04b,nm-dr-05a,nm-dr-05b,nm-dr-06a,nm-dr-06b,nm-dr-07a,nm-dr-07b,nm-dr-08a,nm-dr-08b,nm-dr-08c,nm-dr-09a,nm-dr-09b,nm-dr-09c,nm-dr-10a,nm-dr-10b,nm-dr-10c,nm-dr-11a,nm-dr-11b,nm-dr-12a,nm-dr-12b,nm-dr-13a,nm-dr-13b,nm-dr-13c,nm-dr-14a,nm-dr-14b,nm-dr-14c,nm-dr-14d&quot; /&gt;
+ 
+   &lt;target name=&quot;nm-dr-01a&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+@@ -222,13 +222,51 @@
+       &lt;/references&gt;
+     &lt;/csc&gt;
+   &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-02a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-02a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-02a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-02b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-02b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-02b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
+   
+-  &lt;target name=&quot;nm-dr-01c&quot;&gt;
++  &lt;target name=&quot;nm-dr-03a&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+-        output=&quot;${nm-dr-dir}/nm-dr-01c.dll&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-03a.dll&quot;
+         debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
+       &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
+-        &lt;include name=&quot;nm-dr-01c.cs&quot;/&gt;
++        &lt;include name=&quot;nm-dr-03a.cs&quot;/&gt;
+       &lt;/sources&gt;
+       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
+         &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
+@@ -241,13 +279,32 @@
+       &lt;/references&gt;
+     &lt;/csc&gt;
+   &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-03b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-03b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-03b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
+   
+-  &lt;target name=&quot;nm-dr-01d&quot;&gt;
++  &lt;target name=&quot;nm-dr-04a&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+-        output=&quot;${nm-dr-dir}/nm-dr-01d.dll&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-04a.dll&quot;
+         debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
+       &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
+-        &lt;include name=&quot;nm-dr-01d.cs&quot;/&gt;
++        &lt;include name=&quot;nm-dr-04a.cs&quot;/&gt;
+       &lt;/sources&gt;
+       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
+         &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
+@@ -260,13 +317,32 @@
+       &lt;/references&gt;
+     &lt;/csc&gt;
+   &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-04b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-04b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-04b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
+   
+-  &lt;target name=&quot;nm-dr-01e&quot;&gt;
++  &lt;target name=&quot;nm-dr-05a&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+-        output=&quot;${nm-dr-dir}/nm-dr-01e.dll&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-05a.dll&quot;
+         debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
+       &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
+-        &lt;include name=&quot;nm-dr-01e.cs&quot;/&gt;
++        &lt;include name=&quot;nm-dr-05a.cs&quot;/&gt;
+       &lt;/sources&gt;
+       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
+         &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
+@@ -279,13 +355,146 @@
+       &lt;/references&gt;
+     &lt;/csc&gt;
+   &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-05b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-05b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-05b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-06a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-06a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-06a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-06b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-06b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-06b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-07a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-07a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-07a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-07b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-07b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-07b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-08a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-08a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-08a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-08b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-08b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-08b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
+   
+-  &lt;target name=&quot;nm-dr-01f&quot;&gt;
++  &lt;target name=&quot;nm-dr-08c&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+-        output=&quot;${nm-dr-dir}/nm-dr-01f.dll&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-08c.dll&quot;
+         debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
+       &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
+-        &lt;include name=&quot;nm-dr-01f.cs&quot;/&gt;
++        &lt;include name=&quot;nm-dr-08c.cs&quot;/&gt;
+       &lt;/sources&gt;
+       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
+         &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
+@@ -298,13 +507,222 @@
+       &lt;/references&gt;
+     &lt;/csc&gt;
+   &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-09a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-09a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-09a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-09b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-09b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-09b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-09c&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-09c.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-09c.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-10a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-10a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-10a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-10b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-10b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-10b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-10c&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-10c.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-10c.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-11a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-11a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-11a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-11b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-11b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-11b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-12a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-12a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-12a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-12b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-12b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-12b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-13a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-13a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-13a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
+   
+-  &lt;target name=&quot;nm-dr-01g&quot;&gt;
++  &lt;target name=&quot;nm-dr-13b&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+-        output=&quot;${nm-dr-dir}/nm-dr-01g.dll&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-13b.dll&quot;
+         debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
+       &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
+-        &lt;include name=&quot;nm-dr-01g.cs&quot;/&gt;
++        &lt;include name=&quot;nm-dr-13b.cs&quot;/&gt;
+       &lt;/sources&gt;
+       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
+         &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
+@@ -318,9 +736,101 @@
+     &lt;/csc&gt;
+   &lt;/target&gt;
+ 
+-  &lt;assemblyfileset id=&quot;nunit.framework&quot;&gt;
+-    &lt;include name=&quot;nunit.framework.dll&quot; /&gt;
+-  &lt;/assemblyfileset&gt;
++  &lt;target name=&quot;nm-dr-13c&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-13c.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-13c.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-14a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-14a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-14a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-14b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-14b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-14b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-14c&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-14c.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-14c.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-14d&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-14d.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-14d.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
+   &lt;target name=&quot;NModule.Core.Test&quot; depends=&quot;set-build-dir&quot;&gt;
+     &lt;csc target=&quot;library&quot;
+         output=&quot;${current.build.dir}/NModule.Core.Test.dll&quot;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[nmodule-commits] r37 - tags
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

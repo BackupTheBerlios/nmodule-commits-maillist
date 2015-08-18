@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r8 - in trunk: . Documentation NModule.Dependency.Parser
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r8%20-%20in%20trunk%3A%20.%20Documentation%20NModule.Dependency.Parser&In-Reply-To=%3C200506012043.j51KhpCb005399%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r8 - in trunk: . Documentation NModule.Dependency.Parser</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r8%20-%20in%20trunk%3A%20.%20Documentation%20NModule.Dependency.Parser&In-Reply-To=%3C200506012043.j51KhpCb005399%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r8 - in trunk: . Documentation NModule.Dependency.Parser">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Wed Jun  1 22:43:51 CEST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000001.html">[nmodule-commits] r9 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-01 22:43:51 +0200 (Wed, 01 Jun 2005)
+New Revision: 8
+
+Added:
+   trunk/AUTHORS
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/Documentation/DESIGN
+   trunk/NModule.Dependency.Parser/nmodule-dep.g
+   trunk/svkchangelog
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r41 at dreamshadow</A>:  urilith | 2005-06-01 15:43:35 -0500
+ Wed Jun 01, 2005 Michael Tindal (<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">mtindal at paradoxpoint.com</A>) -0500
+ M Documentation/DESIGN
+   * Updated the design to reflect the new operator (##) and precedence rules.
+ M NModule.Dependency.Parser/nmodule-dep.g
+   * Updated the parser to move opt (??) and loaded (##) to top-level.
+ M svkchangelog
+   * Copied the working version from dnsh.
+ A AUTHORS
+   * New file used to list the maintainers of the project.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:33
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:41
+
+Added: trunk/AUTHORS
+===================================================================
+--- trunk/AUTHORS	2005-05-21 00:34:15 UTC (rev 7)
++++ trunk/AUTHORS	2005-06-01 20:43:51 UTC (rev 8)
+@@ -0,0 +1,2 @@
++Michael Tindal (<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>)
++Elfyn McBratley (<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">beu at gentoo.org</A>)
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-05-21 00:34:15 UTC (rev 7)
++++ trunk/ChangeLog	2005-06-01 20:43:51 UTC (rev 8)
+@@ -1,3 +1,13 @@
++Wed Jun 01, 2005 Michael Tindal (<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">mtindal at paradoxpoint.com</A>) -0500
++M   Documentation/DESIGN
++  * Updated the design to reflect the new operator (##) and precedence rules.
++M   NModule.Dependency.Parser/nmodule-dep.g
++  * Updated the parser to move opt (??) and loaded (##) to top-level.
++M   svkchangelog
++  * Copied the working version from dnsh.
++A   AUTHORS
++  * New file used to list the maintainers of the project.
++
+ Fri May 20, 2005 Michael Tindal (<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">mtindal at paradoxpoint.com</A>) -0500
+ M   COPYING
+   * Changed Ximian references to my name.
+
+Modified: trunk/Documentation/DESIGN
+===================================================================
+--- trunk/Documentation/DESIGN	2005-05-21 00:34:15 UTC (rev 7)
++++ trunk/Documentation/DESIGN	2005-06-01 20:43:51 UTC (rev 8)
+@@ -29,7 +29,7 @@
+   plugin loading code for dependency resolution and proper initialization of interfaces:
+ 
+   Assembly-Level Attributes:
+-
++  
+   AssemblyTitle:  The name of the assembly as referenced by depencies.
+   AssemblyVersion:  Version of the assembly.
+     -&gt; AssemblyVersion is actually determined by the compiler, so it can be left as x.x.* or x.x.x.* or x.x.x.x depending on your preference.
+@@ -50,23 +50,22 @@
+           &gt;=:  GREATER THAN EQUAL operator
+           &gt;&gt;:  GREATER THAN operator
+           ??:  OPTIONAL operator
++          ##:  LOADED operator
+ 
+        Example:
+           Elfblade.Core.Net.Xcp
+-          (&amp;&amp; (&gt;&gt; Elfblade.Core.Net 2.0) (!= Elfblade.Core 1.0) (!! (&lt;= Elfblade.Core.Net.Extensions 2.0)) (?? Elfblade.Core.Net.Extensions))
++          (&amp;&amp; (&gt;&gt; Elfblade.Core.Net 2.0) (!= Elfblade.Core 1.0) (!! (&lt;= Elfblade.Core.Net.Extensions 2.0)) (?? (## Elfblade.Core.Net.Extensions)))
+   
+     -&gt; While this might look strange at first, its very easy to parse.  For example, I could turn the following into the token tree:
+-          NEST AND 
+-            NEST GT &quot;Elfblade.Core.net&quot; VER &quot;2.0&quot; END 
+-            NEST NEQ &quot;Elfblade.Core&quot; VER &quot;1.0&quot; END
+-            NEST NOT
+-              NEST LTEQ &quot;Elfblade.Core.Net.Extensions&quot; VER &quot;2.0&quot; END
+-            END
+-            NEST OPT &quot;Elfblade.Core.Net.Extensions&quot; END
+-          END
+-
+-    -&gt; Dependency operator precendence will be determined later.
+-
++    -&gt; Top-Level Operators
++       &amp;&amp; || ^^ !! ??
++       
++    -&gt; First-level Operators
++       == != &lt;= &lt;&lt; &gt;= &gt;&gt; ##
++       
++    Top-level operators must contain one or more first-level operators.  First-level operators contain a module name and an optional version.  See nmodule-dep.g in the
++    NModule.Dependency.Parser project/subdirectory for more detail.
++    
+   ModuleRoles:  A comma seperated list of the roles this module will provide services for.  An example might be:
+     ModuleRoles(&quot;IServer,IConnection,ISocket,IPacketHandler&quot;) for Elfblade.Core.Net.Xcp
+     When the module loader sees this, it goes over each role.  It searches for a module controller which can handle
+
+Modified: trunk/NModule.Dependency.Parser/nmodule-dep.g
+===================================================================
+--- trunk/NModule.Dependency.Parser/nmodule-dep.g	2005-05-21 00:34:15 UTC (rev 7)
++++ trunk/NModule.Dependency.Parser/nmodule-dep.g	2005-06-01 20:43:51 UTC (rev 8)
+@@ -26,6 +26,11 @@
+ 	
+ iexpr: CLASS ( VER )?;
+ 
++{	
++	public class DepNode
++	{
++		public enum DepOp { NOT, AND, OR, XOR, OPT, EQ, NEQ, LTE, LT, GTE, GT, LD };
++		
+ class DepLexer extends Lexer;
+ 
+ options
+
+Modified: trunk/svkchangelog
+===================================================================
+--- trunk/svkchangelog	2005-05-21 00:34:15 UTC (rev 7)
++++ trunk/svkchangelog	2005-06-01 20:43:51 UTC (rev 8)
+@@ -4,7 +4,7 @@
+ 
+ echo &quot;$(date &quot;+%a %b %d, %Y&quot;) $SVKCNAME ($SVKEMAIL) $(date &quot;+%z&quot;)&quot; &gt; ChangeLog
+ 
+-svk status | sed -e 's@\?.*@@g' -e '<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">s at .</A>*ChangeLog.*@@' '/^$/d' &gt;&gt; ChangeLog
++svk status | sed -e 's@\?.*@@g' -e '<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">s at .</A>*ChangeLog.*@@' -e '/^$/d' &gt;&gt; ChangeLog
+ 
+ echo &quot;&quot; &gt;&gt; ChangeLog
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000001.html">[nmodule-commits] r9 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

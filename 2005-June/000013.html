@@ -1,0 +1,2369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r28 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r28%20-%20in%20trunk%3A%20.%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506270923.j5R9NlTS014685%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r28 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r28%20-%20in%20trunk%3A%20.%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506270923.j5R9NlTS014685%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r28 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Mon Jun 27 11:23:47 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[nmodule-commits] r27 - in trunk: . src/NModule.Core.Loader
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[nmodule-commits] r29 - in trunk: . api-docs api-docs/en api-docs/en/NModule.Core api-docs/en/NModule.Core.Module api-docs/en/NModule.Dependency.Core api-docs/en/NModule.Dependency.Resolver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-27 11:23:34 +0200 (Mon, 27 Jun 2005)
+New Revision: 28
+
+Modified:
+   trunk/
+   trunk/Buildfile
+   trunk/Buildfile.config
+   trunk/ChangeLog
+   trunk/misc/bash-copy.hdr
+   trunk/misc/cs-copy.hdr
+   trunk/misc/svkchangelog
+   trunk/misc/svkcommit
+   trunk/misc/xml-copy.hdr
+   trunk/src/Buildfile
+   trunk/src/NModule.Core.Loader/AssemblyInfo.cs
+   trunk/src/NModule.Core.Loader/CircularDependencyException.cs
+   trunk/src/NModule.Core.Loader/DepResolver.cs
+   trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs
+   trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleImageException.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+   trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs
+   trunk/src/NModule.Core.Module/AssemblyInfo.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Core.Module/ModuleInfoException.cs
+   trunk/src/NModule.Core.Module/ModuleRole.cs
+   trunk/src/NModule.Core/AssemblyInfo.cs
+   trunk/src/NModule.Core/IModule.cs
+   trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+   trunk/src/NModule.Core/ModuleRoleAttribute.cs
+   trunk/src/NModule.Dependency.Core/AssemblyInfo.cs
+   trunk/src/NModule.Dependency.Core/DepConstraint.cs
+   trunk/src/NModule.Dependency.Core/DepNode.cs
+   trunk/src/NModule.Dependency.Core/DepOps.cs
+   trunk/src/NModule.Dependency.Core/DepVersion.cs
+   trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs
+   trunk/src/NModule.Dependency.Parser/DepLexer.cs
+   trunk/src/NModule.Dependency.Parser/DepParser.cs
+   trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs
+   trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r126 at dreamshadow</A>:  urilith | 2005-06-27 04:22:28 -0500
+ 2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * Buildfile: Copyright.
+   * Buildfile.config: Copyright.
+   * misc/bash-copy.hdr: Copyright.
+   * misc/cs-copy.hdr: Copyright.
+   * misc/svkchangelog: Copyright.
+   * misc/svkcommit: Copyright.
+   * misc/xml-copy.hdr: Copyright.
+   * src/Buildfile: Copyright.
+   * src/NModule.Core/AssemblyInfo.cs: Copyright.
+   * src/NModule.Core/IModule.cs: Copyright.
+   * src/NModule.Core/ModuleDependencyAttribute.cs: Copyright.
+   * src/NModule.Core/ModuleRoleAttribute.cs: Copyright.
+   * src/NModule.Core.Loader/AssemblyInfo.cs: Copyright.
+   * src/NModule.Core.Loader/CircularDependencyException.cs: Copyright.
+   * src/NModule.Core.Loader/DepResolver.cs: Copyright.
+   * src/NModule.Core.Loader/DomainStillReferencedException.cs: Copyright.
+   * src/NModule.Core.Loader/InvalidModuleException.cs: Copyright.
+   * src/NModule.Core.Loader/ModuleController.cs: Copyright.
+   * src/NModule.Core.Loader/ModuleImageException.cs: Copyright.
+   * src/NModule.Core.Loader/ModuleLoader.cs: Copyright.
+   * src/NModule.Core.Loader/ModuleNotFoundException.cs: Copyright.
+   * src/NModule.Core.Loader/UnresolvedDependencyException.cs: Copyright.
+   * src/NModule.Core.Module/AssemblyInfo.cs: Copyright.
+   * src/NModule.Core.Module/ModuleInfo.cs: Copyright.
+   * src/NModule.Core.Module/ModuleInfoException.cs: Copyright.
+   * src/NModule.Core.Module/ModuleRole.cs: Copyright.
+   * src/NModule.Dependency.Core/AssemblyInfo.cs: Copyright.
+   * src/NModule.Dependency.Core/DepConstraint.cs: Copyright.
+   * src/NModule.Dependency.Core/DepNode.cs: Copyright.
+   * src/NModule.Dependency.Core/DepOps.cs: Copyright.
+   * src/NModule.Dependency.Core/DepVersion.cs: Copyright.
+   * src/NModule.Dependency.Parser/AssemblyInfo.cs: Copyright.
+   * src/NModule.Dependency.Parser/DepLexer.cs: Copyright.
+   * src/NModule.Dependency.Parser/DepParser.cs: Copyright.
+   * src/NModule.Dependency.Parser/DepParserTokenTypes.cs: Copyright.
+   * src/NModule.Dependency.Parser/nmodule-dep.g: Copyright.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:124
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:126
+
+Modified: trunk/Buildfile
+===================================================================
+--- trunk/Buildfile	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/Buildfile	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,3 +1,32 @@
++#
++# Buildfile
++#
++# Author:
++#     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
++
+ using [ Core
+ 	Core.Clr
+ 	Core.Install
+@@ -11,24 +40,8 @@
+ 	name = nmodule
+ 	version = 0.1.0.0
+ 
+-	# This is a 'compatibility code'; a standard piece
+-	# of text that should be munged into names
+-	# of installed files if you want to be able
+-	# to do parallel installs. For instance, header files
+-	# should be installed into ${includedir}/${name}-${compat-code}.
+-	# More to the point, there should be infrastructure
+-	# to make this easy. More useful is /config/env/compat_name,
+-	# which is the string &quot;${name}-${compat-code}&quot;. For instance,
+-	# our assemblies are installed with a Mono gacutil 'package'
+-	# of compat_name. Anyway, typically this should be the upper
+-	# two pieces of the version number, but you can choose
+-	# something else if you want.
+-
+ 	compat-code = 0.1
+ 
+-	# Versioned assembly references pulled
+-	# from the GAC. No more aclocal hell!
+-
+ 	ref [ 
+ 		Languages.CSharp = 0.0.4.0
+ 		Tools.Jay = 0.0.4.0
+@@ -38,24 +51,12 @@
+ 	]
+ ]
+ 
+-# Load a separate file of configuration options
+-# in a virtual prefix
+-
+ load Buildfile.config inside config/nmodule
+ 
+-# There are also Buildfiles in these
+-# subdirectories.
+-
+ subdirs [
+ 	src
+ ]
+ 
+-# Back to regular compiles. Monkeywrench is the on-disk implementation
+-# of mbuild logic: it has the parser for this file, code to cache results
+-# in files, etc.
+- 
+-# for now, this is how we do our version of EXTRA_DIST
+-
+ TODO = TextSource[] 
+ 	with [ install = /config/nmodule/doc_installer ]
+ README = TextSource[] 
+
+Modified: trunk/Buildfile.config
+===================================================================
+--- trunk/Buildfile.config	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/Buildfile.config	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,3 +1,32 @@
++#
++# Buildfile
++#
++# Author:
++#     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
++
+ using [ 
+ 	Core
+ 	Core.Config 
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/ChangeLog	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,3 +1,42 @@
++2005-06-27 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* Buildfile: Copyright.
++	* Buildfile.config: Copyright.
++	* misc/bash-copy.hdr: Copyright.
++	* misc/cs-copy.hdr: Copyright.
++	* misc/svkchangelog: Copyright.
++	* misc/svkcommit: Copyright.
++	* misc/xml-copy.hdr: Copyright.
++	* src/Buildfile: Copyright.
++	* src/NModule.Core/AssemblyInfo.cs: Copyright.
++	* src/NModule.Core/IModule.cs: Copyright.
++	* src/NModule.Core/ModuleDependencyAttribute.cs: Copyright.
++	* src/NModule.Core/ModuleRoleAttribute.cs: Copyright.
++	* src/NModule.Core.Loader/AssemblyInfo.cs: Copyright.
++	* src/NModule.Core.Loader/CircularDependencyException.cs: Copyright.
++	* src/NModule.Core.Loader/DepResolver.cs: Copyright.
++	* src/NModule.Core.Loader/DomainStillReferencedException.cs: Copyright.
++	* src/NModule.Core.Loader/InvalidModuleException.cs: Copyright.
++	* src/NModule.Core.Loader/ModuleController.cs: Copyright.
++	* src/NModule.Core.Loader/ModuleImageException.cs: Copyright.
++	* src/NModule.Core.Loader/ModuleLoader.cs: Copyright.
++	* src/NModule.Core.Loader/ModuleNotFoundException.cs: Copyright.
++	* src/NModule.Core.Loader/UnresolvedDependencyException.cs: Copyright.
++	* src/NModule.Core.Module/AssemblyInfo.cs: Copyright.
++	* src/NModule.Core.Module/ModuleInfo.cs: Copyright.
++	* src/NModule.Core.Module/ModuleInfoException.cs: Copyright.
++	* src/NModule.Core.Module/ModuleRole.cs: Copyright.
++	* src/NModule.Dependency.Core/AssemblyInfo.cs: Copyright.
++	* src/NModule.Dependency.Core/DepConstraint.cs: Copyright.
++	* src/NModule.Dependency.Core/DepNode.cs: Copyright.
++	* src/NModule.Dependency.Core/DepOps.cs: Copyright.
++	* src/NModule.Dependency.Core/DepVersion.cs: Copyright.
++	* src/NModule.Dependency.Parser/AssemblyInfo.cs: Copyright.
++	* src/NModule.Dependency.Parser/DepLexer.cs: Copyright.
++	* src/NModule.Dependency.Parser/DepParser.cs: Copyright.
++	* src/NModule.Dependency.Parser/DepParserTokenTypes.cs: Copyright.
++	* src/NModule.Dependency.Parser/nmodule-dep.g: Copyright.
++
+ 2005-06-26 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+ 	* TODO: Added.
+
+Modified: trunk/misc/bash-copy.hdr
+===================================================================
+--- trunk/misc/bash-copy.hdr	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/misc/bash-copy.hdr	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,24 +1,29 @@
+-##########################################################################
+-# Copyright (c) 2005 Michael Tindal and the individuals listed           #
+-# on the ChangeLog entries.                                              #
+-#                                                                        #
+-# Permission is hereby granted, free of charge, to any person obtaining  #
+-# a copy of this software and associated documentation files (the        #
+-# &quot;Software&quot;), to deal in the Software without restriction, including    #
+-# without limitation the rights to use, copy, modify, merge, publish,    #
+-# distribute, sublicense, and/or sell copies of the Software, and to     #
+-# permit persons to whom the Software is furnished to do so, subject to  #
+-# the following conditions:                                              #
+-#                                                                        #
+-# The above copyright notice and this permission notice shall be         #
+-# included in all copies or substantial portions of the Software.        #
+-#                                                                        #
+-# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        #
+-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     #
+-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  #
+-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE #
+-# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION #
+-# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  #
+-# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        #
+-##########################################################################
++#
++# filename.cs
++#
++# Author:
++#     Joe Bloe &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">jbloe at email.com</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
+ 
+
+Modified: trunk/misc/cs-copy.hdr
+===================================================================
+--- trunk/misc/cs-copy.hdr	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/misc/cs-copy.hdr	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,24 +1,28 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions:                                              *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
+-
++//
++// filename.cs
++//
++// Author:
++//     Joe Bloe &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">jbloe at email.com</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+\ No newline at end of file
+
+Modified: trunk/misc/svkchangelog
+===================================================================
+--- trunk/misc/svkchangelog	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/misc/svkchangelog	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,6 +1,33 @@
+ #!/bin/bash
++# svkchangelog
++#
++# Author:
++#     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
+ 
+-mv ChangeLog .ChangeLog.sch
++mv ChangeLog .ChangeLog.tmp
+ 
+ echo &quot;$(date &quot;+%Y-%m-%d&quot;) $SVKCNAME &lt;$SVKEMAIL&gt;&quot; &gt; ChangeLog
+ echo &gt;&gt; ChangeLog
+@@ -13,8 +40,8 @@
+ 
+ echo &quot;&quot; &gt;&gt; ChangeLog
+ 
+-cat .ChangeLog.sch &gt;&gt; ChangeLog
++cat .ChangeLog.tmp &gt;&gt; ChangeLog
+ 
+-rm -f .ChangeLog.sch .tmp-list
++rm -f .ChangeLog.tmp .tmp-list
+ 
+ 
+
+Modified: trunk/misc/svkcommit
+===================================================================
+--- trunk/misc/svkcommit	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/misc/svkcommit	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,7 +1,34 @@
+ #!/bin/bash
++#
++# svkcommit
++#
++# Author:
++#     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
+ 
+ n=0
+-instar=0
+ 
+ while read -a target; do
+         if [ -z &quot;${target}&quot; -a $n -gt 1 ]; then
+
+Modified: trunk/misc/xml-copy.hdr
+===================================================================
+--- trunk/misc/xml-copy.hdr	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/misc/xml-copy.hdr	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,24 +1,28 @@
+ &lt;!--
+- Copyright (c) 2005 Michael Tindal and the individuals listed
+- on the ChangeLog entries.
++filename.cs
+ 
+- Permission is hereby granted, free of charge, to any person obtaining
+- a copy of this software and associated documentation files (the
+- &quot;Software&quot;), to deal in the Software without restriction, including
+- without limitation the rights to use, copy, modify, merge, publish,
+- distribute, sublicense, and/or sell copies of the Software, and to
+- permit persons to whom the Software is furnished to do so, subject to
+- the following conditions:
+- 
+- The above copyright notice and this permission notice shall be
+- included in all copies or substantial portions of the Software.
+- 
+- THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+- NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+- LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+- OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+- WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+---&gt;
++Author:
++    Joe Bloe &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">jbloe at email.com</A>&gt;
+ 
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
+\ No newline at end of file
+
+Modified: trunk/src/Buildfile
+===================================================================
+--- trunk/src/Buildfile	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/Buildfile	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,3 +1,32 @@
++#
++# Buildfile
++#
++# Author:
++#     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++#
++# Copyright (C) 2005 Michael Tindal and the individuals listed on
++# the ChangeLog entries.
++#
++# Permission is hereby granted, free of charge, to any person obtaining
++# a copy of this software and associated documentation files (the
++# &quot;Software&quot;), to deal in the Software without restriction, including
++# without limitation the rights to use, copy, modify, merge, publish,
++# distribute, sublicense, and/or sell copies of the Software, and to
++# permit persons to whom the Software is furnished to do so, subject to
++# the following conditions:
++# 
++# The above copyright notice and this permission notice shall be
++# included in all copies or substantial portions of the Software.
++# 
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++#
++
+ using [ Core
+         Core.Clr
+         Core.Install
+@@ -2,3 +31,2 @@
+         Languages.CSharp
+-        Tools.Bundlegen
+ ]
+@@ -28,19 +56,6 @@
+ 	]
+ ]
+ 
+-# Load a response file to get the list of sources
+-# Use a custom installer that installs the DLL into
+-# the GAC, not just libdir. Also use a set of compiler
+-# options defined in Buildfile.config
+-
+-# Now we declare &quot;bundles&quot;, sets of rules used by mbuild. They
+-# are generated with a special tool called mb-bundlegen.exe.
+-# Bundlegen makes it so you don't need to worry about writing a 
+-# lot of boilerplate code to create new build rules.
+-
+-# Now, declare all the bundles. Again, install them into
+-# the GAC, not into libdir
+-
+ NModule.Core.dll = [
+ 	@NModule.Core.dll.sources
+ 	nmodule.snk
+
+Modified: trunk/src/NModule.Core/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core/AssemblyInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core/AssemblyInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,3 +1,32 @@
++//
++// AssemblyInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
+ using System.Reflection;
+ using System.Runtime.CompilerServices;
+ 
+@@ -7,12 +36,12 @@
+ // change them to the information which is associated with the assembly
+ // you compile.
+ 
+-[assembly: AssemblyTitle(&quot;&quot;)]
+-[assembly: AssemblyDescription(&quot;&quot;)]
++[assembly: AssemblyTitle(&quot;NModule.Core&quot;)]
++[assembly: AssemblyDescription(&quot;Basic Core Facilities for NModule.&quot;)]
+ [assembly: AssemblyConfiguration(&quot;&quot;)]
+ [assembly: AssemblyCompany(&quot;&quot;)]
+-[assembly: AssemblyProduct(&quot;&quot;)]
+-[assembly: AssemblyCopyright(&quot;&quot;)]
++[assembly: AssemblyProduct(&quot;NModule&quot;)]
++[assembly: AssemblyCopyright(&quot;Copyright (C) 2005 Michael Tindal and Individuals listed on the ChangeLog entries.&quot;)]
+ [assembly: AssemblyTrademark(&quot;&quot;)]
+ [assembly: AssemblyCulture(&quot;&quot;)]
+ 
+
+Modified: trunk/src/NModule.Core/IModule.cs
+===================================================================
+--- trunk/src/NModule.Core/IModule.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core/IModule.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// IModule.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using System;
+ 
+
+Modified: trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,32 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleDependencyAttribute.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
+  
+ namespace NModule.Core {
+ 	using System;
+
+Modified: trunk/src/NModule.Core/ModuleRoleAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,32 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleRoleAttribute.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
+  
+ namespace NModule.Core {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/AssemblyInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/AssemblyInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// AssemblyInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System.Reflection;
+ using System.Runtime.CompilerServices;
+
+Modified: trunk/src/NModule.Core.Loader/CircularDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/CircularDependencyException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/CircularDependencyException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// CircularDependencyException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Dependency.Resolver {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DepResolver.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/DepResolver.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DepResolver.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ namespace NModule.Dependency.Resolver {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/DomainStillReferencedException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DomainStillReferencedException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Core.Module {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// InvalidModuleException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Core.Loader {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleController.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using System;
+ using System.Collections;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleImageException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleImageException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Core.Loader {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleLoader.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using System;
+ using System.Collections;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleNotFoundException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Core.Loader {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Loader/UnresolvedDependencyException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// UnresolvedDependencyException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Dependency.Resolver {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Module/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/AssemblyInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Module/AssemblyInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// AssemblyInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System.Reflection;
+ using System.Runtime.CompilerServices;
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ namespace NModule.Core.Module {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfoException.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfoException.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Module/ModuleInfoException.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleInfoException.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ namespace NModule.Core.Module {
+ 	using System;
+
+Modified: trunk/src/NModule.Core.Module/ModuleRole.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ModuleRole.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using System;
+ using System.Collections;
+
+Modified: trunk/src/NModule.Dependency.Core/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/AssemblyInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Core/AssemblyInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// AssemblyInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System.Reflection;
+ using System.Runtime.CompilerServices;
+
+Modified: trunk/src/NModule.Dependency.Core/DepConstraint.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepConstraint.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Core/DepConstraint.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DepConstraint.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System;
+ using System.Collections;
+
+Modified: trunk/src/NModule.Dependency.Core/DepNode.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepNode.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Core/DepNode.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DepNode.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System;
+ using System.Collections;
+
+Modified: trunk/src/NModule.Dependency.Core/DepOps.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepOps.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Core/DepOps.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DepOps.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ namespace NModule.Dependency.Core {
+ 	public enum DepOps { Not, And, Or, Xor, Opt, Equal, NotEqual, LessThanEqual, LessThan, GreaterThanEqual, GreaterThan, Loaded };
+
+Modified: trunk/src/NModule.Dependency.Core/DepVersion.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// DepVersion.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ namespace NModule.Dependency.Core {
+ 	using System;
+
+Modified: trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,26 +1,31 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// AssemblyInfo.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+ 
+ using System.Reflection;
+ using System.Runtime.CompilerServices;
+
+Modified: trunk/src/NModule.Dependency.Parser/DepLexer.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepLexer.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Parser/DepLexer.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,28 +1,33 @@
+ // $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepLexer.cs&quot;$
+ 
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ANTLR Generated Files.
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using NModule.Dependency.Core;
+ 
+
+Modified: trunk/src/NModule.Dependency.Parser/DepParser.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepParser.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Parser/DepParser.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,28 +1,33 @@
+ // $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
+ 
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ANTLR Generated Files.
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using NModule.Dependency.Core;
+ 
+
+Modified: trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,28 +1,33 @@
+ // $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
+ 
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ANTLR Generated Files.
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using NModule.Dependency.Core;
+ 
+
+Modified: trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-06-27 01:50:22 UTC (rev 27)
++++ trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-06-27 09:23:34 UTC (rev 28)
+@@ -1,28 +1,62 @@
++//
++// nmodule-dep.g
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
+ header
+ {
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
++//
++// ANTLR Generated Files.
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
+  
+ using NModule.Dependency.Core;
+ }
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[nmodule-commits] r27 - in trunk: . src/NModule.Core.Loader
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[nmodule-commits] r29 - in trunk: . api-docs api-docs/en api-docs/en/NModule.Core api-docs/en/NModule.Core.Module api-docs/en/NModule.Dependency.Core api-docs/en/NModule.Dependency.Resolver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,1305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r18 - in trunk: . Documentation src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r18%20-%20in%20trunk%3A%20.%20Documentation%20src%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506230148.j5N1mm3o015585%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000002.html">
+   <LINK REL="Next"  HREF="000004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r18 - in trunk: . Documentation src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r18%20-%20in%20trunk%3A%20.%20Documentation%20src%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Parser&In-Reply-To=%3C200506230148.j5N1mm3o015585%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r18 - in trunk: . Documentation src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Parser">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Thu Jun 23 03:48:48 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000002.html">[nmodule-commits] r10 - in trunk: . NModule.Dependency.Parser
+</A></li>
+        <LI>Next message: <A HREF="000004.html">[nmodule-commits] r19 - in trunk: . src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-23 03:48:44 +0200 (Thu, 23 Jun 2005)
+New Revision: 18
+
+Added:
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Loader/ModuleRole.cs
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.pidb
+   trunk/src/NModule.Core.Module/
+   trunk/src/NModule.Core.Module/AssemblyInfo.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Core.Module/MyClass.cs
+   trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+   trunk/src/NModule.Core.Module/NModule.Core.Module.mds
+   trunk/src/NModule.Core.Module/NModule.Core.Module.pidb
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/Documentation/DESIGN
+   trunk/nmodule.mds
+   trunk/src/NModule.Core.Loader/AssemblyInfo.cs
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+   trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs
+   trunk/src/NModule.Dependency.Parser/DepConstraint.cs
+   trunk/src/NModule.Dependency.Parser/DepNode.cs
+   trunk/src/NModule.Dependency.Parser/DepOps.cs
+   trunk/src/NModule.Dependency.Parser/DepVersion.cs
+   trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp
+   trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r108 at dreamshadow</A>:  urilith | 2005-06-21 03:22:40 -0500
+ 2005-06-21 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * Documentation/DESIGN: Started redoing it, its not even remotely complete, but should give a better overview of my plans.
+   * nmodule.mds: Updated.
+   * src/NModule.Core.Loader/AssemblyInfo.cs: Updated.
+   * src/NModule.Core.Loader/NModule.Core.Loader.mdp: Updated.
+   * src/NModule.Core.Loader/ModuleController.cs: The new controller. bah. next commit I move the loading code from ModuleController to ModuleLoader.
+   * src/NModule.Core.Loader/ModuleLoader.cs: The loader.
+   * src/NModule.Core.Loader/ModuleRole.cs: Role descriptions.
+   * src/NModule.Core.Loader/NModule.Core.Loader.pidb:
+   * src/NModule.Dependency.Parser/AssemblyInfo.cs: Um, dunno.
+   * src/NModule.Dependency.Parser/DepConstraint.cs: Dunno.
+   * src/NModule.Dependency.Parser/DepNode.cs: Dunno.
+   * src/NModule.Dependency.Parser/DepOps.cs: Dunno.
+   * src/NModule.Dependency.Parser/DepVersion.cs: Dunno.
+   * src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp: Updated.
+   * src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb: Updated.
+   * src/NModule.Core.Module: New assembly.
+   * src/NModule.Core.Module/AssemblyInfo.cs: New assembly.
+   * src/NModule.Core.Module/ModuleInfo.cs: New assembly.
+   * src/NModule.Core.Module/MyClass.cs: New assembly.
+   * src/NModule.Core.Module/NModule.Core.Module.mdp: New assembly.
+   * src/NModule.Core.Module/NModule.Core.Module.mds: New assembly.
+   * src/NModule.Core.Module/NModule.Core.Module.pidb: New assembly.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:64
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:108
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/ChangeLog	2005-06-23 01:48:44 UTC (rev 18)
+@@ -1,3 +1,28 @@
++2005-06-21 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* Documentation/DESIGN: Started redoing it, its not even remotely complete, but should give a better overview of my plans.
++	* nmodule.mds: Updated.
++	* src/NModule.Core.Loader/AssemblyInfo.cs: Updated.
++	* src/NModule.Core.Loader/NModule.Core.Loader.mdp: Updated.
++	* src/NModule.Core.Loader/ModuleController.cs: The new controller.  bah.  next commit I move the loading code from ModuleController to ModuleLoader.
++	* src/NModule.Core.Loader/ModuleLoader.cs: The loader.
++	* src/NModule.Core.Loader/ModuleRole.cs: Role descriptions.
++	* src/NModule.Core.Loader/NModule.Core.Loader.pidb: 
++	* src/NModule.Dependency.Parser/AssemblyInfo.cs: Um, dunno.
++	* src/NModule.Dependency.Parser/DepConstraint.cs: Dunno.
++	* src/NModule.Dependency.Parser/DepNode.cs: Dunno.
++	* src/NModule.Dependency.Parser/DepOps.cs: Dunno.
++	* src/NModule.Dependency.Parser/DepVersion.cs: Dunno.
++	* src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp: Updated.
++	* src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb: Updated.
++	* src/NModule.Core.Module: New assembly.
++	* src/NModule.Core.Module/AssemblyInfo.cs: New assembly.
++	* src/NModule.Core.Module/ModuleInfo.cs: New assembly.
++	* src/NModule.Core.Module/MyClass.cs: New assembly.
++	* src/NModule.Core.Module/NModule.Core.Module.mdp: New assembly.
++	* src/NModule.Core.Module/NModule.Core.Module.mds: New assembly.
++	* src/NModule.Core.Module/NModule.Core.Module.pidb: New assembly.
++
+ 2005-06-10 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">mtindal at paradoxpoint.com</A>&gt;
+ 
+ 	* Documentation/DESIGN: Some design updates again.
+
+Modified: trunk/Documentation/DESIGN
+===================================================================
+--- trunk/Documentation/DESIGN	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/Documentation/DESIGN	2005-06-23 01:48:44 UTC (rev 18)
+@@ -1,77 +1,30 @@
+-/***************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed            *
+- * on the ChangeLog entries.                                               *
+- *                                                                         *
+- * Permission is hereby granted, free of charge, to any person obtaining   *
+- * a copy of this software and associated documentation files (the         *
+- * &quot;Software&quot;), to deal in the Software without restriction, including     *
+- * without limitation the rights to use, copy, modify, merge, publish,     *
+- * distribute, sublicense, and/or sell copies of the Software, and to      *
+- * permit persons to whom the Software is furnished to do so, subject to   *
+- * the following conditions:                                               *
+- *                                                                         *
+- * The above copyright notice and this permission notice shall be          *
+- * included in all copies or substantial portions of the Software.         *
+- *                                                                         *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,         *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF      *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                   *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE  *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION  *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION   *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.         *
+- ***************************************************************************/
++NModule is a high level plugin framework for the .NET framework.
+ 
+-Module Layout:
++The author (Michael Tindal) actively targets the mono framework, but it should
++run unmodified on the .NET framework as well.
+ 
++NModule takes plugin frameworks to a whole new level by providing interfaces and abstractions
++that make it suitable for any task.  NModule maintains several pieces of information about a &quot;module&quot;:
+ 
+-  Modules for the Dreamshadow Module Core will use the following attributes to advertise themselves to the
+-  plugin loading code for dependency resolution and proper initialization of interfaces:
+-
+-  Assembly-Level Attributes:
++  -&gt; The module info, including name, and version, plus dependency information.
++  -&gt; A set of &quot;roles&quot; the module provides (see below).
+   
+-  AssemblyTitle:  The name of the assembly as referenced by depencies.
+-  AssemblyVersion:  Version of the assembly.
+-    -&gt; AssemblyVersion is actually determined by the compiler, so it can be left as x.x.* or x.x.x.* or x.x.x.x depending on your preference.
+-       The Module Core only pays attention to the major and minor version numbers.
++NModule abstracts a lot of the plug-in API away from itself, instead, it defines a set of low-level interfaces
++for loading and managing plug-ins while allowing application writers the freedom to define their own set of APIs.
++What is unique about NModules approach to this is that even though NModule does not define the plug-in APIs, it
++can still interact with them!  This is done using NModule's role system.
+ 
+-  ModuleDependency:  A string stating module dependencies that must be resolved/loaded before this module can be loaded.
+-    -&gt; Dependency strings use the form (op (op dep) (op dep)) and can be nested indefinitely.  The following operators are
+-       allowed:
++When an application defines an interface to be used by plug-ins, that interface has a purpose.  For example, I might
++define an interface called IAction that represented an action, and IController that represented a controller.  Different
++modules could fulfill different roles, this is where the role facility comes into play.  The application registers
++a &quot;role&quot; with the NModule master controller, using the RegisterRole() method.  When a module is loaded, its typed are
++searched for the [ModuleRole()] attribute.  If this is found, it checks the role to see if it is registered, and if it is,
++calls the appropriate handler with the assembly and type information.
+ 
+-          &amp;&amp;:  AND operator
+-          ||:  OR operator
+-          ^^:  XOR operator
+-          !!:  NOT operator
+-          ==:  EQUAL operator
+-          !=:  NOT EQUAL operator
+-          &lt;=:  LESS THAN EQUAL operator
+-          &lt;&lt;:  LESS THAN operator
+-          &gt;=:  GREATER THAN EQUAL operator
+-          &gt;&gt;:  GREATER THAN operator
+-          ??:  OPTIONAL operator
+-          ##:  LOADED operator
++--&gt;&gt; Loading/Unloading Modules &lt;&lt;--
+ 
+-       Example:
+-          Elfblade.Core.Net.Xcp
+-          (&amp;&amp; (&gt;&gt; Elfblade.Core.Net 2.0) (!= Elfblade.Core 1.0) (!! (&lt;= Elfblade.Core.Net.Extensions 2.0)) (?? (## Elfblade.Core.Net.Extensions)))
+-  
+-    -&gt; While this might look strange at first, its very easy to parse.  For example, I could turn the following into the token tree:
+-    -&gt; Top-Level Operators
+-       &amp;&amp; || ^^ !! ??
+-       
+-    -&gt; First-level Operators
+-       == != &lt;= &lt;&lt; &gt;= &gt;&gt; ##
+-       
+-    Top-level operators must contain one or more first-level operators.  First-level operators contain a module name and an optional version.  See nmodule-dep.g in the
+-    NModule.Dependency.Parser project/subdirectory for more detail. Top-level operators can nest other top-level operators.
+-    
+-  ModuleRoles:  A comma seperated list of the roles this module will provide services for.  An example might be:
+-    ModuleRoles(&quot;IServer,IConnection,ISocket,IPacketHandler&quot;) for Elfblade.Core.Net.Xcp
+-    When the module loader sees this, it goes over each role.  It searches for a module controller which can handle
+-    the given role, finds the typename of the given module, then passes the Assembly of the loaded assembly and the typename
+-    to the module controller, along with the role it is providing.  It is then up to the module controller what to do with
+-    the given type.
+-
+-Applications which use this architecture will advertise their roles, with the interfaces that correspond to those roles, as well as a handler that can register the types
+-that implement the interfaces with the rest of the engine.
+\ No newline at end of file
++Basic reflection in .NET uses the Assembly.Load and Assembly.LoadFrom methods.  However, this has the drawback that
++the loaded assemblies cannot be unloaded.  NModule gets around this by wrapping each load into an AppDomain.  (It is
++possible to reuse appdomains, or to disable them completely if necessary).  When NModule loads a module, it checks
++its dependencies, and attempts to load the dependencies.  NModule supports the detection of circular and unresolved
++dependencies, and supports several operators.  (See:  Dependencies for more information).
+\ No newline at end of file
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/nmodule.mds	2005-06-23 01:48:44 UTC (rev 18)
+@@ -5,12 +5,14 @@
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;/Configuration&gt;
+     &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Parser&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;StartMode startupentry=&quot;Documentation&quot; single=&quot;True&quot;&gt;
+@@ -18,10 +20,12 @@
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Parser&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Module&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+     &lt;Entry filename=&quot;./Documentation/Documentation.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./src/NModule.Core.Module/NModule.Core.Module.mdp&quot; /&gt;
+   &lt;/Entries&gt;
+ &lt;/Combine&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/AssemblyInfo.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Loader/AssemblyInfo.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -31,14 +31,14 @@
+ // change them to the information which is associated with the assembly
+ // you compile.
+ 
+-[assembly: AssemblyTitle(&quot;NModule.Core.Loader&quot;)]
+-[assembly: AssemblyDescription(&quot;NModule Loader Facilities (not including Dependency Resolution)&quot;)]
+-[assembly: AssemblyConfiguration(&quot;&quot;)]
+-[assembly: AssemblyCompany(&quot;&quot;)]
+-[assembly: AssemblyProduct(&quot;NModule&quot;)]
+-[assembly: AssemblyCopyright(&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)]
+-[assembly: AssemblyTrademark(&quot;&quot;)]
+-[assembly: AssemblyCulture(&quot;&quot;)]
++[assembly: AssemblyTitle (&quot;NModule.Core.Loader&quot;)]
++[assembly: AssemblyDescription (&quot;NModule Loader Facilities (not including Dependency Resolution)&quot;)]
++[assembly: AssemblyConfiguration (&quot;&quot;)]
++[assembly: AssemblyCompany (&quot;&quot;)]
++[assembly: AssemblyProduct (&quot;NModule&quot;)]
++[assembly: AssemblyCopyright (&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)]
++[assembly: AssemblyTrademark (&quot;&quot;)]
++[assembly: AssemblyCulture (&quot;&quot;)]
+ 
+ // The assembly version has following format :
+ //
+@@ -47,10 +47,14 @@
+ // You can specify all values by your own or you can build default build and revision
+ // numbers with the '*' character (the default):
+ 
+-[assembly: AssemblyVersion(&quot;0.1.*&quot;)]
++[assembly: AssemblyVersion (&quot;0.1.*&quot;)]
+ 
+ // The following attributes specify the key for the sign of your assembly. See the
+ // .NET Framework documentation for more information about signing.
+ // This is not required, if you don't want signing let these attributes like they're.
+-[assembly: AssemblyDelaySign(false)]
+-[assembly: AssemblyKeyFile(&quot;../../lib/keyfiles/nmodule.snk&quot;)]
++[assembly: AssemblyDelaySign (false)]
++#if RELEASE
++[assembly: AssemblyKeyFile (&quot;../../lib/keyfiles/nmodule.snk&quot;)]
++#else
++[assembly: AssemblyKeyFile (&quot;&quot;)]
++#endif
+
+Added: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,199 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++using System;
++using System.Collections;
++using System.IO;
++using System.Reflection;
++using C5;
++using NModule.Dependency.Resolver;
++
++namespace NModule.Core.Loader {
++	// This class is the heart and sole of the NModule architecture.
++	// It manages dependencies, keeps ref counts on appdomains,
++	// and so on.
++	public class ModuleController {
++		/***
++		 * We need to keep several bits of information about each module to ensure
++		 * that dependencies are resolved, and we're not unloaded needed appdomains.
++		 * 1)  We keep a map of assemblies and the roles theyve registered.  This is extra
++		 *     information since the handler is used.
++		 * 2)  We keep a map of assemblies belonging to each AppDomain.  If assemblies are
++		 *     loaded as group, then each AppDomain can contain more than one assembly.  This
++		 *     information isn't used if we do 1-to-1 mappings.
++		 * 3)  We keep a refcount on each appdomain.  Every time an appdomain (actually an assembly
++		 *     within that appdomain) is referenced by another module by a dependency or by using
++		 *     the IncRef call from the module, we increment the refcount.  Whenever the depending
++		 *     module is unloaded, or DecRef is called, we decrement the refcount.  The appdomain
++		 *     can only be unloaded when its refcount is 0.
++		 ***/
++
++		// AppDomain -&gt; assembly maps.
++		protected HashDictionary&lt;string, AppDomain&gt; _app_domain_map;
++
++		// Reference Counts
++		protected HashDictionary&lt;AppDomain,int&gt; _ref_counts;
++
++		// Module Search Path
++		protected ArrayList&lt;string&gt; _search_path;
++
++		// Recognized Roles
++		protected ArrayList&lt;ModuleRole&gt; _roles;
++		
++		// Dependency Resolver
++		protected DepResolver _resolver;
++		
++		public ModuleController () {
++			_app_domain_map = new HashDictionary&lt;AppDomain,ArrayList&lt;Assembly&gt;&gt; ();
++			_ref_counts = new HashDictionary&lt;AppDomain,int&gt; ();
++			_search_path = new ArrayList&lt;string&gt; ();
++			_roles = new ArrayList&lt;ModuleRole&gt; ();
++			_resolver = new DepResolver (this, _search_path);
++		}
++
++		// --&gt;&gt; Loading/Unloading &lt;&lt;--
++
++		protected string SearchForModule (string _name) {
++			foreach (string s in _search_path) {
++				if (Directory.Exists (s)) {
++					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
++						if (f.SubString (0, f.Length - 4) == _name) {
++							return s + &quot;/&quot; + f;
++						}
++					}
++				}
++			}
++			
++			return null;
++		}
++		
++		// Loads the content of a file to a byte array. 
++		protected byte[] LoadRawFile (string _filename) {
++			FileStream _fs = new FileStream (_filename, FileMode.Open);
++			byte[] _buffer = new byte [(int) _fs.Length];
++			fs.Read (_buffer, 0, _buffer.Length);
++			fs.Close ();
++   
++			return _buffer;
++		}
++		   
++		/*
++		 * We provide two method signatures for loading for convienence.  The first just takes the name of the module (minus the .dll extension),
++		 * and attempts to load it.  The second takes a list of parents and the name.  The first incidentally just calls the second with an empty
++		 * parents list.  The parents list is used for detecting circular dependencies.
++		 */
++		public void LoadModule (string _name) {
++			LoadModule (null, _name);
++		}
++		
++		public void LoadModule (ArrayList&lt;string&gt; _parents, string _name, bool checking=false) {
++			// Okay, this is tricky.  First, we have to load the module into a temp domain
++			// to retrieve its module info.  Then, we have to attempt to resolve the dependencies.
++			// This is going to be fun.  Heh.
++			
++			if (_app_domain_map.HasKey (_name))
++				return; // Already loaded, no need to load it again.
++				
++			if (_parents == null)
++				_parents = new ArrayList&lt;string&gt; ();
++				
++			// This is technically a parent of any depending module.
++			_parents.Add (_name);
++			
++			// Try to find the module on the search path.
++			string _filename = SearchForModule (_name);
++			
++			if (_filename == null)
++				throw new ModuleNotFoundException (string.Format (&quot;The module {0} was not found along the module search path.&quot;, _name));
++				
++			// Okay, well, now we know the module exists at least in the file (we hope its a proper dll, but we'll see :).  Now we
++			// need to create the temporary AppDomain and load it to get the info from it.
++			AppDomain _tempDomain = AppDomain.Create (&quot;_temp_&quot; + _name);
++			
++			byte[] _raw_bytes = LoadRawFile (_filename);
++			
++			// The throw here is mostly used from dep resolver calls, although it should also be caught by the immediate caller
++			// (i.e. the application).
++			try {
++				_tempDomain.Load (_raw_bytes);
++			} catch (BadImageFormatException e) {
++				throw ModuleImageException (e.Message);
++			}
++			
++			// Okay, now lets grab the module info from the assembly attributes.
++			Assembly _asm = _tempDomain.GetAssemblies ()[0];
++			
++			try {
++				ModuleInfo _info = new ModuleInfo (_asm);
++			} catch (ModuleInfoException e) {
++				throw InvalidModuleException (e.Message);
++			}
++			
++			// unload the temp domain since its unneeded now.
++			
++			_tempDomain.Unload ();
++			
++			// okay, now we've got the info, let's do some magic with the dependencies.
++			// this will recursively load all of the appropriate assemblies as per the parsed
++			// depedency tree.  It will take into account dependency operators, such as AND, OR
++			// OPT (optional).  Very intelligent stuff.  Of course, if there are no depends,
++			// this just simply returns.  This will of course continue updating the parents as needed
++			// since each time a new module is loaded, the resolver is recursively called until
++			// a module is found.  This is cool.  What this will do is call this method with
++			// checking=true, which will cause it to just return if the module suceeds.  This way
++			// we can ensure we don't load unneeded module Z that is a dependency of X which depends
++			// on Y, because if Z suceeds but Y fails, we don't want X, Y, or Z to fail.  This way,
++			// we can ensure the entire tree can be loaded first (this does take into account already
++			// loaded assemblies).
++			_resolver.ResolveCheck (_parents, _info);
++		
++			if (checking)
++				return;
++							
++			// okay, they're good, lets load the suckers.
++			_resolver.Resolve (_parents, _info);
++			
++			// alright, we've got them all loaded, they exist in the assembly map.
++			// now we create the *real* app domain.
++			AppDomain _domain = AppDomain.Create (_name);
++			
++			// let's load this assembly into the real app domain.
++			_domain.Load (_raw_bytes);
++			
++			// set up the map
++			_app_domain_map.Add (_name, _domain);
++			
++			// increment the reference count on the domain.
++			IncRef (_domain);
++			
++			// increment the reference count for all the dependencies recursively (i.e.
++			// if module A depends on B which depends on C, B gets inc ref'd once, while C
++			// gets inc ref'd twice).
++			_resolver.IncRefs (_info);
++			
++			// FIXME:  Add role handling here.
++		}
++	}
++}		
++		
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,56 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++using System;
++using System.Collections;
++using System.Reflection;
++
++namespace NModule.Core.Loader {
++	// This class is simply the loader class, it just creates a new AppDomain,
++	// and loads the appropriate assembly into it.  It can also load an assembly into
++	// an existing app-domain (for example, grouped dependencies).  See the configuration
++	// options for an example.
++	public class ModuleLoader {
++		public static AppDomain Load (string module_name) {
++			AppDomain _myDomain = AppDomain.CreateDomain (module_name);
++			
++			return Load (_myDomain, module_name);
++		}
++		
++		public static AppDomain Load (AppDomain domain, string module_name) {
++			try {
++				domain.Load (module_name);
++			} catch (Exception e) {
++				// Logger logger = GlobalSettings.Logger;
++				// LogID id = logger.WriteLogMessage (LogType.Error, &quot;Caught an exception trying to load {0}: &quot;, module_name);
++				// logger.WriteException (id, e.Message);
++				// logger.WriteStackTrace (id, e.Message);
++				// logger.CommitMessage (id);
++				throw e;
++			}
++			
++			return domain;
++		}
++	}
++}
+
+Added: trunk/src/NModule.Core.Loader/ModuleRole.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleRole.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Loader/ModuleRole.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,80 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++using System;
++using System.Collections;
++using System.Reflection;
++
++namespace NModule.Core.Loader {
++	public delegate ModuleRoleHandler (Assembly asm, Type basetype);
++	
++	// FIXME:  Document this class using NDoc tags.
++	/*
++	 * This class handles the roles used by the module loader.
++	 * It represents a role given its name, base type, and the
++	 * handler used to instantiate that role.  This role is opaque,
++	 * and could easily be used as a value type, but I feel this is
++	 * the best way to go to ensure future changes dont require semantic
++	 * changes to the engine.
++	 */
++	public class ModuleRole {
++		private Type _baseType;
++		private string _roleName;
++		private ModuleRoleHandler _handler;
++		
++		// Lets get this baby setup :)
++		public ModuleRole (Type basetype, string name, ModuleRoleHandler handler) {
++			_baseType = basetype;
++			_roleName = name;
++			_handler = handler;
++		}
++		
++		public InitiateRole (Assembly asm, Type type) {
++			handler (asm, type);
++		}
++		
++		// all properties are read-only for the moment except the handler (which could conceivably change as other modules are loaded which may take the load
++		// off the main engine)
++		public Type BaseType {
++			get {
++				return _baseType;
++			}
++		}
++		
++		public string RoleName {
++			get {
++				return _roleName;
++			}
++		}
++		
++		public ModuleRoleHandler Handler {
++			get {
++				return _handler;
++			}
++			set {
++				_handler = value;
++			}
++		}
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+===================================================================
+--- trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 01:48:44 UTC (rev 18)
+@@ -13,11 +13,16 @@
+       &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+-  &lt;References /&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Gac&quot; localcopy=&quot;True&quot; refto=&quot;Mono.C5, Version=0.5.1.1, Culture=neutral, PublicKeyToken=ba07f434b1c35cbd&quot; /&gt;
++  &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+   &lt;/DeploymentInformation&gt;
+   &lt;Contents&gt;
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleRole.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleLoader.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleController.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Loader/NModule.Core.Loader.pidb
+===================================================================
+(Binary files differ)
+
+
+Property changes on: trunk/src/NModule.Core.Loader/NModule.Core.Loader.pidb
+___________________________________________________________________
+Name: svn:mime-type
+   + font/ttf
+
+Added: trunk/src/NModule.Core.Module/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/AssemblyInfo.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Module/AssemblyInfo.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,60 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++
++using System.Reflection;
++using System.Runtime.CompilerServices;
++
++// Information about this assembly is defined by the following
++// attributes.
++//
++// change them to the information which is associated with the assembly
++// you compile.
++
++[assembly: AssemblyTitle (&quot;NModule.Core.Module&quot;)]
++[assembly: AssemblyDescription (&quot;NModule Module Representation Library&quot;)]
++[assembly: AssemblyConfiguration (&quot;&quot;)]
++[assembly: AssemblyCompany (&quot;&quot;)]
++[assembly: AssemblyProduct (&quot;NModule&quot;)]
++[assembly: AssemblyCopyright (&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)]
++[assembly: AssemblyTrademark (&quot;&quot;)]
++[assembly: AssemblyCulture (&quot;&quot;)]
++
++// The assembly version has following format :
++//
++// Major.Minor.Build.Revision
++//
++// You can specify all values by your own or you can build default build and revision
++// numbers with the '*' character (the default):
++
++[assembly: AssemblyVersion (&quot;0.1.*&quot;)]
++
++// The following attributes specify the key for the sign of your assembly. See the
++// .NET Framework documentation for more information about signing.
++// This is not required, if you don't want signing let these attributes like they're.
++[assembly: AssemblyDelaySign (false)]
++#if RELEASE
++[assembly: AssemblyKeyFile (&quot;../../lib/keyfiles/nmodule.snk&quot;)]
++#else
++[assembly: AssemblyKeyFile (&quot;&quot;)]
++#endif
+
+Added: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,52 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++using System;
++using System.Collections;
++using System.Reflection;
++using NModule.Dependency.Parser;
++
++namespace NModule.Core.Module {
++	public class Module {
++		protected struct ModuleInfo {
++			public string _name;
++			public DepVersion _version;
++			public Assembly _assembly;
++			public AppDomain _domain;
++			public DepNode _deptree;
++		}
++		
++		protected ModuleInfo _info;
++		
++		public Module (string name, Assembly asm, AppDomain domain, DepVersion version, DepNode deptree) {
++			_info = new ModuleInfo();
++			
++			_info._name = name;
++			_info._assembly = asm;
++			_info._domain = domain;
++			_info._version = version;
++			_info._deptree = deptree;
++		}
++		
++		
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Module/MyClass.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/MyClass.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Module/MyClass.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,7 @@
++// project created on 6/13/2005 at 1:08 AM
++using System;
++
++public class MyClass
++{
++
++}
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Module/MyClass.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+===================================================================
+--- trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,26 @@
++&lt;Project name=&quot;NModule.Core.Module&quot; fileversion=&quot;2.0&quot; language=&quot;C#&quot; ctype=&quot;DotNetProject&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Debug&quot; assembly=&quot;NModule.Core.Module&quot; /&gt;
++      &lt;Build debugmode=&quot;True&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Release&quot; assembly=&quot;NModule.Core.Module&quot; /&gt;
++      &lt;Build debugmode=&quot;False&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Parser&quot; /&gt;
++  &lt;/References&gt;
++  &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
++    &lt;excludeFiles /&gt;
++  &lt;/DeploymentInformation&gt;
++  &lt;Contents&gt;
++    &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++  &lt;/Contents&gt;
++&lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Module/NModule.Core.Module.mds
+===================================================================
+--- trunk/src/NModule.Core.Module/NModule.Core.Module.mds	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Core.Module/NModule.Core.Module.mds	2005-06-23 01:48:44 UTC (rev 18)
+@@ -0,0 +1,16 @@
++&lt;Combine name=&quot;NModule.Core.Module&quot; fileversion=&quot;2.0&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;StartMode startupentry=&quot;NModule.Core.Module&quot; single=&quot;True&quot;&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Module&quot; /&gt;
++  &lt;/StartMode&gt;
++  &lt;Entries&gt;
++    &lt;Entry filename=&quot;./NModule.Core.Module.mdp&quot; /&gt;
++  &lt;/Entries&gt;
++&lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Module/NModule.Core.Module.pidb
+===================================================================
+(Binary files differ)
+
+
+Property changes on: trunk/src/NModule.Core.Module/NModule.Core.Module.pidb
+___________________________________________________________________
+Name: svn:mime-type
+   + font/ttf
+
+Modified: trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/AssemblyInfo.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -31,14 +31,14 @@
+ // change them to the information which is associated with the assembly
+ // you compile.
+ 
+-[assembly: AssemblyTitle(&quot;NModule.Dependency.Parser&quot;)]
+-[assembly: AssemblyDescription(&quot;NModule Dependency String Parser/Dependency Tree Generator&quot;)]
+-[assembly: AssemblyConfiguration(&quot;&quot;)]
+-[assembly: AssemblyCompany(&quot;&quot;)]
+-[assembly: AssemblyProduct(&quot;NModule&quot;)]
+-[assembly: AssemblyCopyright(&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)]
+-[assembly: AssemblyTrademark(&quot;&quot;)]
+-[assembly: AssemblyCulture(&quot;&quot;)]
++[assembly: AssemblyTitle (&quot;NModule.Dependency.Parser&quot;)]
++[assembly: AssemblyDescription (&quot;NModule Dependency String Parser/Dependency Tree Generator&quot;)]
++[assembly: AssemblyConfiguration (&quot;&quot;)]
++[assembly: AssemblyCompany (&quot;&quot;)]
++[assembly: AssemblyProduct (&quot;NModule&quot;)]
++[assembly: AssemblyCopyright (&quot;Copyright (C) 2005 Michael Tindal and Contributors&quot;)]
++[assembly: AssemblyTrademark (&quot;&quot;)]
++[assembly: AssemblyCulture (&quot;&quot;)]
+ 
+ // The assembly version has following format :
+ //
+@@ -47,10 +47,14 @@
+ // You can specify all values by your own or you can build default build and revision
+ // numbers with the '*' character (the default):
+ 
+-[assembly: AssemblyVersion(&quot;0.1.*&quot;)]
++[assembly: AssemblyVersion (&quot;0.1.*&quot;)]
+ 
+ // The following attributes specify the key for the sign of your assembly. See the
+ // .NET Framework documentation for more information about signing.
+ // This is not required, if you don't want signing let these attributes like they're.
+-[assembly: AssemblyDelaySign(false)]
+-[assembly: AssemblyKeyFile(&quot;../../lib/keyfiles/nmodule.snk&quot;)]
++[assembly: AssemblyDelaySign (false)]
++#if RELEASE
++[assembly: AssemblyKeyFile (&quot;../../lib/keyfiles/nmodule.snk&quot;)]
++#else
++[assembly: AssemblyKeyFile (&quot;&quot;)]
++#endif
+
+Modified: trunk/src/NModule.Dependency.Parser/DepConstraint.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepConstraint.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/DepConstraint.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -25,64 +25,51 @@
+ using System;
+ using System.Collections;
+ 
+-namespace NModule.Dependency.Parser
+-{
+-	public class DepConstraint
+-	{
++namespace NModule.Dependency.Parser {
++	public class DepConstraint {
+ 		private DepVersion _version;
+ 		private string _name;
+ 
+-		public DepConstraint()
+-		{
++		public DepConstraint () {
+ 			_name = &quot;&quot;;
+ 			_version = null;
+ 		}
+ 
+-		public DepVersion Version
+-		{
+-			get
+-			{
++		public DepVersion Version {
++			get {
+ 				return _version;
+ 			}
+-			set
+-			{
++			set {
+ 				_version = value;
+ 			}
+ 		}
+ 
+-		public string Name
+-		{
+-			get
+-			{
++		public string Name {
++			get {
+ 				return _name;
+ 			}
+-			set
+-			{
++			set {
+ 				_name = value;
+ 			}
+ 		}
+ 
+-		public string VersionTmp
+-		{
+-			set
+-			{
++		public string VersionTmp {
++			set {
+ 				_version = VersionParse(value);
+ 			}
+ 		}
+ 
+-		protected DepVersion VersionParse(string v)
+-		{
++		protected DepVersion VersionParse (string v) {
+ 			// Here we go :)
+-			DepVersion ver = new DepVersion();
+-			string[] vparts = v.Split('.');
+-			ver.Major = Int32.Parse(vparts[0]);
+-			ver.Minor = Int32.Parse(vparts[1]);
++			DepVersion ver = new DepVersion ();
++			string[] vparts = v.Split ('.');
++			ver.Major = Int32.Parse (vparts[0]);
++			ver.Minor = Int32.Parse (vparts[1]);
+ 			if (vparts.Length &gt; 2)
+ 				ver.Build = Int32.Parse(vparts[2]);
+ 			if (vparts.Length &gt; 3)
+-				ver.Build = Int32.Parse(vparts[3]);
++				ver.Revision = Int32.Parse(vparts[3]);
+ 			return ver;
+ 		}
+ 	}
+ }
+-
+
+Modified: trunk/src/NModule.Dependency.Parser/DepNode.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepNode.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/DepNode.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -25,71 +25,55 @@
+ using System;
+ using System.Collections;
+ 
+-namespace NModule.Dependency.Parser
+-{
+-
+-	public class DepNode
+-	{
++namespace NModule.Dependency.Parser {
++	public class DepNode {
+ 		private DepConstraint _constraint;
+ 		private DepOps _op;
+ 		private DepNode _parent;
+ 		private ArrayList _children;
+ 
+-		public DepNode()
+-		{
++		public DepNode () {
+ 			_parent = null;
+-			_children = new ArrayList();
++			_children = new ArrayList ();
+ 		}
+ 
+-		public DepNode(DepNode parent)
+-		{
++		public DepNode (DepNode parent) {
+ 			_parent = parent;
+-			_children = new ArrayList();
++			_children = new ArrayList ();
+ 		}
+ 
+-		public DepNode Parent
+-		{
+-			get
+-			{
++		public DepNode Parent {
++			get {
+ 				return _parent;
+ 			}
+ 		}
+ 
+-		public ArrayList Children
+-		{
+-			get
+-			{
++		public ArrayList Children {
++			get {
+ 				return _children;
+ 			}
+ 		}
+ 
+-		public DepNode CreateNewChild()
+-		{
+-			DepNode child = new DepNode(this);
+-			_children.Add(child);
++		public DepNode CreateNewChild () {
++			DepNode child = new DepNode (this);
++			_children.Add (child);
+ 			return child;
+ 		}
+ 
+-		public DepOps DepOp
+-		{
+-			get
+-			{
++		public DepOps DepOp {
++			get {
+ 				return _op;
+ 			}
+-			set
+-			{
++			set {
+ 				_op = value;
+ 			}
+ 		}
+ 
+-		public DepConstraint Constraint
+-		{
+-			get
+-			{
++		public DepConstraint Constraint {
++			get {
+ 				return _constraint;
+ 			}
+-			set
+-			{
++			set {
+ 				_constraint = value;
+ 			}
+ 		}
+
+Modified: trunk/src/NModule.Dependency.Parser/DepOps.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepOps.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/DepOps.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -22,7 +22,6 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+  **************************************************************************/
+ 
+-namespace NModule.Dependency.Parser
+-{
++namespace NModule.Dependency.Parser {
+ 	public enum DepOps { Not, And, Or, Xor, Opt, Equal, NotEqual, LessThanEqual, LessThan, GreaterThanEqual, GreaterThan, Loaded };
+ }
+
+Modified: trunk/src/NModule.Dependency.Parser/DepVersion.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepVersion.cs	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/DepVersion.cs	2005-06-23 01:48:44 UTC (rev 18)
+@@ -22,18 +22,75 @@
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+  **************************************************************************/
+ 
+-namespace NModule.Dependency.Parser
+-{
+-	public class DepVersion
+-	{
+-		public DepVersion()
+-		{
+-			Major = Minor = Build = Patch = 0;
++namespace NModule.Dependency.Parser {
++	public class DepVersion {
++		private int _major;
++		private int _minor;
++		private int _build;
++		private int _revision;
++		
++		public DepVersion (int major, int minor, int build, int revision) {
++			_major = major;
++			_minor = minor;
++			_build = build;
++			_revision = revision;
+ 		}
+-
+-		public int Major;
+-		public int Minor;
+-		public int Build;
+-		public int Patch;
++		
++		public DepVersion (int major, int minor, int build) {
++			_major = major;
++			_minor = minor;
++			_build = build;
++			_revision = -1;
++		}
++		
++		public DepVersion (int major, int minor) {
++			_major = major;
++			_minor = minor;
++			_build = -1;
++			_revision = -1;
++		}
++		 
++		public DepVersion () {
++			_major = -1;
++			_minor = -1;
++			_build = -1;
++			_revision = -1;
++		}
++	
++		public int Major {
++			get {
++				return _major;
++			}
++			set {
++				_major = value;
++			}
++		}
++		
++		public int Minor {
++			get {
++				return _minor;
++			}
++			set {
++				_minor = value;
++			}
++		}
++		
++		public int Build {
++			get {
++				return _build;
++			}
++			set {
++				_build = value;
++			}
++		}
++		
++		public int Revision {
++			get {
++				return _revision;
++			}
++			set {
++				_revision = value;
++			}
++		}
+ 	}
+ }
+
+Modified: trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp	2005-06-10 20:54:32 UTC (rev 17)
++++ trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.mdp	2005-06-23 01:48:44 UTC (rev 18)
+@@ -13,7 +13,9 @@
+       &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+-  &lt;References /&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Assembly&quot; localcopy=&quot;True&quot; refto=&quot;../../../../usr/lib/antlr.runtime.dll&quot; /&gt;
++  &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+   &lt;/DeploymentInformation&gt;
+
+Modified: trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb
+===================================================================
+(Binary files differ)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000002.html">[nmodule-commits] r10 - in trunk: . NModule.Dependency.Parser
+</A></li>
+	<LI>Next message: <A HREF="000004.html">[nmodule-commits] r19 - in trunk: . src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

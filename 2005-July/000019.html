@@ -1,0 +1,3275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r34 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/antlr-runtime test test/NModule.Core.Test test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-dr
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r34%20-%20in%20trunk%3A%20.%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser%20src/antlr-runtime%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data/src%20test/NModule.Core.Test/data/src/nm-dr&In-Reply-To=%3C200507041741.j64HfHas008045%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r34 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/antlr-runtime test test/NModule.Core.Test test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-dr</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r34%20-%20in%20trunk%3A%20.%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser%20src/antlr-runtime%20test%20test/NModule.Core.Test%20test/NModule.Core.Test/data/src%20test/NModule.Core.Test/data/src/nm-dr&In-Reply-To=%3C200507041741.j64HfHas008045%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r34 - in trunk: . misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/antlr-runtime test test/NModule.Core.Test test/NModule.Core.Test/data/src test/NModule.Core.Test/data/src/nm-dr">urilith at berlios.de
+       </A><BR>
+    <I>Mon Jul  4 19:41:17 CEST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000020.html">[nmodule-commits] r35 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-07-04 19:41:09 +0200 (Mon, 04 Jul 2005)
+New Revision: 34
+
+Added:
+   trunk/NModule.build.include
+   trunk/RELEASE-NOTES-0.2
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.build
+   trunk/src/NModule.Core.Module/NModule.Core.Module.build
+   trunk/src/NModule.Core/NModule.Core.build
+   trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.build
+   trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.build
+   trunk/src/NModule.Src.build
+   trunk/src/antlr-runtime/antlr-runtime.build
+   trunk/test/NModule.Core.Test/NModuleTests.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/
+   trunk/test/NModule.Core.Test/data/src/nm-dr/.monkeywrench.log
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs
+   trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs
+   trunk/test/NModule.Test.build
+Removed:
+   trunk/test/NModule.Core.Test/nm-ld.cs
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/NModule.build
+   trunk/README
+   trunk/misc/svkchangelog
+   trunk/src/NModule.Core.Loader/DepResolver.cs
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Dependency.Core/DepOps.cs
+   trunk/src/NModule.Dependency.Core/DepVersion.cs
+   trunk/src/NModule.Dependency.Parser/DepLexer.cs
+   trunk/src/NModule.Dependency.Parser/DepParser.cs
+   trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs
+   trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.txt
+   trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+   trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r138 at dreamshadow</A>:  urilith | 2005-07-04 12:40:18 -0500
+ 2005-07-04 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * NModule.build: Actually wrote it.
+   * misc/svkchangelog: Ignore ! lines.
+   * src/NModule.Core/NModule.Core.build: NModule.Core build file.
+   * src/NModule.Core.Loader/DepResolver.cs: Lots of bug fixes.
+   * src/NModule.Core.Loader/ModuleController.cs: Lots of bug fixes.
+   * src/NModule.Core.Loader/ModuleLoader.cs: Lots of bug fixes.
+   * src/NModule.Core.Loader/NModule.Core.Loader.build: NModule.Core.Loader build file.
+   * src/NModule.Core.Module/ModuleInfo.cs: Bug fixes.
+   * src/NModule.Core.Module/NModule.Core.Module.build: NModule.Core.Module build file.
+   * src/NModule.Dependency.Core/DepOps.cs: Added the Null operator so OpResolve operators can know their parent operator. This is required for the optional operator.
+   * src/NModule.Dependency.Core/DepVersion.cs: Added the ToString method.
+   * src/NModule.Dependency.Core/NModule.Dependency.Core.build: NModule.Dependency.Core build file.
+   * src/NModule.Dependency.Parser/DepLexer.cs: Added '-' to the acceptable names for dependency IDs (not the first letter, but beyond that) so things like nm-dr-01b work.
+   * src/NModule.Dependency.Parser/DepParser.cs: Actually made &quot;&amp;&amp;&quot;, &quot;||&quot;, &quot;!!&quot;, &quot;??&quot;, and &quot;^^&quot; set the DepOp.
+   * src/NModule.Dependency.Parser/DepParserTokenTypes.cs: Updated ID_LETTER.
+   * src/NModule.Dependency.Parser/DepParserTokenTypes.txt: Updated ID_LETTER.
+   * src/NModule.Dependency.Parser/nmodule-dep.g: The above changes.
+   * src/NModule.Dependency.Parser/NModule.Dependency.Parser.build: NModule.Dependency.Parser.build.
+   * src/antlr-runtime/antlr-runtime.build: antlr-runtime build file.
+   * src/NModule.Src.build: NModule source build file.
+   * test/NModule.Core.Test/NModule.Core.Test.mdp: Updated the monkey develop file.
+   * test/NModule.Core.Test/data/src/nm-dr: New sources for dependency resolver tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs: DR tests.
+   * test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs: DR tests.
+   * test/NModule.Core.Test/NModuleTests.cs: Added the dependency resolver test suite.
+   * test/NModule.Core.Test/nm-ld.cs: Renamed to NModuleTests.cs
+   * test/NModule.Test.build: NModule.Test build file.
+   * NModule.build.include: Include file borrowed from NUnit.
+   * RELEASE-NOTES-0.2: Release notes for this version.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:136
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:138
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/ChangeLog	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,3 +1,40 @@
++2005-07-04 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* NModule.build: Actually wrote it.
++	* misc/svkchangelog: Ignore ! lines.
++	* src/NModule.Core/NModule.Core.build: NModule.Core build file.
++	* src/NModule.Core.Loader/DepResolver.cs: Lots of bug fixes.
++	* src/NModule.Core.Loader/ModuleController.cs: Lots of bug fixes.
++	* src/NModule.Core.Loader/ModuleLoader.cs: Lots of bug fixes.
++	* src/NModule.Core.Loader/NModule.Core.Loader.build: NModule.Core.Loader build file.
++	* src/NModule.Core.Module/ModuleInfo.cs: Bug fixes.
++	* src/NModule.Core.Module/NModule.Core.Module.build: NModule.Core.Module build file.
++	* src/NModule.Dependency.Core/DepOps.cs: Added the Null operator so OpResolve operators can know their parent operator.  This is required for the optional operator.
++	* src/NModule.Dependency.Core/DepVersion.cs: Added the ToString method.
++	* src/NModule.Dependency.Core/NModule.Dependency.Core.build: NModule.Dependency.Core build file.
++	* src/NModule.Dependency.Parser/DepLexer.cs: Added '-' to the acceptable names for dependency IDs (not the first letter, but beyond that) so things like nm-dr-01b work.
++	* src/NModule.Dependency.Parser/DepParser.cs: Actually made &quot;&amp;&amp;&quot;, &quot;||&quot;, &quot;!!&quot;, &quot;??&quot;, and &quot;^^&quot; set the DepOp.
++	* src/NModule.Dependency.Parser/DepParserTokenTypes.cs: Updated ID_LETTER.
++	* src/NModule.Dependency.Parser/DepParserTokenTypes.txt: Updated ID_LETTER.
++	* src/NModule.Dependency.Parser/nmodule-dep.g: The above changes.
++	* src/NModule.Dependency.Parser/NModule.Dependency.Parser.build: NModule.Dependency.Parser.build.
++	* src/antlr-runtime/antlr-runtime.build: antlr-runtime build file.
++	* src/NModule.Src.build: NModule source build file.
++	* test/NModule.Core.Test/NModule.Core.Test.mdp: Updated the monkey develop file.
++	* test/NModule.Core.Test/data/src/nm-dr: New sources for dependency resolver tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs: DR tests.
++	* test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs: DR tests.
++	* test/NModule.Core.Test/NModuleTests.cs: Added the dependency resolver test suite.
++	* test/NModule.Core.Test/nm-ld.cs: Renamed to NModuleTests.cs
++	* test/NModule.Test.build: NModule.Test build file.
++	* NModule.build.include: Include file borrowed from NUnit.
++	* RELEASE-NOTES-0.2: Release notes for this version.
++
+ 2005-06-30 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+ 	* src/NModule.Core.Loader/ModuleController.cs:  Fixed wrong initial ref count in IncRef, fixed DecRefs for the no dependencies case.
+
+Modified: trunk/NModule.build
+===================================================================
+--- trunk/NModule.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/NModule.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -27,12 +27,33 @@
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ --&gt;
+ 
+-&lt;project name=&quot;NModule&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;
++&lt;project name=&quot;NModule&quot; default=&quot;compile-all&quot; basedir=&quot;.&quot;&gt;
+   &lt;description&gt;NModule build files.&lt;/description&gt;
+ 
++  &lt;include buildfile=&quot;NModule.build.include&quot; /&gt;
+   &lt;!-- properties --&gt;
+   &lt;property name=&quot;debug&quot; value=&quot;true&quot; overwrite=&quot;false&quot; /&gt;
+   &lt;property name=&quot;release&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
+   &lt;property name=&quot;strong&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
+ 
+-  
++  &lt;target name=&quot;compile-all&quot; depends=&quot;compile-src,compile-tests&quot; /&gt;
++
++  &lt;target name=&quot;setup-build-dir&quot;&gt;
++	&lt;mkdir dir=&quot;${current.build.dir}&quot; unless=&quot;${directory::exists(${current.build.dir})}&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;compile-src&quot; depends=&quot;set-build-config,set-runtime-config,set-build-dir,make-build-dir&quot;&gt;
++    &lt;nant buildfile=&quot;src/NModule.Src.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;compile-tests&quot;&gt;
++    &lt;nant buildfile=&quot;test/NModule.Test.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;tests&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;nunit2&gt;
++      &lt;formatter type=&quot;Plain&quot; /&gt;
++      &lt;test assemblyname=&quot;${current.build.dir}/NModule.Core.Test.dll&quot; /&gt;
++   &lt;/nunit2&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Added: trunk/NModule.build.include
+===================================================================
+--- trunk/NModule.build.include	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/NModule.build.include	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,292 @@
++&lt;?xml version=&quot;1.0&quot;?&gt;
++&lt;project name=&quot;NUnit&quot; default=&quot;build&quot; basedir=&quot;.&quot;&gt;
++
++  &lt;!-- Init global settings if not already done. --&gt;
++  &lt;call target=&quot;init-global-settings&quot;
++    unless=&quot;${property::exists('project.initialized')}&quot;/&gt;
++
++  &lt;!-- Command-line build configurations --&gt;
++  &lt;target name=&quot;debug&quot; description=&quot;Set config to debug&quot;&gt;
++    &lt;call target=&quot;set-debug-build-config&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;release&quot; description=&quot;Set config to release&quot;&gt;
++    &lt;call target=&quot;set-release-build-config&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Command-line runtime configurations --&gt;
++  &lt;target name=&quot;net&quot; description=&quot;Set runtime to .NET 1.1&quot;&gt;
++    &lt;call target=&quot;set-net-1.1-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++    
++  &lt;target name=&quot;net-1.0&quot; description=&quot;Set runtime to .NET 1.0&quot;&gt;
++    &lt;call target=&quot;set-net-1.0-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;net-1.1&quot; description=&quot;Set runtime to .NET 1.1&quot;&gt;
++    &lt;call target=&quot;set-net-1.1-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++      
++  &lt;target name=&quot;net-2.0&quot; description=&quot;Set runtime to .NET 2.0&quot;&gt;
++    &lt;call target=&quot;set-net-2.0-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++      
++  &lt;target name=&quot;mono&quot; description=&quot;Set runtime to Mono&quot;&gt;
++    &lt;call target=&quot;set-mono-1.0-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;mono-1.0&quot; description=&quot;Set runtime to Mono&quot;&gt;
++    &lt;call target=&quot;set-mono-1.0-runtime-config&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Init global settings --&gt;
++  &lt;target name=&quot;init-global-settings&quot;&gt;
++
++    &lt;!-- Set Project name --&gt;
++    &lt;property name=&quot;project.name&quot; value=&quot;NUnit&quot;/&gt;
++
++    &lt;!-- If a sub-project build is being run, the
++         project.src.dir will be set to a relative path --&gt;
++    &lt;property name=&quot;project.src.dir&quot;
++      value=&quot;${path::get-full-path(project.src.dir)}&quot;
++      if=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++    &lt;!-- Otherwise, it's the nant project base dir --&gt;
++    &lt;property name=&quot;project.src.dir&quot;
++      value=&quot;${nant.project.basedir}/src&quot;
++      unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++    
++    &lt;!-- Project base dir is the src dir's parent --&gt;
++    &lt;property name=&quot;project.base.dir&quot;
++      value=&quot;${path::get-directory-name(project.src.dir)}&quot;/&gt;
++
++    &lt;!-- Other directories are derived from src and base --&gt;
++    &lt;property name=&quot;project.build.dir&quot; 
++      value=&quot;${path::combine(project.base.dir,'build')}&quot;/&gt;
++    &lt;property name=&quot;project.package.dir&quot; 
++      value=&quot;${path::combine(project.base.dir,'package')}&quot;/&gt;
++    &lt;property name=&quot;project.doc.dir&quot;
++      value=&quot;${path::combine(project.base.dir,'doc')}&quot;/&gt;
++    &lt;property name=&quot;project.samples.dir&quot;
++      value=&quot;${path::combine(project.base.dir,'samples')}&quot;/&gt;
++
++    &lt;!-- Supported frameworks --&gt;
++    &lt;property name=&quot;frameworks&quot; 
++      value=&quot;net-1.0,net-1.1,mono-1.0&quot;/&gt;
++    &lt;property name=&quot;framework.available.net-1.0&quot; 
++      value=&quot;${framework::exists('net-1.0')}&quot;/&gt;
++    &lt;property name=&quot;framework.available.net-1.1&quot; 
++      value=&quot;${framework::exists('net-1.1')}&quot;/&gt;
++    &lt;property name=&quot;framework.available.net-2.0&quot; 
++      value=&quot;${framework::exists('net-2.0')}&quot;/&gt;
++    &lt;property name=&quot;framework.available.mono-1.0&quot; 
++      value=&quot;${framework::exists('mono-1.0')}&quot;/&gt;
++  
++    &lt;!-- Visual Studio locations --&gt;
++    &lt;if test=&quot;${platform::is-win32()}&quot;&gt;
++      &lt;readregistry property=&quot;vs.2002.path&quot; 
++        key=&quot;Software\Microsoft\VisualStudio\7.0\InstallDir&quot; 
++        hive=&quot;LocalMachine&quot; failonerror=&quot;false&quot;/&gt;
++      &lt;readregistry property=&quot;vs.2003.path&quot; 
++        key=&quot;Software\Microsoft\VisualStudio\7.1\InstallDir&quot; 
++        hive=&quot;LocalMachine&quot; /&gt;
++    &lt;/if&gt;
++
++    &lt;!-- NUnit version for packaging --&gt;
++    &lt;property name=&quot;package.version&quot; value=&quot;2.2.2&quot;/&gt;
++
++    &lt;!-- Root of the package file name --&gt;
++    &lt;property name=&quot;package.name&quot; 
++      value=&quot;${project.name}-${package.version}&quot;/&gt;
++
++    &lt;!-- Package directories --&gt;
++    &lt;property name=&quot;package.working.dir&quot; 
++      value=&quot;${path::combine(project.package.dir,package.name)}&quot;/&gt;
++    &lt;property name=&quot;package.bin.dir&quot; 
++      value=&quot;${path::combine(package.working.dir,'bin')}&quot;/&gt;
++    &lt;property name=&quot;package.doc.dir&quot; 
++      value=&quot;${path::combine(package.working.dir,'doc')}&quot;/&gt;
++    &lt;property name=&quot;package.samples.dir&quot; 
++      value=&quot;${path::combine(package.working.dir,'samples')}&quot;/&gt;
++    &lt;property name=&quot;package.src.dir&quot; 
++      value=&quot;${path::combine(package.working.dir,'src')}&quot;/&gt;
++
++    &lt;!-- Default build and runtime configurations --&gt;
++    &lt;property name=&quot;build.config&quot; value=&quot;debug&quot;/&gt;
++    &lt;property name=&quot;build.clean&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;runtime.platform&quot; value=&quot;net&quot;/&gt;
++    &lt;property name=&quot;runtime.version&quot; value=&quot;1.1&quot;/&gt;
++    &lt;property name=&quot;runtime.config&quot; value=&quot;net-1.1&quot;/&gt;
++    &lt;property name=&quot;build.dir.set&quot; value=&quot;false&quot;/&gt;
++
++    &lt;!-- Indicate that we initialized global settings --&gt;
++    &lt;property name=&quot;project.initialized&quot; value=&quot;true&quot;/&gt;
++
++  &lt;/target&gt;
++ 
++  &lt;!-- Set up build configuration --&gt;
++  &lt;target name=&quot;set-build-config&quot;&gt;
++    &lt;call target=&quot;set-${build.config}-build-config&quot;/&gt;
++    &lt;property name=&quot;build.dir.set&quot; value=&quot;false&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;set-debug-build-config&quot;&gt;
++    &lt;property name=&quot;build.config&quot; value=&quot;debug&quot;/&gt;
++    &lt;property name=&quot;build.debug&quot; value=&quot;true&quot;/&gt;
++    &lt;property name=&quot;build.defines.csc&quot; 
++      value=&quot;DEBUG,TRACE&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.jsc&quot; 
++      value=&quot;DEBUG,TRACE&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.vbc&quot; 
++      value=&quot;DEBUG=True,TRACE=True&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.vjc&quot;
++      value=&quot;DEBUG,TRACE&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.cl&quot;
++      value=&quot;/D _DEBUG&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;zip.build.suffix&quot; value=&quot;-dbg&quot;/&gt;
++    &lt;property name=&quot;msi.build.suffix&quot; value=&quot;-dbg&quot;/&gt;
++  &lt;/target&gt;
++	
++  &lt;target name=&quot;set-release-build-config&quot;&gt;
++    &lt;property name=&quot;build.config&quot; value=&quot;release&quot;/&gt;
++    &lt;property name=&quot;build.debug&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;build.defines.csc&quot;
++      value=&quot;TRACE,STRONG&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.jsc&quot;
++      value=&quot;TRACE,STRONG&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.vbc&quot;
++      value=&quot;TRACE=True,STRONG=True&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.vjc&quot;
++      value=&quot;TRACE,STRONG&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;build.defines.cl&quot;
++      value=&quot;/D STRONG&quot; readonly=&quot;false&quot; /&gt;
++    &lt;property name=&quot;zip.build.suffix&quot; value=&quot;&quot;/&gt;
++    &lt;property name=&quot;msi.build.suffix&quot; value=&quot;&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Set up runtime configuration --&gt;
++  &lt;target name=&quot;set-runtime-config&quot;&gt;
++    &lt;call target=&quot;set-${runtime.config}-runtime-config&quot;/&gt;
++    &lt;property name=&quot;build.dir.set&quot; value=&quot;false&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;set-net-1.0-runtime-config&quot;&gt;
++    &lt;property name=&quot;runtime.platform&quot; value=&quot;net&quot;/&gt;
++    &lt;property name=&quot;runtime.version&quot; value=&quot;1.0&quot;/&gt;
++    &lt;property name=&quot;runtime.config&quot; value=&quot;net-1.0&quot;/&gt;
++    &lt;property name=&quot;build.mono&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;build.win32&quot; value=&quot;true&quot;/&gt;
++    &lt;property name=&quot;nant.settings.currentframework&quot; 
++      value=&quot;net-1.0&quot;/&gt;
++    &lt;property name=&quot;zip.runtime.suffix&quot; value=&quot;-net-1.0&quot;/&gt;
++    &lt;property name=&quot;msi.runtime.suffix&quot; value=&quot;-net-1.0&quot;/&gt;
++  &lt;/target&gt;
++	
++  &lt;target name=&quot;set-net-1.1-runtime-config&quot;&gt;
++    &lt;property name=&quot;runtime.platform&quot; value=&quot;net&quot;/&gt;
++    &lt;property name=&quot;runtime.version&quot; value=&quot;1.1&quot;/&gt;
++    &lt;property name=&quot;runtime.config&quot; value=&quot;net-1.1&quot;/&gt;
++    &lt;property name=&quot;build.mono&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;build.win32&quot; value=&quot;true&quot;/&gt;
++    &lt;property name=&quot;nant.settings.currentframework&quot; 
++      value=&quot;net-1.1&quot;/&gt;
++    &lt;property name=&quot;zip.runtime.suffix&quot; value=&quot;-net-1.1&quot;/&gt;
++    &lt;!-- Note: no suffix for the msi --&gt;
++    &lt;property name=&quot;msi.runtime.suffix&quot; value=&quot;&quot;/&gt;
++  &lt;/target&gt;
++	
++  &lt;target name=&quot;set-net-2.0-runtime-config&quot;&gt;
++    &lt;property name=&quot;runtime.platform&quot; value=&quot;net&quot;/&gt;
++    &lt;property name=&quot;runtime.version&quot; value=&quot;2.0&quot;/&gt;
++    &lt;property name=&quot;runtime.config&quot; value=&quot;net-2.0&quot;/&gt;
++    &lt;property name=&quot;build.mono&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;build.win32&quot; value=&quot;true&quot;/&gt;
++    &lt;property name=&quot;nant.settings.currentframework&quot; 
++      value=&quot;net-2.0&quot;/&gt;
++    &lt;property name=&quot;zip.runtime.suffix&quot; value=&quot;-net-2.0&quot;/&gt;
++    &lt;!-- no suffix for the msi --&gt;
++    &lt;property name=&quot;msi.runtime.suffix&quot; value=&quot;&quot;/&gt;
++  &lt;/target&gt;
++	
++  &lt;target name=&quot;set-mono-1.0-runtime-config&quot;&gt;
++    &lt;property name=&quot;runtime.platform&quot; value=&quot;mono&quot;/&gt;
++    &lt;property name=&quot;runtime.version&quot; value=&quot;1.0&quot;/&gt;
++    &lt;property name=&quot;runtime.config&quot; value=&quot;mono-1.0&quot;/&gt;
++    &lt;property name=&quot;build.mono&quot; value=&quot;true&quot;/&gt;
++    &lt;property name=&quot;build.win32&quot; value=&quot;false&quot;/&gt;
++    &lt;property name=&quot;nant.settings.currentframework&quot; 
++      value=&quot;mono-1.0&quot;/&gt;
++    &lt;property name=&quot;zip.runtime.suffix&quot; value=&quot;-mono&quot;/&gt;
++    &lt;property name=&quot;msi.runtime.suffix&quot; value=&quot;-mono&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Set up the build directory --&gt;
++  &lt;target name=&quot;set-build-dir&quot;
++    depends=&quot;set-build-config,set-runtime-config&quot;&gt;
++    &lt;property name=&quot;runtime.platform.dir&quot;
++      value=&quot;${path::combine(project.build.dir,runtime.platform)}&quot;/&gt;
++    &lt;property name=&quot;runtime.version.dir&quot;
++      value=&quot;${path::combine(runtime.platform.dir,runtime.version)}&quot;/&gt;
++    &lt;property name=&quot;current.build.dir&quot; 
++      value=&quot;${path::combine(runtime.version.dir,build.config)}&quot;/&gt;
++    &lt;property name=&quot;build.dir.set&quot; value=&quot;true&quot;/&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;set-build-dir-if-needed&quot;&gt;
++    &lt;call target=&quot;set-build-dir&quot; unless=&quot;${build.dir.set}&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;make-build-dir&quot; depends=&quot;set-build-dir-if-needed&quot;&gt;
++    &lt;mkdir dir=&quot;${current.build.dir}&quot;
++      unless=&quot;${directory::exists(current.build.dir)}&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Setup the package configuration info --&gt;
++  &lt;target name=&quot;set-package-config&quot;
++    depends=&quot;set-build-config,set-runtime-config&quot;&gt;
++    &lt;property name=&quot;zip.file.name&quot; 
++      value=&quot;${package.name}${zip.runtime.suffix}${zip.build.suffix}.zip&quot;/&gt;
++    &lt;property name=&quot;msi.file.name&quot;
++      value=&quot;${package.name}${msi.runtime.suffix}${msi.build.suffix}.msi&quot;/&gt;
++    &lt;property name=&quot;zipped.src.file.name&quot;
++      value=&quot;${package.name}-src.zip&quot;/&gt;
++    &lt;property name=&quot;zipped.bin.file.name&quot;
++      value=&quot;${package.name}-bin.zip&quot;/&gt;
++  &lt;/target&gt;
++
++  &lt;!-- Dump configuration settings for debugging --&gt;
++  &lt;target name=&quot;dump-settings&quot; depends=&quot;set-build-dir,set-package-config&quot;&gt;
++    &lt;echo&gt;Configuration&lt;/echo&gt;
++    &lt;echo&gt;  Config:       ${build.config}&lt;/echo&gt;
++    &lt;echo&gt;  Runtime:      ${runtime.config}&lt;/echo&gt;
++    &lt;echo&gt;  Version:      ${package.version}&lt;/echo&gt;
++    &lt;echo&gt;  Package name: ${package.name}&lt;/echo&gt;
++    &lt;echo&gt;  Zip file:     ${zip.file.name}&lt;/echo&gt;
++    &lt;echo&gt;  Msi file:     ${msi.file.name}&lt;/echo&gt;
++    &lt;echo&gt;  Source zip:   ${zipped.src.file.name}&lt;/echo&gt;
++    &lt;echo&gt;&lt;/echo&gt;
++    &lt;echo&gt;Project Directories&lt;/echo&gt;
++    &lt;echo&gt;  Base:         ${project.base.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Doc:          ${project.doc.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Samples:      ${project.samples.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Source:       ${project.src.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Build:        ${project.build.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Package:      ${project.package.dir}&lt;/echo&gt;
++    &lt;echo&gt;&lt;/echo&gt;
++    &lt;echo&gt;Current Build Directories&lt;/echo&gt;
++    &lt;echo&gt;  Build:        ${current.build.dir}&lt;/echo&gt;
++    &lt;echo&gt;&lt;/echo&gt;
++    &lt;echo&gt;Package Directories&lt;/echo&gt;
++    &lt;echo&gt;  Working:      ${package.working.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Bin:          ${package.bin.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Doc:          ${package.doc.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Samples:      ${package.samples.dir}&lt;/echo&gt;
++    &lt;echo&gt;  Source:       ${package.src.dir}&lt;/echo&gt;
++    &lt;echo&gt;&lt;/echo&gt;
++    &lt;echo&gt;System Directories&lt;/echo&gt;
++    &lt;echo&gt;  Framework:    ${nant.settings.currentframework.frameworkdirectory}&lt;/echo&gt;
++    &lt;echo&gt;  SDK:          ${nant.settings.currentframework.sdkdirectory}&lt;/echo&gt;
++    &lt;echo&gt;  VS 2002:      ${vs.2002.path}&lt;/echo&gt;
++    &lt;echo&gt;  VS 2003:      ${vs.2003.path}&lt;/echo&gt;
++  &lt;/target&gt;
++
++&lt;/project&gt;
+
+Modified: trunk/README
+===================================================================
+--- trunk/README	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/README	2005-07-04 17:41:09 UTC (rev 34)
+@@ -20,4 +20,22 @@
+ A complete API documentation tree can be generated using the nant docs target, note however
+ that generating the documentation requires ndoc.
+ 
+-We encourage you to visit our website at 
++Requirements:
++
++  - antlr 2.7.5 or higher is required to generate the parser.  If you don't want to generate
++    the parser during the build stages, comment out the &lt;exec&gt; rule in NModule.Dependency.Parser.build.
++    We keep up-to-date sources in the release, so the only reason you'd need that is if you were
++    hacking on the grammar.
++  - NUnit 2.2 or greater is required for the test suite.
++  - NAnt 0.85 or greater is required for building.
++
++Installation instructions:
++
++  See the nant file for instructions.
++
++  For mono, do nant mono-1.0 compile-all
++  For net-1.1 do nant net-1.1 compile-all
++
++  And so on.
++
++Better instructions will come with later releases.
+
+Added: trunk/RELEASE-NOTES-0.2
+===================================================================
+--- trunk/RELEASE-NOTES-0.2	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/RELEASE-NOTES-0.2	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,36 @@
++0.2
++---
++
++This release is fully functional, and is suitable for every day use.
++
++The following bugs still remain in this release, not all of which are within my control:
++
++  - Mono does not honor the PrivatePath, so even though nmodule adds the search path to the
++    appdomain's resolving path, it doesnt work.  The work around until Mono fixes this bug is
++    to set MONO_PATH=&quot;$MONO_PATH:my_search_dir_1:mysearch_dir_2:...:my_search_dir_n&quot;.  This is
++    unnecessary on Microsoft's implementation.
++
++  - This release contains monodoc generated documentation in api-docs.  This release does not
++    contain build instructions for the documentation, so you're on your own with it.  The next
++    release will contain build instructions for the monodoc documentation and ndoc documentation.
++
++  - This release also contains an mbuild build system.  To use it, install mbuild from mono's svn, and
++    mbuild -i ., mbuild -a.  Should be able to install from mbuild too, this has not been tested.
++
++  - This release contains several components of the new NUnit based test suite.  However, currently it
++    is not automated.
++
++  - This releases nant build files do not contain an install target.  I will add that for the 0.3 release.
++
++  - The test suite is built during the compile-all stage of the build.  There is a tests target, but this
++    is not run by default, due to the above Mono bug.  If you would like to run it as part of your build
++    process on Windows, do nant net-1.1 compile-all tests.  Next release this target will be renamed to
++    run-tests.
++
++  - Basic loading, unloading, and dependency resolution is tested this release, and it passes all 9 current tests.
++    Next release will include 9 more dependency resolution tests, and five more components, including
++    unresolved/circular dependency checking, role instantiantion, and entry/exit handling.  Also next release
++    I will be splitting the tests into seperated classes to be ran instead of one giant test class.
++
++  - This release is ready for use, unfortunately documentation is scarce.  I'll write up some documentation
++    for 0.4, but until then you can reach me at <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">mtindal at paradoxpoint.com</A>   Enjoy!
+
+Modified: trunk/misc/svkchangelog
+===================================================================
+--- trunk/misc/svkchangelog	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/misc/svkchangelog	2005-07-04 17:41:09 UTC (rev 34)
+@@ -32,7 +32,7 @@
+ echo &quot;$(date &quot;+%Y-%m-%d&quot;) $SVKCNAME &lt;$SVKEMAIL&gt;&quot; &gt; ChangeLog
+ echo &gt;&gt; ChangeLog
+ 
+-svk status | sed -e 's@^\?.*@@g' -e '/^$/d' | egrep -o '[^ ]*(/.*)?$' | sed -e 's@^\..*@@'  -e '<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">s at .</A>*ChangeLog@@g' -e '/^$/d' -e 's@^\./@@g' &gt; .tmp-list
++svk status | sed -e 's@^\?.*@@g' -e 's@^\!.*@@g' -e '/^$/d' | egrep -o '[^ ]*(/.*)?$' | sed -e 's@^\..*@@'  -e '<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">s at .</A>*ChangeLog@@g' -e '/^$/d' -e 's@^\./@@g' &gt; .tmp-list
+ 
+ for i in $(cat .tmp-list); do
+ 	echo -e &quot;\t* ${i}: &quot; &gt;&gt; ChangeLog
+
+Added: trunk/src/NModule.Core/NModule.Core.build
+===================================================================
+--- trunk/src/NModule.Core/NModule.Core.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core/NModule.Core.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,47 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Core&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule.Core build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot; /&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Core.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++	&lt;sources basedir=&quot;.&quot;&gt;
++		&lt;include name=&quot;*.cs&quot;/&gt;
++	&lt;/sources&gt;
++     &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/src/NModule.Core.Loader/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/DepResolver.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Loader/DepResolver.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -59,7 +59,7 @@
+ 			foreach (string s in _search_path) {
+ 				if (Directory.Exists (s)) {
+ 					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
+-						if (f.Substring (0, f.Length - 4) == _name) {
++						if (f.Substring (0, f.Length - 4).IndexOf (_name) != -1) {
+ 							return s + &quot;/&quot; + f;
+ 						}
+ 					}
+@@ -69,45 +69,60 @@
+ 			return null;
+ 		}
+ 		
+-		protected void OpResolve (DepNode _node, ArrayList _parents, ModuleInfo _info, bool checking) {
++		protected void OpResolve (DepNode _node, ArrayList _parents, ModuleInfo _info, bool checking, DepOps _parentop) {
++			Console.WriteLine (&quot;--&gt;&gt; OpResolve called with:&quot;);
++			Console.WriteLine (&quot;----&gt;&gt; _node = {0}&quot;, _node == null ? &quot;null&quot; : &quot;not null&quot;);
++			Console.WriteLine (&quot;----&gt;&gt; _node.DepOp = {0}&quot;, OpToString (_node.DepOp));
++			Console.WriteLine (&quot;----&gt;&gt; _parents = {0}&quot;, _parents == null ? &quot;null&quot; : &quot;not null&quot;);
++			Console.WriteLine (&quot;----&gt;&gt; _info = {0}&quot;, _info == null ? &quot;null&quot; : &quot;not null&quot;);
++			Console.WriteLine (&quot;----&gt;&gt; checking = {0}&quot;, checking);
+ 			bool _ret;
+ 			DepOps _op = _node.DepOp;
+-			DepConstraint _constraint = _node.Constraint;
++			
+ 			if ((_op == DepOps.And) || (_op == DepOps.Not) || (_op == DepOps.Opt) || (_op == DepOps.Or) || (_op == DepOps.Xor)) {
+ 				// combo-operators
+ 				ArrayList _results = new ArrayList ();
+ 				ArrayList _c = new ArrayList ();
+ 				foreach (DepNode _child in _node.Children) {
+-					try {
+-						OpResolve (_child, _parents, _info, checking);
++					//try {
++						OpResolve (_child, _parents, _info, checking, _op);
+ 						_results.Add (true);
+ 						_c.Add (_child.Constraint);
+-					} catch (Exception e) {
+-						_results.Add (false);
+-						_c.Add (_child.Constraint);
+-					}
++					//} catch (Exception e) {
++					//	_results.Add (false);
++					//	_c.Add (_child.Constraint);
++					//}
+ 				}
+ 				
+ 				switch (_op) {
+ 					case DepOps.And:
+ 						int r = 0;
++						if (_results == null) {
++							Console.WriteLine (&quot;_results is NULL!&quot;);
++						}
++						
+ 						foreach (bool _result in _results) {
+ 							if (!_result) {
+-								throw new UnresolvedDependencyException (
+-									string.Format(&quot;The following dependency for the module {0} could not be resolved: (AND operator)\n\t{1} ({2})&quot;,
+-										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
+-								);
++								if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
++									throw new UnresolvedDependencyException (
++										string.Format(&quot;The following dependency for the module {0} could not be resolved: (AND operator)\n\t{1} ({2})&quot;,
++											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++									);
++								}
+ 							}
+ 							r++;
+ 						}
+ 						break;
+ 					case DepOps.Not:
+ 						foreach (bool _result in _results) {
+-							if (_result)
+-								throw new UnresolvedDependencyException (
+-									string.Format(&quot;The following dependency for the module {0} could not be resolved: (NOT operator)\n\t{1} ({2})&quot;,
+-										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
+-								);
++							if (_result) {
++								if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
++									throw new UnresolvedDependencyException (
++										string.Format(&quot;The following dependency for the module {0} could not be resolved: (NOT operator)\n\t{1} ({2})&quot;,
++											_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++									);
++								}
++							}
+ 						}
+ 						break;
+ 					case DepOps.Opt: // This is optional so stuff is true regardless
+@@ -132,7 +147,8 @@
+ 							foreach (string _exc in _urexc) {
+ 								_sb.Append(string.Format(&quot;\t{0}\n&quot;, _exc));
+ 							}
+-							throw new UnresolvedDependencyException (_sb.ToString ());
++							if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt)
++								throw new UnresolvedDependencyException (_sb.ToString ());
+ 						}
+ 						break;
+ 					case DepOps.Xor:
+@@ -155,8 +171,11 @@
+ 							r++;
+ 						}
+ 						
+-						if (_xt || _xf)
++						if (_xt &amp;&amp; _xf)
+ 							_ret = false;
++						
++						if (!_xt &amp;&amp; _xf)
++							_ret = false;
+ 							
+ 						if (!_ret) {
+ 							StringBuilder _sb = new StringBuilder (
+@@ -165,35 +184,55 @@
+ 							foreach (string _exc in _xexc) {
+ 								_sb.Append (string.Format(&quot;\t{0}\n&quot;, _exc));
+ 							}
+-							throw new UnresolvedDependencyException (_sb.ToString ());
++							if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
++								throw new UnresolvedDependencyException (_sb.ToString ());
++							}
+ 						}
+ 						break;
+ 				}
+ 			} else {
++				DepConstraint _constraint = _node.Constraint;
++				
+ 				// single operators
+ 				if (SearchForModule (_constraint.Name) == null)
+ 					_ret = false;
+ 		
+ 				ModuleInfo _ninfo;
+ 						
+-				ModuleLoader _loader = new ModuleLoader (_search_path, this);
++				ModuleLoader _loader = new ModuleLoader (_search_path, _controller);
+ 						
+-				_loader.LoadModule (_parents, _constraint.Name, out _ninfo, true);
++				_loader.LoadModule (_parents, _constraint.Name, out _ninfo, true, true);
+ 				
+-				if ((_op == DepOps.Equal) || (_op == DepOps.GreaterThan) || (_op == DepOps.GreaterThanEqual) || (_op == DepOps.LessThan)
+-					|| (_op == DepOps.LessThanEqual) || (_op == DepOps.NotEqual)) {
+-					if (!IsEmptyVersion (_constraint.Version)) {
+-						if (!VersionMatch (_constraint.Version, _ninfo.Version, _op)) {
+-							throw new UnresolvedDependencyException (
++				bool result = true;
++				
++				Console.WriteLine (&quot;Checking {0}'s version:  Empty {1}&quot;, _constraint.Name, IsEmptyVersion (_constraint.Version));
++				Console.WriteLine (&quot;Checking ({0} {1} {2}) Result: {3}&quot;, OpToString (_op), _ninfo.Version.ToString(), _constraint.Version.ToString(), VersionMatch (_ninfo.Version, _constraint.Version, _op));
++					
++				if (!IsEmptyVersion (_constraint.Version)) {
++					if (!VersionMatch (_ninfo.Version, _constraint.Version, _op)) {
++						result = false;
++					}
++				}
++
++				if (!result) {
++					if (_parentop != DepOps.Null &amp;&amp; _parentop != DepOps.Opt) {
++						throw new UnresolvedDependencyException (
+ 								string.Format(&quot;The following dependency for the module {0} could not be resolved: ({3} operator)\n\t{1} ({2})&quot;,
+ 									_info.Name, _constraint.Name, _constraint.Version, OpToString (_op))
+ 							);
+-						}
+ 					}
+-					if (!checking) {
+-						_controller.LoadModule (_constraint.Name);
+-					}		
++					else
++						return;			
+ 				}
++					
++				if (_controller == null)
++					Console.WriteLine (&quot;_controller is NULL!&quot;);
++					
++				if (!checking) {
++					_controller.LoadModule (_constraint.Name);
++				}
++					
++				Console.WriteLine (&quot;Checking {0} for {1} (Result: {2})&quot;, OpToString (_op), _info.Name, result);
+ 				// we got this far, so obviously it loaded okay
+ 			}		
+ 		}
+@@ -231,160 +270,85 @@
+ 		}
+ 		
+ 		protected bool IsEmptyVersion (DepVersion _ver) {
++			if (_ver == null)
++				return true;
++				
+ 			return ((_ver.Major == -1) &amp;&amp; (_ver.Minor == -1) &amp;&amp; (_ver.Build == -1) &amp;&amp; (_ver.Revision == -1));
+ 		}
+ 		
+-		protected bool VersionMatch (DepVersion _dver, DepVersion _ver, DepOps _op) {
+-			bool mjgt = false, mngt = false, bgt = false, rgt = false;
+-			bool mjeq = false, mneq = false, beq = false, req = false;
+-			bool mjlt = false, mnlt = false, blt = false, rlt = false;
+-			bool mji = false, mni = false, bi = false, ri = false;
+-			
+-			if (_dver.Major == -1) {
+-				mji = true;
+-			} else if (_dver.Major &gt; _ver.Major) {
+-				mjgt = true;
+-			} else if (_dver.Major == _ver.Major) {
+-				mjeq = true;
+-			} else {
+-				mjlt = true;
+-			}
+-			
+-			if (_dver.Minor == -1) {
+-				mni = true;
+-			} else if (_dver.Minor &gt; _ver.Minor) {
+-				mngt = true;
+-			} else if (_dver.Minor == _ver.Minor) {
+-				mneq = true;
+-			} else {
+-				mnlt = true;
+-			}
+-			
+-			if (_dver.Build == -1) {
+-				bi = true;
+-			} else if (_dver.Build &gt; _ver.Build) {
+-				bgt = true;
+-			} else if (_dver.Build == _ver.Build) {
+-				beq = true;
+-			} else {
+-				blt = true;
+-			}
+-			
+-			if (_dver.Revision == -1) {
+-				ri = true;
+-			} else if (_dver.Revision &gt; _ver.Revision) {
+-				rgt = true;
+-			} else if (_dver.Revision == _ver.Revision) {
+-				req = true;
+-			} else {
+-				rlt = true;
+-			}
++		protected bool VersionMatch (DepVersion _ver, DepVersion _dver, DepOps _op) {
++			Version _mver, _drver;
+ 
+-			if (mji)
++			if (_dver.Major == -1)
+ 				return true;
+-									
+-			if ((_op == DepOps.Equal) || (_op == DepOps.GreaterThanEqual) || (_op == DepOps.LessThanEqual)) {					
+-					if (mjeq &amp;&amp; mni)
+-						return true;
+-						
+-					if (mjeq &amp;&amp; mneq &amp;&amp; bi)
+-						return true;
+-						
+-					if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; ri)
+-						return true;
+-					
+-					if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; req)
+-						return true;
+-			}
++				
++			_mver = new Version (_dver.Major != -1 ? _ver.Major : 0,
++				_dver.Minor != -1 ? _ver.Minor : 0,
++				_dver.Build != -1 ? _ver.Build : 0,
++				_dver.Revision != -1 ? _ver.Revision : 0);
++
++			_drver = new Version (_dver.Major != -1 ? _dver.Major : 0,
++				_dver.Minor != -1 ? _dver.Minor : 0,
++				_dver.Build != -1 ? _dver.Build : 0,
++				_dver.Revision != -1 ? _dver.Revision : 0);
+ 			
+-			if (_op == DepOps.NotEqual) {
+-				if (!mjeq &amp;&amp; mni)
+-					return true;
+-					
+-				if (!mjeq &amp;&amp; !mneq &amp;&amp; bi)
+-					return true;
+-					
+-				if (!mjeq &amp;&amp; !mneq &amp;&amp; !beq &amp;&amp; ri)
+-					return true;
+-					
+-				if (!mjeq &amp;&amp; !mneq &amp;&amp; !beq &amp;&amp; !req)
+-					return true;
+-			}
++			int vres = _mver.CompareTo (_drver);
+ 			
+-			if (_op == DepOps.GreaterThan) {
+-				if (mjlt)
+-					return false;
+-					
+-				if (mjgt)
+-					return true;
+-				
+-				if (mjeq &amp;&amp; mnlt)
+-					return false;
+-					
+-				if (mngt)
+-					return true;
+-					
+-				if (mjeq &amp;&amp; mneq &amp;&amp; blt)
+-					return false;
+-					
+-				if (bgt)
+-					return true;
+-					
+-				if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; rlt)
+-					return false;
+-					
+-				if (rgt)
+-					return true;
++			switch (_op) {
++				case DepOps.Equal:
++					return vres == 0;
++				case DepOps.GreaterThan:
++					return vres &gt; 0;
++				case DepOps.GreaterThanEqual:
++					return vres &gt; 0 || vres == 0;
++				case DepOps.LessThan:
++					return vres &lt; 0;
++				case DepOps.LessThanEqual:
++					return vres &lt; 0 || vres == 0;
++				case DepOps.NotEqual:
++					return vres != 0;
+ 			}
+ 			
+-			if (_op == DepOps.LessThan) {
+-				if (mjgt)
+-					return false;
+-					
+-				if (mjlt)
+-					return true;
++			return false;				
++		}
++			
++		protected void CheckCircularDeps (DepNode _x, ArrayList _parents) {
++			if (_parents == null)
++				return;
+ 				
+-				if (mjeq &amp;&amp; mngt)
+-					return false;
+-					
+-				if (mnlt)
+-					return true;
+-					
+-				if (mjeq &amp;&amp; mneq &amp;&amp; bgt)
+-					return false;
+-					
+-				if (blt)
+-					return true;
+-					
+-				if (mjeq &amp;&amp; mneq &amp;&amp; beq &amp;&amp; rgt)
+-					return false;
+-					
+-				if (rlt)
+-					return true;
++			if (_x == null)
++				return;
++				
++			foreach (DepNode _d in _x.Children) {
++				CheckCircularDeps (_d, _parents);
+ 			}
+ 			
+-			if (_op == DepOps.Loaded)
+-				return true;
+-				
+-			
+-			return false;
++			if (_x.Constraint != null) {
++				foreach (string _parent in _parents) {
++					Console.WriteLine (&quot;CIRCULAR DEPENDENCY CHECK:  {0} {1}&quot;, _x.Constraint.Name, _parent);
++					if (_x.Constraint.Name == _parent) {
++						throw new CircularDependencyException (string.Format (&quot;{0} depends on {1}, but {1} is depending on {0}.&quot;, _x.Constraint.Name, _parent));
++					}
++				}
++			}
+ 		}
+-				
++		
+ 		protected void InternalResolve (ArrayList _parents, ModuleInfo _info, bool checking) {
+ 			if (_info.Dependencies == null)
+ 				return;
+ 			
+-			DepNode _node = _info.Dependencies;
++			if (_parents == null)
++				_parents = new ArrayList ();
+ 			
+-			foreach (string _parent in _parents) {
+-				if (_node.Constraint.Name == _parent) {
+-					throw new CircularDependencyException (
+-						string.Format(&quot;The module {0} is depending on {1} which is depending on {0}, causing a circular dependency.&quot;,
+-							_parent, _info.Name, _parent)
+-					);
++			if (checking) {
++				foreach (DepNode _c in _info.Dependencies.Children) {
++					CheckCircularDeps (_c, _parents);
+ 				}
+ 			}
+-			OpResolve (_node, _parents, _info, checking);			
++			
++			Console.WriteLine (&quot;&gt;&gt;&gt;&gt;&gt; Beginning OpResolve loop for {0}...&quot;, _info.Name);
++			
++			OpResolve (_info.Dependencies, _parents, _info, checking, DepOps.Null);		
+ 		}
+ #endregion
+ 
+@@ -398,4 +362,4 @@
+ 		}
+ #endregion
+ 	}
+-}
+\ No newline at end of file
++}
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -56,9 +56,6 @@
+ 		// Information Map
+ 		protected Hashtable _info_map;
+ 		
+-		// Dependency Resolver
+-		protected DepResolver _resolver;
+-		
+ 		// Module Loader
+ 		protected ModuleLoader _loader;
+ #endregion
+@@ -68,8 +65,7 @@
+ 			_ref_counts = new Hashtable ();
+ 			_search_path = new ArrayList ();
+ 			_roles = new ArrayList ();
+-			_resolver = new DepResolver (this, _search_path);
+-			_loader = new ModuleLoader (_search_path, _resolver);
++			_loader = new ModuleLoader (_search_path, this);
+ 			_info_map = new Hashtable ();
+ 		}
+ 
+@@ -109,6 +105,15 @@
+ 			CallEntryHandler (_domain.GetAssemblies()[0]);
+ 		}
+ 		
++		public bool IsLoaded (string _name) {
++			foreach (string _key in _app_domain_map.Keys) {
++				Console.WriteLine (&quot;Key {0} / Name {1}&quot;, _key, _name);
++				Console.WriteLine (&quot;ContainsKey({0}) == {1}&quot;, _name, _app_domain_map.ContainsKey (_name));
++			}
++
++			return _app_domain_map.ContainsKey (_name);
++		}
++		
+ 		protected void DecRefs (DepNode _x) {
+ 			if (_x == null)
+ 				return;
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -41,14 +41,16 @@
+ 	// an existing app-domain (for example, grouped dependencies).  See the configuration
+ 	// options for an example.
+ 	public class ModuleLoader {
+-	
++
++		protected static ArrayList loaded_modules;
++		
+ 		protected ArrayList _search_path;
+ 		
+-		protected DepResolver _resolver;
++		protected ModuleController _controller;
+ 		
+-		public ModuleLoader (ArrayList search_path, DepResolver resolver) {
++		public ModuleLoader (ArrayList search_path, ModuleController controller) {
+ 			_search_path = search_path;
+-			_resolver = resolver;
++			_controller = controller;
+ 		}
+ 		
+ 		// Loads the content of a file to a byte array. 
+@@ -68,7 +70,7 @@
+ 						string _f = f.Replace (s, &quot;&quot;).Replace (&quot;/&quot;, &quot;&quot;);
+ 						Console.WriteLine (&quot;Checking {0} against {1} ({2}) (Result: {3})&quot;, _name, _f, 
+ 							_f.Substring (0, _f.Length - 4), (_f.Substring (0, _f.Length - 4) == _name));
+-						if (_f.Substring (0, _f.Length - 4) == _name) {
++						if (_f.Substring (0, _f.Length - 4).IndexOf (_name) != -1) {
+ 							return s + &quot;/&quot; + _f;
+ 						}
+ 					}
+@@ -88,14 +90,25 @@
+ 		}
+ 		
+ 		public AppDomain LoadModule (ArrayList _parents, string _name, out ModuleInfo _info, bool checking) {
++			return LoadModule (_parents, _name, out _info, checking, true);
++		}
++		
++		public Assembly GetAssembly (AppDomain _domain, string _name) {
++			foreach (Assembly _asm in _domain.GetAssemblies ()) {
++				if (_asm.GetName ().Name == _name)
++					return _asm;
++			}
++			return null;
++		}
++
++		public AppDomain LoadModule (ArrayList _parents, string _name, out ModuleInfo _info, bool checking, bool depcheck) {
++			Console.WriteLine (&quot;LoadModule:  Trying to load {0}&quot;, _name);
++
+ 			// Okay, this is tricky.  First, we have to load the module into a temp domain
+ 			// to retrieve its module info.  Then, we have to attempt to resolve the dependencies.
+ 			// This is going to be fun.  Heh.
+ 			if (_parents == null)
+ 				_parents = new ArrayList ();
+-				
+-			// This is technically a parent of any depending module.
+-			_parents.Add (_name);
+ 			
+ 			// Try to find the module on the search path.
+ 			string _filename = SearchForModule (_name);
+@@ -105,7 +118,7 @@
+ 				
+ 			// Okay, well, now we know the module exists at least in the file (we hope its a proper dll, but we'll see :).  Now we
+ 			// need to create the temporary AppDomain and load it to get the info from it.
+-			AppDomain _tempDomain = AppDomain.CreateDomain (&quot;_temp_&quot; + _name);
++			AppDomain _tempDomain = AppDomain.CreateDomain (_name);
+ 			
+ 			// This is dirty.  I hate me.
+ 			byte[] _raw_bytes = LoadRawFile (_filename);	
+@@ -120,52 +133,56 @@
+ 			try {
+ 				_tempDomain.Load (_raw_bytes);
+ 			} catch (BadImageFormatException e) {
++				AppDomain.Unload (_tempDomain);
+ 				throw new ModuleImageException (e.Message);
+ 			}
+ 			
+ 			// Okay, now lets grab the module info from the assembly attributes.
+-			Assembly _asm = _tempDomain.GetAssemblies ()[0];
++			Assembly _asm = GetAssembly (_tempDomain, _name);
+ 			
+ 			try {
+ 				_info = new ModuleInfo (_asm);
+ 			} catch (ModuleInfoException e) {
++				AppDomain.Unload (_tempDomain);
+ 				throw new InvalidModuleException (e.Message);
+ 			}
+ 			
+-			// unload the temp domain since its unneeded now.
+-			
+-			AppDomain.Unload (_tempDomain);
+-			
+ 			// okay, now we've got the info, let's do some magic with the dependencies.
+ 			// this will recursively load all of the appropriate assemblies as per the parsed
+ 			// depedency tree.  It will take into account dependency operators, such as AND, OR
+ 			// OPT (optional).  Very intelligent stuff.  Of course, if there are no depends,
+ 			// this just simply returns.  This will of course continue updating the parents as needed
+ 			// since each time a new module is loaded, the resolver is recursively called until
+-			// a module is found.  This is cool.  What this will do is call this method with
++			// a module with no dependencies is found.  This is cool.  What this will do is call this method with
+ 			// checking=true, which will cause it to just return if the module suceeds.  This way
+ 			// we can ensure we don't load unneeded module Z that is a dependency of X which depends
+ 			// on Y, because if Z suceeds but Y fails, we don't want X, Y, or Z to fail.  This way,
+ 			// we can ensure the entire tree can be loaded first (this does take into account already
+ 			// loaded assemblies).
+-			_resolver.ResolveCheck (_parents, _info);
++			if (depcheck)
++			{
++				DepResolver _resolver = new DepResolver (_controller, _search_path);
++			
++				try {
++					_resolver.Resolve (_parents, _info);
++				} catch (Exception e) {
++					AppDomain.Unload (_tempDomain);
++					throw e;
++				}
++			}
+ 		
+ 			if (checking)
++			{
++				AppDomain.Unload (_tempDomain);
+ 				return null;
++			}
+ 							
+ 			// okay, they're good, lets load the suckers.
+-			_resolver.Resolve (_parents, _info);
+-			
+ 			// alright, we've got them all loaded, they exist in the assembly map.
+ 			// now we create the *real* app domain.
+-			AppDomain _domain = AppDomain.CreateDomain (_name);
+-			
+-			// let's load this assembly into the real app domain.
+-			Console.WriteLine (&quot;_domain.Load&quot;);
+-			_domain.Load (_raw_bytes);
+-			
++						
+ 			// We can't do any more with this.
+-			return _domain;
++			return _tempDomain;
+ 		}
+ 	}
+ }
+
+Added: trunk/src/NModule.Core.Loader/NModule.Core.Loader.build
+===================================================================
+--- trunk/src/NModule.Core.Loader/NModule.Core.Loader.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Loader/NModule.Core.Loader.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,52 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Core.Loader&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule.Core.Loader build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot;/&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Core.Loader.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;.&quot;&gt;
++        &lt;include name=&quot;*.cs&quot;/&gt;
++      &lt;/sources&gt;
++    &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++      &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++      &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++      &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++    &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -36,7 +36,7 @@
+ 	using NModule.Dependency.Core;
+ 	using NModule.Dependency.Parser;
+ 	using NModule.Core;
+-	
++		
+ 	public class ModuleInfo {
+ 		// name
+ 		protected string _name;
+@@ -50,14 +50,68 @@
+ 		// roles
+ 		protected string _roles;
+ 		
++		protected string _depstring;
++		
+ 		// owner
+ 		protected Assembly _owner;
+ 		
++		protected string OpToString (DepOps _op) {
++			switch (_op)
++			{
++				case DepOps.And:
++					return &quot;&amp;&amp;&quot;;
++				case DepOps.Equal:
++					return &quot;==&quot;;
++				case DepOps.GreaterThan:
++					return &quot;&gt;&gt;&quot;;
++				case DepOps.GreaterThanEqual:
++					return &quot;&gt;=&quot;;
++				case DepOps.LessThan:
++					return &quot;&lt;&lt;&quot;;
++				case DepOps.LessThanEqual:
++					return &quot;&lt;=&quot;;
++				case DepOps.Loaded:
++					return &quot;##&quot;;
++				case DepOps.Not:
++					return &quot;!!&quot;;
++				case DepOps.NotEqual:
++					return &quot;!=&quot;;
++				case DepOps.Opt:
++					return &quot;??&quot;;
++				case DepOps.Or:
++					return &quot;||&quot;;
++				case DepOps.Xor:
++					return &quot;^^&quot;;
++			}
++			
++			return &quot;&quot;;
++		}
++		
++		protected void PrintDepTree (DepNode _x, int nest) {
++			if (_x == null)
++				return;
++
++			for (int i = 0; i &lt; nest; i++)
++				Console.Write (&quot;  &quot;);
++				
++			Console.Write (&quot;{0}&quot;, OpToString (_x.DepOp));
++			
++			if (_x.Constraint != null) {
++				Console.WriteLine (&quot; {0}&quot;, _x.Constraint.Name);
++			}
++			else
++				Console.WriteLine (); // Make the tree pretty.
++			foreach (DepNode _d in _x.Children) {
++				PrintDepTree (_d, nest + 1);
++			}
++		}
++		
+ 		public ModuleInfo (Assembly _asm) {
+ 			_name = _asm.GetName().Name;
+ 			_version = DepVersion.VersionParse (_asm.GetName().Version.ToString ());
+ 			
+ 			ModuleDependencyAttribute _depAttr;
++			ModuleRoleAttribute _roleAttr;
+ 			
+ 			try {
+ 				_depAttr = ((ModuleDependencyAttribute)(_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute), false)[0]));
+@@ -73,10 +127,21 @@
+ 				_dependencies = new DepNode ();
+ 				
+ 				_parser.expr (_dependencies);
++				
++				Console.WriteLine (&quot;Dependency tree for {0}&quot;, _name);
++				Console.WriteLine (&quot;This should match {0}&quot;, _depAttr.DepString);
++				Console.WriteLine (&quot;----------------------------------------------------&quot;);
++				PrintDepTree (_dependencies, 0);
++				Console.WriteLine (&quot;----------------------------------------------------&quot;);
++				_depstring = _depAttr.DepString;
+ 			} else
+ 				_dependencies = null;
+ 			
+-			ModuleRoleAttribute _roleAttr = ((ModuleRoleAttribute)(_asm.GetCustomAttributes (typeof (ModuleRoleAttribute), false)[0]));
++			try {
++				_roleAttr = ((ModuleRoleAttribute)(_asm.GetCustomAttributes (typeof (ModuleRoleAttribute), false)[0]));
++			} catch (IndexOutOfRangeException) {
++				_roleAttr = null;
++			}
+ 			
+ 			if (_roleAttr != null) {
+ 				_roles = _roleAttr.Roles;
+@@ -115,5 +180,10 @@
+ 				return _owner;
+ 			}
+ 		}
++		
++		public string ToString () {
++			return string.Format (&quot;ModuleInfo (Name = {0}, Version = {1}, Dependencies = {2}, Roles = {3}, Owner = {4})&quot;,
++				Name, Version.ToString(), _depstring, Roles, Owner.GetName().Name);
++		}
+ 	}		
+ }
+
+Added: trunk/src/NModule.Core.Module/NModule.Core.Module.build
+===================================================================
+--- trunk/src/NModule.Core.Module/NModule.Core.Module.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Core.Module/NModule.Core.Module.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,52 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Core.Module&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule.Core.Module build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot;/&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Core.Module.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;.&quot;&gt;
++        &lt;include name=&quot;*.cs&quot;/&gt;
++      &lt;/sources&gt;
++       &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++      &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++      &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++      &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++    &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/src/NModule.Dependency.Core/DepOps.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepOps.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Core/DepOps.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -28,5 +28,5 @@
+ //
+ 
+ namespace NModule.Dependency.Core {
+-	public enum DepOps { Not, And, Or, Xor, Opt, Equal, NotEqual, LessThanEqual, LessThan, GreaterThanEqual, GreaterThan, Loaded };
++	public enum DepOps { Not, And, Or, Xor, Opt, Equal, NotEqual, LessThanEqual, LessThan, GreaterThanEqual, GreaterThan, Loaded, Null };
+ }
+
+Modified: trunk/src/NModule.Dependency.Core/DepVersion.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -112,5 +112,9 @@
+ 				ver.Revision = Int32.Parse(vparts[3]);
+ 			return ver;
+ 		}
++		
++		public string ToString ( ) {
++			return string.Format (&quot;{0}:{1}:{2}:{3}&quot;, Major, Minor, Build, Revision);
++		}
+ 	}
+ }
+
+Added: trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.build
+===================================================================
+--- trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,50 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Dependency.Core&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule.Dependency.Core build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot;/&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Dependency.Core.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;.&quot;&gt;
++        &lt;include name=&quot;*.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/src/NModule.Dependency.Parser/DepLexer.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepLexer.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/DepLexer.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,4 +1,4 @@
+-// $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepLexer.cs&quot;$
++// $ANTLR 2.7.5 (20050704): &quot;nmodule-dep.g&quot; -&gt; &quot;DepLexer.cs&quot;$
+ 
+ //
+ // ANTLR Generated Files.
+@@ -156,15 +156,15 @@
+ 							theRetToken = returnToken_;
+ 							break;
+ 						}
+-						case '=':
++						case '?':
+ 						{
+-							mEQ(true);
++							mOPT(true);
+ 							theRetToken = returnToken_;
+ 							break;
+ 						}
+-						case '?':
++						case '=':
+ 						{
+-							mOPT(true);
++							mEQ(true);
+ 							theRetToken = returnToken_;
+ 							break;
+ 						}
+@@ -344,6 +344,20 @@
+ 		returnToken_ = _token;
+ 	}
+ 	
++	public void mOPT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
++{
++		int _ttype; IToken _token=null; int _begin=text.Length;
++		_ttype = OPT;
++		
++		match(&quot;??&quot;);
++		if (_createToken &amp;&amp; (null == _token) &amp;&amp; (_ttype != Token.SKIP))
++		{
++			_token = makeToken(_ttype);
++			_token.setText(text.ToString(_begin, text.Length-_begin));
++		}
++		returnToken_ = _token;
++	}
++	
+ 	public void mEQ(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+ {
+ 		int _ttype; IToken _token=null; int _begin=text.Length;
+@@ -428,20 +442,6 @@
+ 		returnToken_ = _token;
+ 	}
+ 	
+-	public void mOPT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+-{
+-		int _ttype; IToken _token=null; int _begin=text.Length;
+-		_ttype = OPT;
+-		
+-		match(&quot;??&quot;);
+-		if (_createToken &amp;&amp; (null == _token) &amp;&amp; (_ttype != Token.SKIP))
+-		{
+-			_token = makeToken(_ttype);
+-			_token.setText(text.ToString(_begin, text.Length-_begin));
+-		}
+-		returnToken_ = _token;
+-	}
+-	
+ 	public void mLD(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+ {
+ 		int _ttype; IToken _token=null; int _begin=text.Length;
+@@ -631,6 +631,13 @@
+ 			}
+ 			break;
+ 		}
++		case '-':
++		{
++			{
++				match('-');
++			}
++			break;
++		}
+ 		default:
+ 		{
+ 			throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());
+@@ -659,11 +666,11 @@
+ 				}
+ 				else
+ 				{
+-					goto _loop63_breakloop;
++					goto _loop64_breakloop;
+ 				}
+ 				
+ 			}
+-_loop63_breakloop:			;
++_loop64_breakloop:			;
+ 		}    // ( ... )*
+ 		if (_createToken &amp;&amp; (null == _token) &amp;&amp; (_ttype != Token.SKIP))
+ 		{
+@@ -689,11 +696,11 @@
+ 				}
+ 				else
+ 				{
+-					goto _loop66_breakloop;
++					goto _loop67_breakloop;
+ 				}
+ 				
+ 			}
+-_loop66_breakloop:			;
++_loop67_breakloop:			;
+ 		}    // ( ... )*
+ 		if (_createToken &amp;&amp; (null == _token) &amp;&amp; (_ttype != Token.SKIP))
+ 		{
+@@ -750,7 +757,7 @@
+ 	
+ 	private static long[] mk_tokenSet_0_()
+ 	{
+-		long[] data = { 287948901175001088L, 576460745995190270L, 0L, 0L};
++		long[] data = { 287984085547089920L, 576460745995190270L, 0L, 0L};
+ 		return data;
+ 	}
+ 	public static readonly BitSet tokenSet_0_ = new BitSet(mk_tokenSet_0_());
+
+Modified: trunk/src/NModule.Dependency.Parser/DepParser.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepParser.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/DepParser.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,4 +1,4 @@
+-// $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
++// $ANTLR 2.7.5 (20050704): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
+ 
+ //
+ // ANTLR Generated Files.
+@@ -172,6 +172,7 @@
+ 		try {      // for error handling
+ 			match(LPAREN);
+ 			match(NOTO);
++			parent.DepOp = DepOps.Not;
+ 			{ // ( ... )+
+ 				int _cnt6=0;
+ 				for (;;)
+@@ -213,6 +214,7 @@
+ 		try {      // for error handling
+ 			match(LPAREN);
+ 			match(AND);
++			parent.DepOp = DepOps.And;
+ 			{ // ( ... )+
+ 				int _cnt10=0;
+ 				for (;;)
+@@ -254,6 +256,7 @@
+ 		try {      // for error handling
+ 			match(LPAREN);
+ 			match(OR);
++			parent.DepOp = DepOps.Or;
+ 			{ // ( ... )+
+ 				int _cnt14=0;
+ 				for (;;)
+@@ -295,6 +298,7 @@
+ 		try {      // for error handling
+ 			match(LPAREN);
+ 			match(XOR);
++			parent.DepOp = DepOps.Xor;
+ 			{ // ( ... )+
+ 				int _cnt18=0;
+ 				for (;;)
+@@ -336,6 +340,7 @@
+ 		try {      // for error handling
+ 			match(LPAREN);
+ 			match(OPT);
++			parent.DepOp = DepOps.Opt;
+ 			{ // ( ... )+
+ 				int _cnt22=0;
+ 				for (;;)
+
+Modified: trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,4 +1,4 @@
+-// $ANTLR 2.7.5 (20050516): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
++// $ANTLR 2.7.5 (20050704): &quot;nmodule-dep.g&quot; -&gt; &quot;DepParser.cs&quot;$
+ 
+ //
+ // ANTLR Generated Files.
+
+Modified: trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.txt
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.txt	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/DepParserTokenTypes.txt	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,4 +1,4 @@
+-// $ANTLR 2.7.5 (20050516): nmodule-dep.g -&gt; DepParserTokenTypes.txt$
++// $ANTLR 2.7.5 (20050704): nmodule-dep.g -&gt; DepParserTokenTypes.txt$
+ DepParser    // output token vocab name
+ LPAREN=4
+ NOTO=5
+
+Added: trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.build
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,55 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Dependency.Parser&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule.Dependency.Parser build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot;/&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;exec program=&quot;antlr&quot;&gt;
++      &lt;arg value=&quot;nmodule-dep.g&quot;/&gt;
++    &lt;/exec&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Dependency.Parser.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;.&quot;&gt;
++        &lt;include name=&quot;*.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++      	&lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++	      &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/src/NModule.Dependency.Parser/nmodule-dep.g
+===================================================================
+--- trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Dependency.Parser/nmodule-dep.g	2005-07-04 17:41:09 UTC (rev 34)
+@@ -89,23 +89,23 @@
+ 	;
+ 
+ notexpr[DepNode parent]
+-	: LPAREN! NOTO (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
++	: LPAREN! NOTO { parent.DepOp = DepOps.Not; } (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
+ 	;
+ 
+ andexpr[DepNode parent]
+-	: LPAREN! AND (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
++	: LPAREN! AND { parent.DepOp = DepOps.And; } (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
+ 	;
+ 
+ orexpr[DepNode parent]
+-	: LPAREN! OR (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
++	: LPAREN! OR { parent.DepOp = DepOps.Or; } (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
+ 	;
+ 
+ xorexpr[DepNode parent]
+-	: LPAREN! XOR (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
++	: LPAREN! XOR { parent.DepOp = DepOps.Xor; } (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
+ 	;
+ 
+ optexpr[DepNode parent]
+-	: LPAREN! OPT (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
++	: LPAREN! OPT { parent.DepOp = DepOps.Opt; } (oexpr[parent, false]|({DepNode child = parent.CreateNewChild(); } cexpr[child]))+ RPAREN!
+ 	;
+ 
+ // LPAREN! ((EQ^|NEQ^|LTE^|LS^|GTE^|GT^|LD^) iexpr) RPAREN!
+@@ -209,6 +209,7 @@
+ ID_LETTER
+ 	: ID_START_LETTER
+ 	| ('0' .. '9')
++	| ('-')
+ 	;
+ 	
+ protected
+
+Added: trunk/src/NModule.Src.build
+===================================================================
+--- trunk/src/NModule.Src.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/NModule.Src.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,63 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Src&quot; default=&quot;compile-all&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule source build files.&lt;/description&gt;
++
++  &lt;!-- properties --&gt;
++  &lt;property name=&quot;debug&quot; value=&quot;true&quot; overwrite=&quot;false&quot; /&gt;
++  &lt;property name=&quot;release&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
++  &lt;property name=&quot;strong&quot; value=&quot;false&quot; overwrite=&quot;false&quot; /&gt;
++
++  &lt;target name=&quot;compile-all&quot; depends=&quot;NModule.Core,NModule.Dependency.Core,antlr-runtime,NModule.Dependency.Parser,NModule.Core.Module,NModule.Core.Loader&quot; /&gt;
++
++  &lt;target name=&quot;NModule.Core&quot;&gt;
++    &lt;nant buildfile=&quot;NModule.Core/NModule.Core.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;NModule.Dependency.Core&quot; depends=&quot;NModule.Core&quot;&gt;
++    &lt;nant buildfile=&quot;NModule.Dependency.Core/NModule.Dependency.Core.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;antlr-runtime&quot;&gt;
++    &lt;nant buildfile=&quot;antlr-runtime/antlr-runtime.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;NModule.Dependency.Parser&quot; depends=&quot;NModule.Core,NModule.Dependency.Core,antlr-runtime&quot;&gt;
++    &lt;nant buildfile=&quot;NModule.Dependency.Parser/NModule.Dependency.Parser.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;NModule.Core.Module&quot; depends=&quot;NModule.Core,NModule.Dependency.Core,NModule.Dependency.Parser&quot;&gt;
++    &lt;nant buildfile=&quot;NModule.Core.Module/NModule.Core.Module.build&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;NModule.Core.Loader&quot; depends=&quot;NModule.Core,NModule.Core.Module,NModule.Dependency.Core&quot;&gt;
++    &lt;nant buildfile=&quot;NModule.Core.Loader/NModule.Core.Loader.build&quot; /&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Added: trunk/src/antlr-runtime/antlr-runtime.build
+===================================================================
+--- trunk/src/antlr-runtime/antlr-runtime.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/src/antlr-runtime/antlr-runtime.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,47 @@
++&lt;!--
++antlr-runtime.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;antlr-runtime&quot; default=&quot;compile&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;antlr-runtime build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../../NModule.build.include&quot;/&gt;
++  
++  &lt;property name=&quot;project.src.dir&quot; value=&quot;../&quot;
++    unless=&quot;${property::exists('project.src.dir')}&quot;/&gt;
++
++  &lt;target name=&quot;compile&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/antlr-runtime.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;.&quot;&gt;
++        &lt;include name=&quot;**/*.cs&quot; /&gt;
++      &lt;/sources&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++&lt;/project&gt;
+
+Modified: trunk/test/NModule.Core.Test/NModule.Core.Test.mdp
+===================================================================
+--- trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/NModule.Core.Test.mdp	2005-07-04 17:41:09 UTC (rev 34)
+@@ -27,6 +27,6 @@
+   &lt;Contents&gt;
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./TESTS&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+-    &lt;File name=&quot;./nm-ld.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./NModuleTests.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/test/NModule.Core.Test/NModuleTests.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/NModuleTests.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/NModuleTests.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,280 @@
++//
++// NModuleTests.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++namespace NModule.Core.Test {
++
++	using System;
++	using System.Reflection;
++	using System.Collections;
++	
++	using NModule.Core.Loader;
++	using NModule.Core;
++	using NModule.Core.Module;
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	using NModule.Dependency.Resolver;
++	
++	using NUnit.Framework;
++	
++	[TestFixture]
++	public class NModuleTests {
++	
++		public NModuleTests () {
++		}
++		
++		// nm-ld-01 - Loading with no dependencies, single dir search path.
++		[Test]
++		public void nm_ld_01 () {
++			Console.WriteLine (&quot;nm_ld_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld/&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-01&quot;);
++		}
++		
++		// nm-ld-02 - Loading with no dependencies, single dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_02 () {
++			Console.WriteLine (&quot;nm_ld_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-02&quot;);
++		}
++		
++		// nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
++		[Test]
++		public void nm_ld_03 () {
++			Console.WriteLine (&quot;nm_ld_03&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-03&quot;);
++		}
++		
++		// nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
++		[Test]
++		public void nm_ld_04 () {
++			Console.WriteLine (&quot;nm_ld_04&quot;);
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-04&quot;);
++		}
++		
++		// nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
++		[Test]
++		public void nm_ld_05 () {
++			Console.WriteLine (&quot;nm_ld_05&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-05&quot;);
++		}
++		
++		// nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
++		[Test]
++		[ExpectedException (typeof (ModuleNotFoundException))]
++		public void nm_ld_06 () {
++			Console.WriteLine (&quot;nm_ld_06&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
++			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
++			
++			_mc.LoadModule (&quot;nm-ld-06&quot;);
++		}
++		
++		// nm-ul-01 - Unloading with no dependencies
++		[Test]
++		public void nm_ul_01 () {
++			Console.WriteLine (&quot;nm_ul_01&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-01&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-01&quot;);
++		}
++		
++		// nm-ul-02 - Unloading with ref count &gt; 1
++		[Test]
++		[ExpectedException (typeof (DomainStillReferencedException))]
++		public void nm_ul_02 () {
++			Console.WriteLine (&quot;nm_ul_02&quot;);
++			
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.LoadModule (&quot;nm-ul-02&quot;);
++			
++			_mc.UnloadModule (&quot;nm-ul-02&quot;);
++		}
++		
++		// This is a huge section.
++		
++		/**
++		 * Combinations to be tested:
++		 *   Valid-combination operators: &amp;&amp; || ^^ !! ??
++		 *   Valid-singleton operators: == != &lt;&lt; &lt;= &gt;&gt; &gt;= ##
++		 *   (==)
++		 *   (!=)
++		 *   (&lt;&lt;)
++		 *   (&gt;&gt;)
++		 *   (&lt;=)
++		 *   (&gt;=)
++		 *   (##)
++		 *   (&amp;&amp; (==) (&gt;=))
++		 *   (|| (&gt;&gt;) (&lt;&lt;))
++		 *   (^^ (&gt;&gt;) (!=))
++		 *   (!! (==))
++		 *   (?? (&gt;=))
++		 *   (&amp;&amp; (|| (==) (!=)) (?? (##)))
++		 *   (|| (&amp;&amp; (##) (##)) (!! (!=)))
++		 **/
++		[Test]
++		public void nm_dr_01 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-01a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01b&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01d&quot;));
++			Assert.IsFalse (_mc.IsLoaded (&quot;nm-dr-01c&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01e&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01f&quot;));
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-01g&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_02 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-02a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-02b&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_03 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-03a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-03b&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_04 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-04a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-04b&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_05 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-05a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-05b&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_06 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-06a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-06b&quot;));
++		}
++		
++		//[Test]
++		public void nm_dr_07 () {
++			ModuleController _mc = new ModuleController ();
++			
++			_mc.SearchPath.Add (&quot;data/nm-dr&quot;);
++			
++			// This will look for a specific version of nm-dr-01b
++			_mc.LoadModule (&quot;nm-dr-07a&quot;);
++			
++			// If it worked, we should have a domain for nm-dr-01b
++			Assert.IsTrue (_mc.IsLoaded (&quot;nm-dr-07b&quot;));
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/NModuleTests.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/.monkeywrench.log
+===================================================================
+(Binary files differ)
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/.monkeywrench.log
+___________________________________________________________________
+Name: svn:mime-type
+   + font/ttf
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&amp;&amp; (&amp;&amp; (== nm-dr-01b 1.0) (&gt;&gt; nm-dr-01d 1.2)) (?? (&lt;&lt; nm-dr-01c 1.0)))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01a_module {
++		public nm_dr_01a_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01a.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(## nm-dr-01e)&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01b_module {
++		public nm_dr_01b_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01b.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01c_module {
++		public nm_dr_01c_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01c.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.3.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01d_module {
++		public nm_dr_01d_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01d.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,50 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleDependency (&quot;(&amp;&amp; (## nm-dr-01f) (## nm-dr-01g))&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01e_module {
++		public nm_dr_01e_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01e.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01f_module {
++		public nm_dr_01f_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01f.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,49 @@
++//
++// nm-ld-01.cs
++//
++// Author:
++//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++//
++// Copyright (C) 2005 Michael Tindal and the individuals listed on
++// the ChangeLog entries.
++//
++// Permission is hereby granted, free of charge, to any person obtaining
++// a copy of this software and associated documentation files (the
++// &quot;Software&quot;), to deal in the Software without restriction, including
++// without limitation the rights to use, copy, modify, merge, publish,
++// distribute, sublicense, and/or sell copies of the Software, and to
++// permit persons to whom the Software is furnished to do so, subject to
++// the following conditions:
++// 
++// The above copyright notice and this permission notice shall be
++// included in all copies or substantial portions of the Software.
++// 
++// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++//
++
++using System;
++using System.Reflection;
++using System.Collections;
++	
++using NModule.Core.Loader;
++using NModule.Core;
++using NModule.Core.Module;
++using NModule.Dependency.Core;
++using NModule.Dependency.Parser;
++using NModule.Dependency.Resolver;
++
++[assembly: AssemblyVersion (&quot;1.0.*&quot;)]
++[assembly: ModuleRole (&quot;&quot;)]
++
++namespace NModule.Core.Test.nm_dr {
++	public class nm_dr_01g_module {
++		public nm_dr_01g_module() {
++		}
++	}
++}
+
+
+Property changes on: trunk/test/NModule.Core.Test/data/src/nm-dr/nm-dr-01g.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Deleted: trunk/test/NModule.Core.Test/nm-ld.cs
+===================================================================
+--- trunk/test/NModule.Core.Test/nm-ld.cs	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Core.Test/nm-ld.cs	2005-07-04 17:41:09 UTC (rev 34)
+@@ -1,163 +0,0 @@
+-//
+-// nm-ld.cs
+-//
+-// Author:
+-//     Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+-//
+-// Copyright (C) 2005 Michael Tindal and the individuals listed on
+-// the ChangeLog entries.
+-//
+-// Permission is hereby granted, free of charge, to any person obtaining
+-// a copy of this software and associated documentation files (the
+-// &quot;Software&quot;), to deal in the Software without restriction, including
+-// without limitation the rights to use, copy, modify, merge, publish,
+-// distribute, sublicense, and/or sell copies of the Software, and to
+-// permit persons to whom the Software is furnished to do so, subject to
+-// the following conditions:
+-// 
+-// The above copyright notice and this permission notice shall be
+-// included in all copies or substantial portions of the Software.
+-// 
+-// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-//
+-
+-namespace NModule.Core.Test {
+-
+-	using System;
+-	using System.Reflection;
+-	using System.Collections;
+-	
+-	using NModule.Core.Loader;
+-	using NModule.Core;
+-	using NModule.Core.Module;
+-	using NModule.Dependency.Core;
+-	using NModule.Dependency.Parser;
+-	using NModule.Dependency.Resolver;
+-	
+-	using NUnit.Framework;
+-	
+-	[TestFixture]
+-	public class NModuleTests {
+-	
+-		public NModuleTests () {
+-		}
+-		
+-		// nm-ld-01 - Loading with no dependencies, single dir search path.
+-		[Test]
+-		public void nm_ld_01 () {
+-			Console.WriteLine (&quot;nm_ld_01&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld/&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-01&quot;);
+-		}
+-		
+-		// nm-ld-02 - Loading with no dependencies, single dir search path, not found.
+-		[Test]
+-		[ExpectedException (typeof (ModuleNotFoundException))]
+-		public void nm_ld_02 () {
+-			Console.WriteLine (&quot;nm_ld_02&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-02&quot;);
+-		}
+-		
+-		// nm-ld-03 - Loading with no dependencies, multiple dir search path, first dir.
+-		[Test]
+-		public void nm_ld_03 () {
+-			Console.WriteLine (&quot;nm_ld_03&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-03&quot;);
+-		}
+-		
+-		// nm-ld-04 - Loading with no dependencies, multiple dir search path, middle dir.
+-		[Test]
+-		public void nm_ld_04 () {
+-			Console.WriteLine (&quot;nm_ld_04&quot;);
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-04&quot;);
+-		}
+-		
+-		// nm-ld-05 - Loading with no dependencies, multiple dir search path, last dir.
+-		[Test]
+-		public void nm_ld_05 () {
+-			Console.WriteLine (&quot;nm_ld_05&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-05&quot;);
+-		}
+-		
+-		// nm-ld-06 - Loading with no dependencies, multiple dir search path, not found.
+-		[Test]
+-		[ExpectedException (typeof (ModuleNotFoundException))]
+-		public void nm_ld_06 () {
+-			Console.WriteLine (&quot;nm_ld_06&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ld&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-2&quot;);
+-			_mc.SearchPath.Add (&quot;data/nm-ld-3&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ld-06&quot;);
+-		}
+-		
+-		// nm-ul-01 - Unloading with no dependencies
+-		[Test]
+-		public void nm_ul_01 () {
+-			Console.WriteLine (&quot;nm_ul_01&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-01&quot;);
+-			
+-			_mc.UnloadModule (&quot;nm-ul-01&quot;);
+-		}
+-		
+-		// nm-ul-02 - Unloading with ref count &gt; 1
+-		[Test]
+-		[ExpectedException (typeof (DomainStillReferencedException))]
+-		public void nm_ul_02 () {
+-			Console.WriteLine (&quot;nm_ul_02&quot;);
+-			
+-			ModuleController _mc = new ModuleController ();
+-			
+-			_mc.SearchPath.Add (&quot;data/nm-ul&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-02&quot;);
+-			
+-			_mc.LoadModule (&quot;nm-ul-02&quot;);
+-			
+-			_mc.UnloadModule (&quot;nm-ul-02&quot;);
+-		}
+-	}
+-}
+
+Added: trunk/test/NModule.Test.build
+===================================================================
+--- trunk/test/NModule.Test.build	2005-06-30 07:50:54 UTC (rev 33)
++++ trunk/test/NModule.Test.build	2005-07-04 17:41:09 UTC (rev 34)
+@@ -0,0 +1,344 @@
++&lt;!--
++NModule.build
++
++Author:
++    Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++Copyright (C) 2005 Michael Tindal and the individuals listed on
++the ChangeLog entries.
++
++Permission is hereby granted, free of charge, to any person obtaining
++a copy of this software and associated documentation files (the
++&quot;Software&quot;), to deal in the Software without restriction, including
++without limitation the rights to use, copy, modify, merge, publish,
++distribute, sublicense, and/or sell copies of the Software, and to
++permit persons to whom the Software is furnished to do so, subject to
++the following conditions:
++
++The above copyright notice and this permission notice shall be
++included in all copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
++&lt;project name=&quot;NModule.Test&quot; default=&quot;compile-all&quot; basedir=&quot;.&quot;&gt;
++  &lt;description&gt;NModule test build files.&lt;/description&gt;
++
++  &lt;include buildfile=&quot;../NModule.build.include&quot; /&gt;
++  
++  
++  &lt;!-- properties --&gt;
++  &lt;target name=&quot;set-test-dirs&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;property name=&quot;project.test.base.dir&quot; value=&quot;${path::combine(project.base.dir,'test')}&quot; /&gt;
++    &lt;property name=&quot;project.test.dir&quot; value=&quot;${path::combine(project.test.base.dir,'NModule.Core.Test')}&quot; /&gt;
++    &lt;property name=&quot;project.test.data.dir&quot; value=&quot;${path::combine(current.build.dir,'data')}&quot; /&gt;
++    &lt;property name=&quot;project.test.base.data.dir&quot; value=&quot;${path::combine(project.test.dir,'data')}&quot; /&gt;
++    &lt;property name=&quot;project.test.data.src.dir&quot; value=&quot;${path::combine(project.test.base.data.dir,'src')}&quot; /&gt;
++    &lt;property name=&quot;nm-ld-dir&quot; value=&quot;${path::combine(project.test.data.dir,'nm-ld')}&quot; /&gt;
++    &lt;property name=&quot;nm-ld-2-dir&quot; value=&quot;${path::combine(project.test.data.dir,'nm-ld-2')}&quot; /&gt;
++    &lt;property name=&quot;nm-ld-3-dir&quot; value=&quot;${path::combine(project.test.data.dir,'nm-ld-3')}&quot; /&gt;
++    &lt;property name=&quot;nm-ul-dir&quot; value=&quot;${path::combine(project.test.data.dir,'nm-ul')}&quot; /&gt;
++    &lt;property name=&quot;nm-dr-dir&quot; value=&quot;${path::combine(project.test.data.dir,'nm-dr')}&quot; /&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;compile-all&quot; depends=&quot;set-test-dirs,make-test-dirs,nm-ld,nm-ul,nm-dr,NModule.Core.Test&quot; /&gt;
++
++  &lt;target name=&quot;make-test-dirs&quot; depends=&quot;make-nm-ld-dir,make-nm-ul-dir,make-nm-dr-dir&quot; /&gt;
++
++  &lt;target name=&quot;make-nm-ld-dir&quot;&gt;
++    &lt;mkdir dir=&quot;${nm-ld-dir}&quot; unless=&quot;${directory::exists(nm-ld-dir)}&quot; /&gt;
++    &lt;mkdir dir=&quot;${nm-ld-2-dir}&quot; unless=&quot;${directory::exists(nm-ld-2-dir)}&quot; /&gt;
++    &lt;mkdir dir=&quot;${nm-ld-3-dir}&quot; unless=&quot;${directory::exists(nm-ld-3-dir)}&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;make-nm-ul-dir&quot;&gt;
++    &lt;mkdir dir=&quot;${nm-ul-dir}&quot; unless=&quot;${directory::exists(nm-ul-dir)}&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;make-nm-dr-dir&quot;&gt;
++    &lt;mkdir dir=&quot;${nm-dr-dir}&quot; unless=&quot;${directory::exists(nm-dr-dir)}&quot; /&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-ld&quot; depends=&quot;nm-ld-01,nm-ld-03,nm-ld-04,nm-ld-05&quot; /&gt;
++    
++  &lt;target name=&quot;nm-ld-01&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ld-dir}/nm-ld-01.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ld')}&quot;&gt;
++        &lt;include name=&quot;nm-ld-01.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-ld-03&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ld-dir}/nm-ld-03.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ld')}&quot;&gt;
++        &lt;include name=&quot;nm-ld-03.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-ld-04&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ld-dir}/nm-ld-04.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ld')}&quot;&gt;
++        &lt;include name=&quot;nm-ld-04.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-ld-05&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ld-dir}/nm-ld-05.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ld')}&quot;&gt;
++        &lt;include name=&quot;nm-ld-05.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-ul&quot; depends=&quot;nm-ul-01,nm-ul-02&quot; /&gt;
++  
++  &lt;target name=&quot;nm-ul-01&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ul-dir}/nm-ul-01.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ul')}&quot;&gt;
++        &lt;include name=&quot;nm-ul-01.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-ul-02&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-ul-dir}/nm-ul-02.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-ul')}&quot;&gt;
++        &lt;include name=&quot;nm-ul-02.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr&quot; depends=&quot;nm-dr-01a,nm-dr-01b,nm-dr-01c,nm-dr-01d,nm-dr-01e,nm-dr-01f,nm-dr-01g&quot; /&gt;
++
++  &lt;target name=&quot;nm-dr-01a&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01a.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01a.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;target name=&quot;nm-dr-01b&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01b.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01b.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-01c&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01c.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01c.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-01d&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01d.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01d.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-01e&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01e.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01e.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-01f&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01f.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01f.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++  
++  &lt;target name=&quot;nm-dr-01g&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${nm-dr-dir}/nm-dr-01g.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${path::combine(project.test.data.src.dir,'nm-dr')}&quot;&gt;
++        &lt;include name=&quot;nm-dr-01g.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++  &lt;assemblyfileset id=&quot;nunit.framework&quot;&gt;
++    &lt;include name=&quot;nunit.framework.dll&quot; /&gt;
++  &lt;/assemblyfileset&gt;
++  &lt;target name=&quot;NModule.Core.Test&quot; depends=&quot;set-build-dir&quot;&gt;
++    &lt;csc target=&quot;library&quot;
++        output=&quot;${current.build.dir}/NModule.Core.Test.dll&quot;
++        debug=&quot;${build.debug}&quot; define=&quot;${build.defines.csc}&quot;&gt;
++      &lt;sources basedir=&quot;${project.test.dir}&quot;&gt;
++        &lt;include name=&quot;*.cs&quot;/&gt;
++      &lt;/sources&gt;
++      &lt;references basedir=&quot;${current.build.dir}&quot;&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;antlr-runtime.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Loader.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Core.Module.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Core.dll&quot; /&gt;
++        &lt;include name=&quot;NModule.Dependency.Parser.dll&quot; /&gt;
++        &lt;include name=&quot;nunit.framework.dll&quot; /&gt;
++      &lt;/references&gt;
++    &lt;/csc&gt;
++  &lt;/target&gt;
++
++&lt;/project&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000020.html">[nmodule-commits] r35 - trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>

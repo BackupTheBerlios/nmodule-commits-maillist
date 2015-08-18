@@ -1,0 +1,1659 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [nmodule-commits] r20 - in trunk: . doc misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/NModule.Dependency.Resolver test test/Data
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nmodule-commits/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r20%20-%20in%20trunk%3A%20.%20doc%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser%20src/NModule.Dependency.Resolver%20test%20test/Data&In-Reply-To=%3C200506230840.j5N8eWPe022768%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[nmodule-commits] r20 - in trunk: . doc misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/NModule.Dependency.Resolver test test/Data</H1>
+    <B>Michael Tindal at BerliOS</B> 
+    <A HREF="mailto:nmodule-commits%40lists.berlios.de?Subject=Re%3A%20%5Bnmodule-commits%5D%20r20%20-%20in%20trunk%3A%20.%20doc%20misc%20src%20src/NModule.Core%20src/NModule.Core.Loader%20src/NModule.Core.Module%20src/NModule.Dependency.Core%20src/NModule.Dependency.Parser%20src/NModule.Dependency.Resolver%20test%20test/Data&In-Reply-To=%3C200506230840.j5N8eWPe022768%40sheep.berlios.de%3E"
+       TITLE="[nmodule-commits] r20 - in trunk: . doc misc src src/NModule.Core src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/NModule.Dependency.Resolver test test/Data">urilith at sheep.berlios.de
+       </A><BR>
+    <I>Thu Jun 23 10:40:32 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[nmodule-commits] r19 - in trunk: . src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+        <LI>Next message: <A HREF="000006.html">[nmodule-commits] r21 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/NModule.Dependency.Resolver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: urilith
+Date: 2005-06-23 10:40:23 +0200 (Thu, 23 Jun 2005)
+New Revision: 20
+
+Added:
+   trunk/doc/
+   trunk/doc/DESIGN
+   trunk/doc/Documentation.mdp
+   trunk/doc/Documentation.mds
+   trunk/misc/
+   trunk/misc/bash-copy.hdr
+   trunk/misc/cs-copy.hdr
+   trunk/misc/svkchangelog
+   trunk/misc/svkcommit
+   trunk/misc/xml-copy.hdr
+   trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+   trunk/src/NModule.Core.Loader/ModuleImageException.cs
+   trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+   trunk/src/NModule.Core.Module/ModuleRole.cs
+   trunk/src/NModule.Core/
+   trunk/src/NModule.Core/AssemblyInfo.cs
+   trunk/src/NModule.Core/IModule.cs
+   trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+   trunk/src/NModule.Core/ModuleRoleAttribute.cs
+   trunk/src/NModule.Core/NModule.Core.mdp
+   trunk/src/NModule.Core/NModule.Core.mds
+   trunk/src/NModule.Dependency.Resolver/
+   trunk/src/NModule.Dependency.Resolver/AssemblyInfo.cs
+   trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs
+   trunk/src/NModule.Dependency.Resolver/DepResolver.cs
+   trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp
+   trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds
+   trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.pidb
+   trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs
+   trunk/test/
+   trunk/test/Data/
+   trunk/test/Data/test-1.txt
+   trunk/test/Data/test-2.txt
+   trunk/test/NModuleTest.cs
+Removed:
+   trunk/Documentation/
+   trunk/Misc/
+   trunk/Test/
+   trunk/src/NModule.Core.Loader/ModuleRole.cs
+Modified:
+   trunk/
+   trunk/ChangeLog
+   trunk/nmodule.mds
+   trunk/src/NModule.Core.Loader/ModuleController.cs
+   trunk/src/NModule.Core.Loader/ModuleLoader.cs
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+   trunk/src/NModule.Core.Loader/NModule.Core.Loader.pidb
+   trunk/src/NModule.Core.Module/ModuleInfo.cs
+   trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+   trunk/src/NModule.Core.Module/NModule.Core.Module.pidb
+   trunk/src/NModule.Dependency.Core/DepConstraint.cs
+   trunk/src/NModule.Dependency.Core/DepVersion.cs
+   trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.pidb
+   trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb
+Log:
+ <A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">r112 at dreamshadow</A>:  urilith | 2005-06-23 03:39:12 -0500
+ 2005-06-23 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+   * nmodule.mds: New projects.
+   * src/NModule.Core.Loader/ModuleController.cs: Finished implementing everything. Woot.
+   * src/NModule.Core.Loader/ModuleLoader.cs: Dont remember.
+   * src/NModule.Core.Loader/NModule.Core.Loader.mdp: Moved ModuleRole.cs to NModule.Core.Module.
+   * src/NModule.Core.Loader/NModule.Core.Loader.pidb: This is getting deleted.
+   * src/NModule.Core.Loader/InvalidModuleException.cs: New empty placeholder file.
+   * src/NModule.Core.Loader/ModuleImageException.cs: New empty placeholder file.
+   * src/NModule.Core.Loader/ModuleNotFoundException.cs: New empty placeholder file.
+   * src/NModule.Core.Loader/ModuleRole.cs: Moved to NModule.Core.Module.
+   * src/NModule.Core.Module/ModuleInfo.cs: Implemented.
+   * src/NModule.Core.Module/NModule.Core.Module.mdp: Added ModuleRole.cs from NModule.Core.Loader.
+   * src/NModule.Core.Module/NModule.Core.Module.pidb: This is getting deleted.
+   * src/NModule.Core.Module/ModuleRole.cs: Moved from NModule.Core.Module.
+   * src/NModule.Dependency.Core/DepConstraint.cs: Moved the version parsing code to DepVersion.
+   * src/NModule.Dependency.Core/DepVersion.cs: Moved the version parsing code from DepConstraint.
+   * src/NModule.Dependency.Core/NModule.Dependency.Core.pidb: This is getting deleted.
+   * src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb: This is getting deleted.
+   * src/NModule.Core: New assembly.
+   * src/NModule.Core/AssemblyInfo.cs: New file.
+   * src/NModule.Core/IModule.cs: Empty placeholder file.
+   * src/NModule.Core/ModuleDependencyAttribute.cs: Empty placeholder file.
+   * src/NModule.Core/ModuleRoleAttribute.cs: Empty placeholder file.
+   * src/NModule.Core/NModule.Core.mdp: New project.
+   * src/NModule.Core/NModule.Core.mds: New solution.
+   * src/NModule.Dependency.Resolver: The resolver. :)
+   * src/NModule.Dependency.Resolver/AssemblyInfo.cs: New assembly info.
+   * src/NModule.Dependency.Resolver/CircularDependencyException.cs: Empty placeholder file.
+   * src/NModule.Dependency.Resolver/DepResolver.cs: The resolver code.
+   * src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp: New project.
+   * src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds: New solution.
+   * src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.pidb: This is getting deleted.
+   * src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs: Empty placeholder file.
+   * doc: Renamed Documentation to doc.
+   * misc: Renamed Misc to misc.
+   * test: Renamed Test to test.
+ 
+
+
+
+Property changes on: trunk
+___________________________________________________________________
+Name: svk:merge
+   - b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:109
+   + b743595e-7af7-0310-b020-feacd67de632:/local/nmodule/trunk:112
+
+Modified: trunk/ChangeLog
+===================================================================
+--- trunk/ChangeLog	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/ChangeLog	2005-06-23 08:40:23 UTC (rev 20)
+@@ -1,3 +1,41 @@
++2005-06-23 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
++
++	* nmodule.mds: New projects.
++	* src/NModule.Core.Loader/ModuleController.cs: Finished implementing everything.  Woot.
++	* src/NModule.Core.Loader/ModuleLoader.cs: Dont remember.
++	* src/NModule.Core.Loader/NModule.Core.Loader.mdp: Moved ModuleRole.cs to NModule.Core.Module.
++	* src/NModule.Core.Loader/NModule.Core.Loader.pidb: This is getting deleted.
++	* src/NModule.Core.Loader/InvalidModuleException.cs: New empty placeholder file.
++	* src/NModule.Core.Loader/ModuleImageException.cs: New empty placeholder file.
++	* src/NModule.Core.Loader/ModuleNotFoundException.cs: New empty placeholder file.
++	* src/NModule.Core.Loader/ModuleRole.cs: Moved to NModule.Core.Module.
++	* src/NModule.Core.Module/ModuleInfo.cs: Implemented.
++	* src/NModule.Core.Module/NModule.Core.Module.mdp: Added ModuleRole.cs from NModule.Core.Loader.
++	* src/NModule.Core.Module/NModule.Core.Module.pidb: This is getting deleted.
++	* src/NModule.Core.Module/ModuleRole.cs: Moved from NModule.Core.Module.
++	* src/NModule.Dependency.Core/DepConstraint.cs: Moved the version parsing code to DepVersion.
++	* src/NModule.Dependency.Core/DepVersion.cs: Moved the version parsing code from DepConstraint.
++	* src/NModule.Dependency.Core/NModule.Dependency.Core.pidb: This is getting deleted.
++	* src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb: This is getting deleted.
++	* src/NModule.Core: New assembly.
++	* src/NModule.Core/AssemblyInfo.cs: New file.
++	* src/NModule.Core/IModule.cs: Empty placeholder file.
++	* src/NModule.Core/ModuleDependencyAttribute.cs: Empty placeholder file.
++	* src/NModule.Core/ModuleRoleAttribute.cs: Empty placeholder file.
++	* src/NModule.Core/NModule.Core.mdp: New project.
++	* src/NModule.Core/NModule.Core.mds: New solution.
++	* src/NModule.Dependency.Resolver: The resolver.  :)
++	* src/NModule.Dependency.Resolver/AssemblyInfo.cs: New assembly info.
++	* src/NModule.Dependency.Resolver/CircularDependencyException.cs: Empty placeholder file.
++	* src/NModule.Dependency.Resolver/DepResolver.cs: The resolver code.
++	* src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp: New project.
++	* src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds: New solution.
++	* src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.pidb: This is getting deleted.
++	* src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs: Empty placeholder file.
++	* doc: Renamed Documentation to doc.
++	* misc: Renamed Misc to misc.
++	* test: Renamed Test to test.
++
+ 2005-06-22 Michael Tindal &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">urilith at gentoo.org</A>&gt;
+ 
+ 	* nmodule.mds: Updated.
+
+Added: trunk/doc/DESIGN
+===================================================================
+--- trunk/doc/DESIGN	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/doc/DESIGN	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,30 @@
++NModule is a high level plugin framework for the .NET framework.
++
++The author (Michael Tindal) actively targets the mono framework, but it should
++run unmodified on the .NET framework as well.
++
++NModule takes plugin frameworks to a whole new level by providing interfaces and abstractions
++that make it suitable for any task.  NModule maintains several pieces of information about a &quot;module&quot;:
++
++  -&gt; The module info, including name, and version, plus dependency information.
++  -&gt; A set of &quot;roles&quot; the module provides (see below).
++  
++NModule abstracts a lot of the plug-in API away from itself, instead, it defines a set of low-level interfaces
++for loading and managing plug-ins while allowing application writers the freedom to define their own set of APIs.
++What is unique about NModules approach to this is that even though NModule does not define the plug-in APIs, it
++can still interact with them!  This is done using NModule's role system.
++
++When an application defines an interface to be used by plug-ins, that interface has a purpose.  For example, I might
++define an interface called IAction that represented an action, and IController that represented a controller.  Different
++modules could fulfill different roles, this is where the role facility comes into play.  The application registers
++a &quot;role&quot; with the NModule master controller, using the RegisterRole() method.  When a module is loaded, its typed are
++searched for the [ModuleRole()] attribute.  If this is found, it checks the role to see if it is registered, and if it is,
++calls the appropriate handler with the assembly and type information.
++
++--&gt;&gt; Loading/Unloading Modules &lt;&lt;--
++
++Basic reflection in .NET uses the Assembly.Load and Assembly.LoadFrom methods.  However, this has the drawback that
++the loaded assemblies cannot be unloaded.  NModule gets around this by wrapping each load into an AppDomain.  (It is
++possible to reuse appdomains, or to disable them completely if necessary).  When NModule loads a module, it checks
++its dependencies, and attempts to load the dependencies.  NModule supports the detection of circular and unresolved
++dependencies, and supports several operators.  (See:  Dependencies for more information).
+\ No newline at end of file
+
+Added: trunk/doc/Documentation.mdp
+===================================================================
+--- trunk/doc/Documentation.mdp	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/doc/Documentation.mdp	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,23 @@
++&lt;Project name=&quot;Documentation&quot; fileversion=&quot;2.0&quot; language=&quot;C#&quot; ctype=&quot;DotNetProject&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Debug&quot; assembly=&quot;Documentation&quot; /&gt;
++      &lt;Build debugmode=&quot;True&quot; target=&quot;Exe&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;True&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Release&quot; assembly=&quot;Documentation&quot; /&gt;
++      &lt;Build debugmode=&quot;False&quot; target=&quot;Exe&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;True&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;References /&gt;
++  &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
++    &lt;excludeFiles /&gt;
++  &lt;/DeploymentInformation&gt;
++  &lt;Contents&gt;
++    &lt;File name=&quot;./DESIGN&quot; subtype=&quot;Code&quot; buildaction=&quot;Nothing&quot; /&gt;
++  &lt;/Contents&gt;
++&lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/doc/Documentation.mds
+===================================================================
+--- trunk/doc/Documentation.mds	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/doc/Documentation.mds	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,16 @@
++&lt;Combine name=&quot;Documentation&quot; fileversion=&quot;2.0&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;StartMode startupentry=&quot;Documentation&quot; single=&quot;True&quot;&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;Documentation&quot; /&gt;
++  &lt;/StartMode&gt;
++  &lt;Entries&gt;
++    &lt;Entry filename=&quot;./Documentation.mdp&quot; /&gt;
++  &lt;/Entries&gt;
++&lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/misc/bash-copy.hdr
+===================================================================
+--- trunk/misc/bash-copy.hdr	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/misc/bash-copy.hdr	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,24 @@
++##########################################################################
++# Copyright (c) 2005 Michael Tindal and the individuals listed           #
++# on the ChangeLog entries.                                              #
++#                                                                        #
++# Permission is hereby granted, free of charge, to any person obtaining  #
++# a copy of this software and associated documentation files (the        #
++# &quot;Software&quot;), to deal in the Software without restriction, including    #
++# without limitation the rights to use, copy, modify, merge, publish,    #
++# distribute, sublicense, and/or sell copies of the Software, and to     #
++# permit persons to whom the Software is furnished to do so, subject to  #
++# the following conditions:                                              #
++#                                                                        #
++# The above copyright notice and this permission notice shall be         #
++# included in all copies or substantial portions of the Software.        #
++#                                                                        #
++# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        #
++# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     #
++# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  #
++# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE #
++# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION #
++# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  #
++# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        #
++##########################################################################
++
+
+Added: trunk/misc/cs-copy.hdr
+===================================================================
+--- trunk/misc/cs-copy.hdr	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/misc/cs-copy.hdr	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,24 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions:                                              *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++
+
+Added: trunk/misc/svkchangelog
+===================================================================
+--- trunk/misc/svkchangelog	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/misc/svkchangelog	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,20 @@
++#!/bin/bash
++
++mv ChangeLog .ChangeLog.sch
++
++echo &quot;$(date &quot;+%Y-%m-%d&quot;) $SVKCNAME &lt;$SVKEMAIL&gt;&quot; &gt; ChangeLog
++echo &gt;&gt; ChangeLog
++
++svk status | sed -e 's@^\?.*@@g' -e '/^$/d' | egrep -o '[^ ]*(/.*)?$' | sed -e 's@^\..*@@'  -e '<A HREF="https://lists.berlios.de/mailman/listinfo/nmodule-commits">s at .</A>*ChangeLog@@g' -e '/^$/d' -e 's@^\./@@g' &gt; .tmp-list
++
++for i in $(cat .tmp-list); do
++	echo -e &quot;\t* ${i}: &quot; &gt;&gt; ChangeLog
++done
++
++echo &quot;&quot; &gt;&gt; ChangeLog
++
++cat .ChangeLog.sch &gt;&gt; ChangeLog
++
++rm -f .ChangeLog.sch .tmp-list
++
++
+
+
+Property changes on: trunk/misc/svkchangelog
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/misc/svkcommit
+===================================================================
+--- trunk/misc/svkcommit	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/misc/svkcommit	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,25 @@
++#!/bin/bash
++
++n=0
++instar=0
++
++while read -a target; do
++        if [ -z &quot;${target}&quot; -a $n -gt 1 ]; then
++                break;
++        fi
++        if [[ $n -gt 1 ]]; then
++                echo -n &quot;  &quot; &gt;&gt; .svk-commit.tmp
++        fi
++
++        echo &quot;${target[@]}&quot; &gt;&gt; .svk-commit.tmp
++        n=&quot;$(expr ${n} + 1)&quot;
++done &lt; ./ChangeLog
++
++echo &quot;Committing with message: &quot;
++cat  .svk-commit.tmp
++
++svk ci -F .svk-commit.tmp
++
++rm -f .svk-commit.tmp
++
++
+
+
+Property changes on: trunk/misc/svkcommit
+___________________________________________________________________
+Name: svn:executable
+   + *
+
+Added: trunk/misc/xml-copy.hdr
+===================================================================
+--- trunk/misc/xml-copy.hdr	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/misc/xml-copy.hdr	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,24 @@
++&lt;!--
++ Copyright (c) 2005 Michael Tindal and the individuals listed
++ on the ChangeLog entries.
++
++ Permission is hereby granted, free of charge, to any person obtaining
++ a copy of this software and associated documentation files (the
++ &quot;Software&quot;), to deal in the Software without restriction, including
++ without limitation the rights to use, copy, modify, merge, publish,
++ distribute, sublicense, and/or sell copies of the Software, and to
++ permit persons to whom the Software is furnished to do so, subject to
++ the following conditions:
++ 
++ The above copyright notice and this permission notice shall be
++ included in all copies or substantial portions of the Software.
++ 
++ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
++ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
++ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++--&gt;
++
+
+Modified: trunk/nmodule.mds
+===================================================================
+--- trunk/nmodule.mds	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/nmodule.mds	2005-06-23 08:40:23 UTC (rev 20)
+@@ -7,6 +7,8 @@
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+     &lt;/Configuration&gt;
+     &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;Documentation&quot; /&gt;
+@@ -15,6 +17,8 @@
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Loader&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core.Module&quot; /&gt;
+       &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Core&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;StartMode startupentry=&quot;Documentation&quot; single=&quot;True&quot;&gt;
+@@ -24,6 +28,8 @@
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Loader&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core.Module&quot; /&gt;
+     &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Core&quot; /&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Resolver&quot; /&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
+   &lt;/StartMode&gt;
+   &lt;Entries&gt;
+     &lt;Entry filename=&quot;./Documentation/Documentation.mdp&quot; /&gt;
+@@ -31,5 +37,7 @@
+     &lt;Entry filename=&quot;./src/NModule.Core.Loader/NModule.Core.Loader.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Core.Module/NModule.Core.Module.mdp&quot; /&gt;
+     &lt;Entry filename=&quot;./src/NModule.Dependency.Core/NModule.Dependency.Core.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp&quot; /&gt;
++    &lt;Entry filename=&quot;./src/NModule.Core/NModule.Core.mdp&quot; /&gt;
+   &lt;/Entries&gt;
+ &lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Core/AssemblyInfo.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/AssemblyInfo.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,32 @@
++using System.Reflection;
++using System.Runtime.CompilerServices;
++
++// Information about this assembly is defined by the following
++// attributes.
++//
++// change them to the information which is associated with the assembly
++// you compile.
++
++[assembly: AssemblyTitle(&quot;&quot;)]
++[assembly: AssemblyDescription(&quot;&quot;)]
++[assembly: AssemblyConfiguration(&quot;&quot;)]
++[assembly: AssemblyCompany(&quot;&quot;)]
++[assembly: AssemblyProduct(&quot;&quot;)]
++[assembly: AssemblyCopyright(&quot;&quot;)]
++[assembly: AssemblyTrademark(&quot;&quot;)]
++[assembly: AssemblyCulture(&quot;&quot;)]
++
++// The assembly version has following format :
++//
++// Major.Minor.Build.Revision
++//
++// You can specify all values by your own or you can build default build and revision
++// numbers with the '*' character (the default):
++
++[assembly: AssemblyVersion(&quot;1.0.*&quot;)]
++
++// The following attributes specify the key for the sign of your assembly. See the
++// .NET Framework documentation for more information about signing.
++// This is not required, if you don't want signing let these attributes like they're.
++[assembly: AssemblyDelaySign(false)]
++[assembly: AssemblyKeyFile(&quot;&quot;)]
+
+Added: trunk/src/NModule.Core/IModule.cs
+===================================================================
+--- trunk/src/NModule.Core/IModule.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/IModule.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,7 @@
++// project created on 6/23/2005 at 3:28 AM
++using System;
++
++public class MyClass
++{
++
++}
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core/IModule.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/ModuleDependencyAttribute.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 3:29 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core/ModuleDependencyAttribute.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Core/ModuleRoleAttribute.cs
+===================================================================
+--- trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/ModuleRoleAttribute.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 3:29 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core/ModuleRoleAttribute.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Core/NModule.Core.mdp
+===================================================================
+--- trunk/src/NModule.Core/NModule.Core.mdp	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/NModule.Core.mdp	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,26 @@
++&lt;Project name=&quot;NModule.Core&quot; fileversion=&quot;2.0&quot; language=&quot;C#&quot; ctype=&quot;DotNetProject&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Debug&quot; assembly=&quot;NModule.Core&quot; /&gt;
++      &lt;Build debugmode=&quot;True&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Release&quot; assembly=&quot;NModule.Core&quot; /&gt;
++      &lt;Build debugmode=&quot;False&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;References /&gt;
++  &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
++    &lt;excludeFiles /&gt;
++  &lt;/DeploymentInformation&gt;
++  &lt;Contents&gt;
++    &lt;File name=&quot;./IModule.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleDependencyAttribute.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleRoleAttribute.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++  &lt;/Contents&gt;
++&lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core/NModule.Core.mds
+===================================================================
+--- trunk/src/NModule.Core/NModule.Core.mds	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core/NModule.Core.mds	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,16 @@
++&lt;Combine name=&quot;NModule.Core&quot; fileversion=&quot;2.0&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Core&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;StartMode startupentry=&quot;NModule.Core&quot; single=&quot;True&quot;&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Core&quot; /&gt;
++  &lt;/StartMode&gt;
++  &lt;Entries&gt;
++    &lt;Entry filename=&quot;./NModule.Core.mdp&quot; /&gt;
++  &lt;/Entries&gt;
++&lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/InvalidModuleException.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 2:31 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Loader/InvalidModuleException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Modified: trunk/src/NModule.Core.Loader/ModuleController.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/ModuleController.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -27,6 +27,7 @@
+ using System.IO;
+ using System.Reflection;
+ using NModule.Dependency.Resolver;
++using NModule.Core.Module;
+ 
+ namespace NModule.Core.Loader {
+ 	// This class is the heart and sole of the NModule architecture.
+@@ -164,7 +165,7 @@
+ #endregion
+ 
+ #region Role Handlers
+-		public void CallRoleHandlers (ModuleInfo _info) {
++		protected void CallRoleHandlers (ModuleInfo _info) {
+ 			foreach (ModuleRoleAttribute _attr in _info.ModuleRoleAttributes) {
+ 				string _myRole = _attr.Role;
+ 				
+@@ -175,9 +176,17 @@
+ 						Type _type = null;
+ 						
+ 						foreach (Type __type in _asm.GetTypes ()) {
+-							if (__type.IsSubclassOf (_role.BaseType)) {
+-								_type = __type;
+-								break;
++							
++							if (_role.BaseType.IsClass) {
++								if (__type.IsSubclassOf (_role.BaseType)) {
++									_type = __type;
++									break;
++								}
++							} else if (_role.BaseType.IsInterface) {
++								if (__type.GetInterface (_role.BaseType.ToString ()) != null) {
++									_type = __type;
++									break;
++								}
+ 							}
+ 						}
+ 						
+@@ -191,7 +200,7 @@
+ 			}
+ 		}
+ 		
+-		public void CallRoleUnregisterHandlers (ModuleInfo _info) {
++		protected void CallRoleUnregisterHandlers (ModuleInfo _info) {
+ 			foreach (ModuleRoleAttribute _attr in _info.ModuleRoleAttributes) {
+ 				string _myRole = _attr.Role;
+ 				
+@@ -202,9 +211,16 @@
+ 						Type _type = null;
+ 						
+ 						foreach (Type __type in _asm.GetTypes ()) {
+-							if (__type.IsSubclassOf (_role.BaseType)) {
+-								_type = __type;
+-								break;
++							if (_role.BaseType.IsClass) {
++								if (__type.IsSubclassOf (_role.BaseType)) {
++									_type = __type;
++									break;
++								}
++							} else if (_role.BaseType.IsInterface) {
++								if (__type.GetInterface (_role.BaseType.ToString ()) != null) {
++									_type = __type;
++									break;
++								}
+ 							}
+ 						}
+ 						
+@@ -217,6 +233,30 @@
+ 				}
+ 			}
+ 		}
+-#endregion 
++#endregion
++
++#region Entry/Exit Handlers
++		protected void CallEntryHandler (Assembly _asm) {
++			foreach (Type _type in _asm.GetTypes ()) {
++				if (_type.GetInterface (typeof (NModule.Core.Module.IModule)) != null) {
++					MethodInfo _method = _type.GetMethod (&quot;ModuleEntry&quot;);
++		
++					if (_method != null)			
++						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, (new object[] { this }), null);
++				}
++			}
++		}
++		
++		protected void CallEntryHandler (Assembly _asm) {
++			foreach (Type _type in _asm.GetTypes ()) {
++				if (_type.GetInterface (typeof (NModule.Core.Module.IModule)) != null) {
++					MethodInfo _method = _type.GetMethod (&quot;ModuleExit&quot;);
++					
++					if (_method != null)
++						_method.Invoke (null, BindingFlags.Static | BindingFlags.Public, (new object[] { this }), null);
++				}
++			}
++		}
++#endregion
+ 	}
+ }		
+
+Added: trunk/src/NModule.Core.Loader/ModuleImageException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/ModuleImageException.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 2:31 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Loader/ModuleImageException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Modified: trunk/src/NModule.Core.Loader/ModuleLoader.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/ModuleLoader.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -26,6 +26,7 @@
+ using System.Collections;
+ using System.Reflection;
+ using NModule.Dependency.Resolver;
++using NModule.Core.Module;
+ 
+ namespace NModule.Core.Loader {
+ 	// This class is simply the loader class, it just creates a new AppDomain,
+@@ -76,7 +77,7 @@
+ 			return LoadModule (null, _name, out _info);
+ 		}
+ 		
+-		public AppDomain LoadModule (ArrayList&lt;string&gt; _parents, string _name, bool checking=false, out ModuleInfo _info) {
++		public AppDomain LoadModule (ArrayList _parents, string _name, out ModuleInfo _info, bool checking=false) {
+ 			// Okay, this is tricky.  First, we have to load the module into a temp domain
+ 			// to retrieve its module info.  Then, we have to attempt to resolve the dependencies.
+ 			// This is going to be fun.  Heh.
+@@ -138,7 +139,7 @@
+ 			_resolver.ResolveCheck (_parents, _info);
+ 		
+ 			if (checking)
+-				return;
++				return null;
+ 							
+ 			// okay, they're good, lets load the suckers.
+ 			_resolver.Resolve (_parents, _info);
+
+Added: trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 2:30 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Core.Loader/ModuleNotFoundException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Deleted: trunk/src/NModule.Core.Loader/ModuleRole.cs
+===================================================================
+--- trunk/src/NModule.Core.Loader/ModuleRole.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/ModuleRole.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -1,82 +0,0 @@
+-/**************************************************************************
+- * Copyright (c) 2005 Michael Tindal and the individuals listed           *
+- * on the ChangeLog entries.                                              *
+- *                                                                        *
+- * Permission is hereby granted, free of charge, to any person obtaining  *
+- * a copy of this software and associated documentation files (the        *
+- * &quot;Software&quot;), to deal in the Software without restriction, including    *
+- * without limitation the rights to use, copy, modify, merge, publish,    *
+- * distribute, sublicense, and/or sell copies of the Software, and to     *
+- * permit persons to whom the Software is furnished to do so, subject to  *
+- * the following conditions                                               *
+- *                                                                        *
+- * The above copyright notice and this permission notice shall be         *
+- * included in all copies or substantial portions of the Software.        *
+- *                                                                        *
+- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
+- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
+- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
+- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
+- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+- **************************************************************************/
+- 
+-using System;
+-using System.Collections;
+-using System.Reflection;
+-
+-namespace NModule.Core.Loader {
+-	public delegate RoleRegisterHandler (Assembly asm, Type basetype);
+-	
+-	public delegate RoleUnregisterHandler (Assembly asm);
+-	
+-	/*
+-	 * This class handles the roles used by the module loader.
+-	 * It represents a role given its name, base type, and the
+-	 * handler used to instantiate that role.  This role is opaque,
+-	 * and could easily be used as a value type, but I feel this is
+-	 * the best way to go to ensure future changes dont require semantic
+-	 * changes to the engine.
+-	 */
+-	public class ModuleRole {
+-		private Type _baseType;
+-		private string _roleName;
+-		private RoleRegisterHandler _regHandler;
+-		private RoleUnregisterHandle _unregHandler;
+-		
+-		// Lets get this baby setup :)
+-		public ModuleRole (string name, Type basetype, RoleRegisterHandler regHandler, RoleUnregisterHandler unregHandler) {
+-			_baseType = basetype;
+-			_roleName = name;
+-			_regHandler = regHandler;
+-			_unregHandler = unregHandler;
+-		}
+-		
+-		// all properties are read-only for the moment except the handler (which could conceivably change as other modules are loaded which may take the load
+-		// off the main engine)
+-		public Type BaseType {
+-			get {
+-				return _baseType;
+-			}
+-		}
+-		
+-		public string RoleName {
+-			get {
+-				return _roleName;
+-			}
+-		}
+-		
+-		public RoleRegisterHandler RegistrationHandler {
+-			get {
+-				return _regHandler;
+-			}
+-		}
+-		
+-		public RoleUnregisterHandler UnregistrationHandler {
+-			get {
+-				return _unregHandler;
+-			}
+-		} 
+-	}
+-}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp
+===================================================================
+--- trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Loader/NModule.Core.Loader.mdp	2005-06-23 08:40:23 UTC (rev 20)
+@@ -13,14 +13,20 @@
+       &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+-  &lt;References /&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Resolver&quot; /&gt;
++  &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+     &lt;excludeFiles /&gt;
+   &lt;/DeploymentInformation&gt;
+   &lt;Contents&gt;
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+-    &lt;File name=&quot;./ModuleRole.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleLoader.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleController.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./InvalidModuleException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleImageException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleNotFoundException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Loader/NModule.Core.Loader.pidb
+===================================================================
+(Binary files differ)
+
+Modified: trunk/src/NModule.Core.Module/ModuleInfo.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Module/ModuleInfo.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -21,11 +21,62 @@
+  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
+  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+  **************************************************************************/
+- 
+-using System;
+-using System.Collections;
+-using System.Reflection;
+-using NModule.Dependency.Parser;
+ 
+ namespace NModule.Core.Module {
++	using System;
++	using System.Collections;
++	using System.IO;
++	using System.Reflection;
++	
++	using NModule.Dependency.Core;
++	using NModule.Dependency.Parser;
++	
++	public class ModuleInfo {
++		// name
++		protected string _name;
++		
++		// version
++		protected DepVersion _version;
++		
++		// dependency stuff
++		protected DepNode _dependencies;
++		
++		public ModuleInfo (Assembly _asm) {
++			_name = _asm.GetName().Name;
++			_version = DepVersion.VersionParse (_asm.GetName().Version);
++			
++			ModuleDependencyAttribute _depAttr = ((ModuleDependencyAttribute)_asm.GetCustomAttributes (typeof (ModuleDependencyAttribute)));
++			
++			if (_depAttr != null)
++			{	
++				DepLexer _lexer = new DepLexer (new StringReader (_depAttr.DepString));
++				DepParser _parser = new DepParser (_lexer);
++				
++				// woot...lets do this!
++				_dependencies = new DepNode ();
++				
++				_parser.expr (_dependencies);
++			}
++			else
++				_depenencies = null;
++		}
++		
++		public string Name {
++			get {
++				return _name;
++			}
++		}
++		
++		public DepVersion Version {
++			get {
++				return _version;
++			}
++		}
++		
++		public DepNode Dependencies {
++			get {
++				return _dependencies;
++			}
++		}
++	}		
+ }
+
+Added: trunk/src/NModule.Core.Module/ModuleRole.cs
+===================================================================
+--- trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Module/ModuleRole.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,82 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++ 
++using System;
++using System.Collections;
++using System.Reflection;
++
++namespace NModule.Core.Module {
++	public delegate RoleRegisterHandler (Assembly asm, Type basetype);
++	
++	public delegate RoleUnregisterHandler (Assembly asm);
++	
++	/*
++	 * This class handles the roles used by the module loader.
++	 * It represents a role given its name, base type, and the
++	 * handler used to instantiate that role.  This role is opaque,
++	 * and could easily be used as a value type, but I feel this is
++	 * the best way to go to ensure future changes dont require semantic
++	 * changes to the engine.
++	 */
++	public class ModuleRole {
++		private Type _baseType;
++		private string _roleName;
++		private RoleRegisterHandler _regHandler;
++		private RoleUnregisterHandle _unregHandler;
++		
++		// Lets get this baby setup :)
++		public ModuleRole (string name, Type basetype, RoleRegisterHandler regHandler, RoleUnregisterHandler unregHandler) {
++			_baseType = basetype;
++			_roleName = name;
++			_regHandler = regHandler;
++			_unregHandler = unregHandler;
++		}
++		
++		// all properties are read-only for the moment except the handler (which could conceivably change as other modules are loaded which may take the load
++		// off the main engine)
++		public Type BaseType {
++			get {
++				return _baseType;
++			}
++		}
++		
++		public string RoleName {
++			get {
++				return _roleName;
++			}
++		}
++		
++		public RoleRegisterHandler RegistrationHandler {
++			get {
++				return _regHandler;
++			}
++		}
++		
++		public RoleUnregisterHandler UnregistrationHandler {
++			get {
++				return _unregHandler;
++			}
++		} 
++	}
++}
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Module/NModule.Core.Module.mdp
+===================================================================
+--- trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Core.Module/NModule.Core.Module.mdp	2005-06-23 08:40:23 UTC (rev 20)
+@@ -14,6 +14,7 @@
+     &lt;/Configuration&gt;
+   &lt;/Configurations&gt;
+   &lt;References&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
+     &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Parser&quot; /&gt;
+   &lt;/References&gt;
+   &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
+@@ -22,5 +23,6 @@
+   &lt;Contents&gt;
+     &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+     &lt;File name=&quot;./ModuleInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./ModuleRole.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
+   &lt;/Contents&gt;
+ &lt;/Project&gt;
+\ No newline at end of file
+
+Modified: trunk/src/NModule.Core.Module/NModule.Core.Module.pidb
+===================================================================
+(Binary files differ)
+
+Modified: trunk/src/NModule.Dependency.Core/DepConstraint.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepConstraint.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Core/DepConstraint.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -32,7 +32,7 @@
+ 
+ 		public DepConstraint () {
+ 			_name = &quot;&quot;;
+-			_version = null;
++			_version = new DepVersion (-1, -1, -1, -1);
+ 		}
+ 
+ 		public DepVersion Version {
+@@ -55,21 +55,8 @@
+ 
+ 		public string VersionTmp {
+ 			set {
+-				_version = VersionParse(value);
++				_version = DepVersion.VersionParse(value);
+ 			}
+ 		}
+-
+-		protected DepVersion VersionParse (string v) {
+-			// Here we go :)
+-			DepVersion ver = new DepVersion ();
+-			string[] vparts = v.Split ('.');
+-			ver.Major = Int32.Parse (vparts[0]);
+-			ver.Minor = Int32.Parse (vparts[1]);
+-			if (vparts.Length &gt; 2)
+-				ver.Build = Int32.Parse(vparts[2]);
+-			if (vparts.Length &gt; 3)
+-				ver.Revision = Int32.Parse(vparts[3]);
+-			return ver;
+-		}
+ 	}
+ }
+
+Modified: trunk/src/NModule.Dependency.Core/DepVersion.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Core/DepVersion.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -92,5 +92,18 @@
+ 				_revision = value;
+ 			}
+ 		}
++		
++		public static DepVersion VersionParse (string v) {
++			// Here we go :)
++			DepVersion ver = new DepVersion ();
++			string[] vparts = v.Split ('.');
++			ver.Major = Int32.Parse (vparts[0]);
++			ver.Minor = Int32.Parse (vparts[1]);
++			if (vparts.Length &gt; 2)
++				ver.Build = Int32.Parse(vparts[2]);
++			if (vparts.Length &gt; 3)
++				ver.Revision = Int32.Parse(vparts[3]);
++			return ver;
++		}
+ 	}
+ }
+
+Modified: trunk/src/NModule.Dependency.Core/NModule.Dependency.Core.pidb
+===================================================================
+(Binary files differ)
+
+Modified: trunk/src/NModule.Dependency.Parser/NModule.Dependency.Parser.pidb
+===================================================================
+(Binary files differ)
+
+Added: trunk/src/NModule.Dependency.Resolver/AssemblyInfo.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/AssemblyInfo.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/AssemblyInfo.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,32 @@
++using System.Reflection;
++using System.Runtime.CompilerServices;
++
++// Information about this assembly is defined by the following
++// attributes.
++//
++// change them to the information which is associated with the assembly
++// you compile.
++
++[assembly: AssemblyTitle(&quot;&quot;)]
++[assembly: AssemblyDescription(&quot;&quot;)]
++[assembly: AssemblyConfiguration(&quot;&quot;)]
++[assembly: AssemblyCompany(&quot;&quot;)]
++[assembly: AssemblyProduct(&quot;&quot;)]
++[assembly: AssemblyCopyright(&quot;&quot;)]
++[assembly: AssemblyTrademark(&quot;&quot;)]
++[assembly: AssemblyCulture(&quot;&quot;)]
++
++// The assembly version has following format :
++//
++// Major.Minor.Build.Revision
++//
++// You can specify all values by your own or you can build default build and revision
++// numbers with the '*' character (the default):
++
++[assembly: AssemblyVersion(&quot;1.0.*&quot;)]
++
++// The following attributes specify the key for the sign of your assembly. See the
++// .NET Framework documentation for more information about signing.
++// This is not required, if you don't want signing let these attributes like they're.
++[assembly: AssemblyDelaySign(false)]
++[assembly: AssemblyKeyFile(&quot;&quot;)]
+
+Added: trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 3:27 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Dependency.Resolver/CircularDependencyException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/src/NModule.Dependency.Resolver/DepResolver.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/DepResolver.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/DepResolver.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,217 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions                                               *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++
++namespace NModule.Dependency.Resolver {
++	using System;
++	using System.Collections;
++	using System.IO;
++	using System.Reflection;
++	
++	using NModule.Dependency.Core;
++	using NModule.Core.Loader;
++	using NModule.Core.Module;
++	
++	public class DepResolver {
++#region Members
++		// ModuleController used for loading modules to sastify dependencies.
++		protected ModuleController	_controller;
++		
++		// Search Path for modules
++		protected ArrayList _search_path;
++#endregion
++
++#region Constructor
++		public DepResolver (ModuleController controller, ArrayList search_path) {
++			_controller = controller;
++			_search_path = search_path;
++		}
++#endregion
++
++#region Internal Helper Functions
++		protected string SearchForModule (string _name) {
++			foreach (string s in _search_path) {
++				if (Directory.Exists (s)) {
++					foreach (string f in Directory.GetFiles (s, &quot;*.dll&quot;)) {
++						if (f.SubString (0, f.Length - 4) == _name) {
++							return s + &quot;/&quot; + f;
++						}
++					}
++				}
++			}
++			
++			return null;
++		}
++		
++		protected void OpResolve (DepNode _node, ArrayList _parents, ModuleInfo _info, bool checking) {
++			DepOp _op = _node.DepOp;
++			DepConstraint _constraint = _node.Constraint;
++			if ((_op == DepOps.And) || (_op == DepOps.Not) || (_op == DepOps.Opt) || (_op == DepOps.Or) || (_op == DepOps.Xor)) {
++				// combo-operators
++				int c = 0;
++				ArrayList _results = new ArrayList ();
++				ArrayList _c = new ArrayList ();
++				foreach (DepNode _child in _node.Children) {
++					try {
++						OpResolve (_child, _parents, _info, checking);
++						_results.Add (true);
++						_c.Add (_child.Constraint);
++					} catch (Exception e) {
++						_results.Add (false);
++						_c.Add (_child.Constraint);
++					}
++				}
++				
++				switch (_op) {
++					case DepOps.And:
++						int r = 0;
++						foreach (bool _result in _results) {
++							if (!_result) {
++								throw new UnresolvedDependencyInformation (
++									string.Format(&quot;The following dependency for the module {0} could not be resolved: (AND operator)\n\t{1} ({2})&quot;,
++										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++								);
++							}
++						}
++						break;
++					case DepOps.Not:
++						foreach (bool _result in _results) {
++							if (_result) {
++								throw new UnresolvedDependencyInformation (
++									string.Format(&quot;The following dependency for the module {0} could not be resolved: (NOT operator)\n\t{1} ({2})&quot;,
++										_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version)
++								);
++						}
++						break;
++					case DepOps.Opt: // This is optional so stuff is true regardless
++						break;
++					case DepOps.Or:
++						_ret = false;
++						ArrayList _urexc = new ArrayList ();
++						
++						foreach (bool _result in _results) {
++							if (_result)
++								_ret = true;
++							else {
++								_urexc.Add (string.Format(&quot;{1} ({2})&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++						}
++						
++						if (!_ret) {
++							StringBuilder _sb = new StringBuilder (
++								string.Format(&quot;The following dependency for the module {0} could not be resolved: (OR operator)\n&quot;)
++							);
++							foreach (string _exc in _urexc) {
++								sb += string.Format(&quot;\t{0}\n&quot;, _exc);
++							}
++							throw new UnresolvedDependencyInformation (sb.ToString ());
++						}
++						break;
++					case DepOps.Xor:
++						_xt = true;
++						_xf = true;
++						ArrayList _urexc = new ArrayList ();
++				
++						foreach (bool _result in _results) {
++							if (_result) {
++								_xf = false;
++								_urexc.Add (string.Format(&quot;{1} ({2}) (True)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++							if (!_result) {
++								_xt = false;
++								_ur.Add (string.Format(&quot;{1} ({2}) (False)&quot;, _info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version));
++							}
++						}
++						
++						if (_xt || _xf)
++							_ret = false;
++							
++						if (!_ret) {
++							StringBuilder _sb = new StringBuilder (
++								string.Format(&quot;The following dependency for the module {0} could not be resolved: (XOR operator)\n&quot;)
++							);
++							foreach (string _exc in _urexc) {
++								sb += string.Format(&quot;\t{0}\n&quot;, _exc);
++							}
++							throw new UnresolvedDependencyInformation (sb.ToString ());
++						}
++						break;
++				}
++			} else {
++				// single operators
++				if (SearchForModule (_constraint.Name) == null)
++					_ret = false;
++		
++				ModuleInfo _ninfo;
++						
++				ModuleLoader _loader = new ModuleLoader (_search_path, this);
++						
++				_loader.LoadModule (_parents, _constraint.Name, out _ninfo, true);
++				
++				if ((_op == DepOps.Equal) || (_op == DepOps.GreaterThan) || (_op == DepOps.GreaterThanEqual) || (_op == DepOps.LessThan)
++					|| (_op == DepOps.LessThanEqual) || (_op == DepOps.NotEqual)) {
++					if (!IsEmptyVersion (_constraint.Version)) {
++						if (!VersionMatch (_ninfo, _version, _op)) {
++							throw new UnresolvedDependencyInformation (
++								string.Format(&quot;The following dependency for the module {0} could not be resolved: ({3} operator)\n\t{1} ({2})&quot;,
++									_info.Name, ((DepConstraint)_c[r]).Name, ((DepConstraint)_c[r]).Version, OpToString (_op))
++							);
++						}
++					}
++					if (!checking) {
++						_controller.LoadModule (_constraint.Name);
++					}		
++				}
++				// we got this far, so obviously it loaded okay
++			}		
++		}
++			
++		protected void InternalResolve (ArrayList _parents, ModuleInfo _info, bool checking) {
++			if (_info.Dependencies == null)
++				return;
++			
++			foreach (DepNode _node in _info.Dependencies) {
++				foreach (string _parent in _parents) {
++					if (_node.Constraint.Name == _parent) {
++						throw new CircularDependencyException (
++							string.Format(&quot;The module {0} is depending on {1} which is depending on {0}, causing a circular dependency.&quot;,
++								_parent, _info.Name, _parent)
++						);
++					}
++				}
++				OpResolve (_node, _parents, _info, checking);
++			}			
++		}
++#endregion
++
++#region Resolvers
++		public void ResolveCheck (ArrayList _parents, ModuleInfo _info) {
++			InternalResolve (_parents, _info, true);
++		}
++		
++		public void Resolve (ArrayList _parents, ModuleInfo _info) {
++			InternalResolve (_parents, _info, false);
++		}
++#endregion
++	}
++}
+\ No newline at end of file
+
+Added: trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mdp	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,30 @@
++&lt;Project name=&quot;NModule.Dependency.Resolver&quot; fileversion=&quot;2.0&quot; language=&quot;C#&quot; ctype=&quot;DotNetProject&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Debug&quot; assembly=&quot;NModule.Dependency.Resolver&quot; /&gt;
++      &lt;Build debugmode=&quot;True&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;DotNetProjectConfiguration&quot;&gt;
++      &lt;Output directory=&quot;./bin/Release&quot; assembly=&quot;NModule.Dependency.Resolver&quot; /&gt;
++      &lt;Build debugmode=&quot;False&quot; target=&quot;Library&quot; /&gt;
++      &lt;Execution runwithwarnings=&quot;True&quot; consolepause=&quot;False&quot; runtime=&quot;MsNet&quot; /&gt;
++      &lt;CodeGeneration compiler=&quot;Csc&quot; warninglevel=&quot;4&quot; optimize=&quot;True&quot; unsafecodeallowed=&quot;False&quot; generateoverflowchecks=&quot;True&quot; generatexmldocumentation=&quot;False&quot; ctype=&quot;CSharpCompilerParameters&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;References&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Loader&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Core.Module&quot; /&gt;
++    &lt;ProjectReference type=&quot;Project&quot; localcopy=&quot;True&quot; refto=&quot;NModule.Dependency.Core&quot; /&gt;
++  &lt;/References&gt;
++  &lt;DeploymentInformation strategy=&quot;File&quot;&gt;
++    &lt;excludeFiles /&gt;
++  &lt;/DeploymentInformation&gt;
++  &lt;Contents&gt;
++    &lt;File name=&quot;./DepResolver.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./AssemblyInfo.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./CircularDependencyException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++    &lt;File name=&quot;./UnresolvedDependencyException.cs&quot; subtype=&quot;Code&quot; buildaction=&quot;Compile&quot; /&gt;
++  &lt;/Contents&gt;
++&lt;/Project&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.mds	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,16 @@
++&lt;Combine name=&quot;NModule.Dependency.Resolver&quot; fileversion=&quot;2.0&quot;&gt;
++  &lt;Configurations&gt;
++    &lt;Configuration name=&quot;Debug&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
++    &lt;/Configuration&gt;
++    &lt;Configuration name=&quot;Release&quot; ctype=&quot;CombineConfiguration&quot;&gt;
++      &lt;Entry build=&quot;True&quot; name=&quot;NModule.Dependency.Resolver&quot; /&gt;
++    &lt;/Configuration&gt;
++  &lt;/Configurations&gt;
++  &lt;StartMode startupentry=&quot;NModule.Dependency.Resolver&quot; single=&quot;True&quot;&gt;
++    &lt;Execute type=&quot;None&quot; entry=&quot;NModule.Dependency.Resolver&quot; /&gt;
++  &lt;/StartMode&gt;
++  &lt;Entries&gt;
++    &lt;Entry filename=&quot;./NModule.Dependency.Resolver.mdp&quot; /&gt;
++  &lt;/Entries&gt;
++&lt;/Combine&gt;
+\ No newline at end of file
+
+Added: trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.pidb
+===================================================================
+(Binary files differ)
+
+
+Property changes on: trunk/src/NModule.Dependency.Resolver/NModule.Dependency.Resolver.pidb
+___________________________________________________________________
+Name: svn:mime-type
+   + font/ttf
+
+Added: trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs
+===================================================================
+--- trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++// created on 6/23/2005 at 3:28 AM
+\ No newline at end of file
+
+
+Property changes on: trunk/src/NModule.Dependency.Resolver/UnresolvedDependencyException.cs
+___________________________________________________________________
+Name: svn:mime-type
+   + text/cpp
+
+Added: trunk/test/Data/test-1.txt
+===================================================================
+--- trunk/test/Data/test-1.txt	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/test/Data/test-1.txt	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++(&amp;&amp; (&gt;&gt; Elfblade.Core.Net 2.0) (!= Elfblade.Core 1.0) (!! (&lt;= Elfblade.Core.Net.Extensions 2.0)) (?? (## Elfblade.Core.Net.Extensions)))
+
+Added: trunk/test/Data/test-2.txt
+===================================================================
+--- trunk/test/Data/test-2.txt	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/test/Data/test-2.txt	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1 @@
++(&amp;&amp; (&gt;&gt; Elfblade.Core.Net 2.0.1) (!= Elfblade.Core 1.0.9.1051) (!! (&lt;= Elfblade.Core.Net.Extensions 2.0.2.225)) (?? (## Elfblade.Core.Net.Extensions)))
+
+Added: trunk/test/NModuleTest.cs
+===================================================================
+--- trunk/test/NModuleTest.cs	2005-06-23 01:49:01 UTC (rev 19)
++++ trunk/test/NModuleTest.cs	2005-06-23 08:40:23 UTC (rev 20)
+@@ -0,0 +1,76 @@
++/**************************************************************************
++ * Copyright (c) 2005 Michael Tindal and the individuals listed           *
++ * on the ChangeLog entries.                                              *
++ *                                                                        *
++ * Permission is hereby granted, free of charge, to any person obtaining  *
++ * a copy of this software and associated documentation files (the        *
++ * &quot;Software&quot;), to deal in the Software without restriction, including    *
++ * without limitation the rights to use, copy, modify, merge, publish,    *
++ * distribute, sublicense, and/or sell copies of the Software, and to     *
++ * permit persons to whom the Software is furnished to do so, subject to  *
++ * the following conditions:                                              *
++ *                                                                        *
++ * The above copyright notice and this permission notice shall be         *
++ * included in all copies or substantial portions of the Software.        *
++ *                                                                        *
++ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        *
++ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     *
++ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  *
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE *
++ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION *
++ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION  *
++ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
++ **************************************************************************/
++
++using System;
++using System.IO;
++using NModule.Dependency.Parser;
++using antlr.collections;
++
++namespace NModule
++{
++	public class NModuleTest
++	{
++		public static void PrintTree(DepNode root, int indent)
++		{
++			for(int i = 0; i &lt; indent; i++)
++				Console.Write(&quot;  &quot;);
++	
++			Console.Write(&quot;op = {0}, &quot;, root.DepOp.ToString());
++
++			if (root.Constraint != null)
++			{
++				Console.Write(&quot;name = {0}&quot;, root.Constraint.Name);
++				if (root.Constraint.Version != null)
++				{
++					DepVersion ver = root.Constraint.Version;
++					Console.WriteLine(&quot;, version = {0}.{1}.{2}.{3}&quot;, ver.Major, ver.Minor, ver.Build, ver.Patch);
++				}
++				else
++					Console.WriteLine();
++			}
++			else
++				Console.WriteLine();
++
++			foreach(DepNode child in root.Children)
++				PrintTree(child, indent + 1);
++		}
++
++	       	public static void Main(string[] args)
++	        {
++			foreach(string file in args)
++			{
++				DepNode root = new DepNode();
++
++				Console.WriteLine(&quot;==== Testing Input from {0} ====&quot;, file);
++				DepLexer lexer = new DepLexer(new FileStream(file, FileMode.Open));
++		                DepParser parser = new DepParser(lexer);
++	                	parser.expr(root);
++                		PrintTree(root, 0);
++			}
++		
++	        }
++	}
++}
++
++
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[nmodule-commits] r19 - in trunk: . src src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser
+</A></li>
+	<LI>Next message: <A HREF="000006.html">[nmodule-commits] r21 - in trunk: . src/NModule.Core.Loader src/NModule.Core.Module src/NModule.Dependency.Core src/NModule.Dependency.Parser src/NModule.Dependency.Resolver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nmodule-commits">More information about the nmodule-commits
+mailing list</a><br>
+</body></html>
